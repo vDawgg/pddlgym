@@ -35,7 +35,7 @@
 	(served p5)
 	(served p6)
 	(served p7)))
-  (:init 
+  (:init
 	(above f0 f10)
 	(above f0 f11)
 	(above f0 f12)
@@ -462,4 +462,3 @@
 	(up f8)
 	(up f9)
 ))
-        

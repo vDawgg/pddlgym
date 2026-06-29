@@ -15,7 +15,7 @@
 
   ; (:actions move)
 
-  
+
 
 	(:action move
 		:parameters (?p - thing ?from - location ?to - location ?dir - direction)
@@ -30,7 +30,7 @@
 			(at ?p ?to)
 			(clear ?from))
 	)
-	
+
 
 	(:action push-to-goal
 		:parameters (?p - thing ?s - thing ?ppos - location ?from - location ?to - location ?dir - direction)
@@ -52,7 +52,7 @@
 			(clear ?ppos)
 			(at-goal ?s))
 	)
-	
+
 
 	(:action push-to-nongoal
 		:parameters (?p - thing ?s - thing ?ppos - location ?from - location ?to - location ?dir - direction)
@@ -76,4 +76,3 @@
 	)
 
 )
-        

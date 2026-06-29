@@ -1,14 +1,14 @@
 (define (problem blocks)
     (:domain blocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block
         c - block
     )
-    (:init 
+    (:init
         (ontable a)
-        (ontable b) 
+        (ontable b)
         (ontable c)
         (ontable d)
 

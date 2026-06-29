@@ -17,7 +17,7 @@
                       (pred3 ?a ?c ?d)
                       (pred2 ?c)
                       )
-   :effect       (and 
+   :effect       (and
                       (pred3 ?b ?d ?c)
                       (probabilistic 0.3 (and (not (pred2 ?c)))))
    )

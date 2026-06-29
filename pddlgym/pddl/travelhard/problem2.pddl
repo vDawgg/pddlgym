@@ -16,7 +16,7 @@
   (:goal (and
 	(visited tx)
 	(visited tn)))
-  (:init 
+  (:init
 	(drive ca ca car-0)
 	(drive ca ky car-0)
 	(drive ca nj car-0)
@@ -126,4 +126,3 @@
 	(planeavailable plane-0)
 	(planeavailable plane-1)
 ))
-        

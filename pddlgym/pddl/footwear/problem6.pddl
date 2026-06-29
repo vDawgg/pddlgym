@@ -101,7 +101,7 @@
 	sock8 - sock
 	sock9 - sock
   )
-  (:init 
+  (:init
 	(at home)
 	(beach beach0)
 	(beach beach1)

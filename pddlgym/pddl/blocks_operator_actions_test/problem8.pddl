@@ -7,7 +7,7 @@
         a - block
         c - block
     )
-    (:init 
+    (:init
         (clear a)
         (on a b)
         (on b c)

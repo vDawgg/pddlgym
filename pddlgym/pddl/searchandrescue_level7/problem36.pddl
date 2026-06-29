@@ -52,7 +52,7 @@
 	wall4-2 - wall
 	wall5-4 - wall
   )
-  (:init 
+  (:init
 	(chicken-at chicken0 f4-3f)
 	(chicken-at chicken1 f5-3f)
 	(chicken-at chicken2 f2-1f)

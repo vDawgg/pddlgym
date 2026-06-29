@@ -1,8 +1,8 @@
-(define (problem rearrangement) 
+(define (problem rearrangement)
     (:domain rearrangement)
 
     (:objects
-    
+
 	bear-0 - moveable
 	bear-1 - moveable
 	robot - moveable
@@ -25,7 +25,7 @@
     )
 
     (:init
-    
+
 	(isbear bear-0)
 	(isbear bear-1)
 	(isrobot robot)
@@ -35,7 +35,7 @@
 	(handsfree robot)
 
     ; action literals
-    
+
 	(pick bear-0)
 	(place bear-0)
 	(pick bear-1)
@@ -60,4 +60,3 @@
 
     (:goal (and  (at bear-0 loc-0-1)  (at bear-1 loc-3-2) ))
 )
-    

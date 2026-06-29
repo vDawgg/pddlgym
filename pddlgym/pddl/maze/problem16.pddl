@@ -103,7 +103,7 @@
 	loc-9-9 - location
 	player-1 - player
   )
-  (:init 
+  (:init
 	(at player-1 loc-6-4)
 	(clear loc-2-2)
 	(clear loc-2-3)

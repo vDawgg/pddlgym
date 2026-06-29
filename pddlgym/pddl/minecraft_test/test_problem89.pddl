@@ -1,8 +1,8 @@
-(define (problem minecraft) 
+(define (problem minecraft)
     (:domain minecraft)
 
     (:objects
-    
+
 	grass-0 - moveable
 	grass-1 - moveable
 	log-2 - moveable
@@ -25,7 +25,7 @@
     )
 
     (:init
-    
+
 	(hypothetical new-0)
 	(hypothetical new-1)
 	(hypothetical new-2)
@@ -45,7 +45,7 @@
 	(handsfree agent)
 
     ; action literals
-    
+
 	(recall grass-0)
 	(craftplank grass-0 grass-1)
 	(craftplank grass-0 log-2)
@@ -158,4 +158,3 @@
 
     (:goal (and  (agentat loc-0-2)  (isplanks new-0) ))
 )
-    

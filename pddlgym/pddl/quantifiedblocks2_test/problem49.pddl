@@ -9,7 +9,7 @@
 	b5 - block
 	b6 - block
   )
-  (:init 
+  (:init
 	(on b0 b1)
 	(on b4 b5)
 	(ontable b1)

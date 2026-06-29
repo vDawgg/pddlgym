@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
-from pddlgym.structs import Predicate, Literal, Type, Not, Anti, LiteralConjunction, State
+from pddlgym.structs import Predicate, Type, State
 from pddlgym.spaces import LiteralSpace
 from pddlgym.core import PDDLEnv
 
@@ -9,21 +11,38 @@ import unittest
 
 
 class TestSpaces(unittest.TestCase):
-    def test_hierarchical_spaces(self):
+    def test_hierarchical_spaces(self) -> None:
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        domain_file = os.path.join(dir_path, 'pddl', 'hierarchical_type_test_domain.pddl')
-        problem_file = os.path.join(dir_path, 'pddl', 'hierarchical_type_test_domain', 
-            'hierarchical_type_test_problem.pddl')
+        domain_file = os.path.join(
+            dir_path, "pddl", "hierarchical_type_test_domain.pddl"
+        )
+        problem_file = os.path.join(
+            dir_path,
+            "pddl",
+            "hierarchical_type_test_domain",
+            "hierarchical_type_test_problem.pddl",
+        )
         domain = PDDLDomainParser(domain_file)
-        problem = PDDLProblemParser(problem_file, domain.domain_name, domain.types,
-            domain.predicates, domain.actions)
+        assert domain.domain_name is not None
+        problem = PDDLProblemParser(
+            problem_file,
+            domain.domain_name,
+            domain.types,
+            domain.predicates,
+            domain.actions,
+        )
+        assert domain.actions is not None
         actions = list(domain.actions)
+        assert domain.predicates is not None
         action_predicates = [domain.predicates[a] for a in actions]
 
-        space = LiteralSpace(set(domain.predicates.values()) - set(action_predicates),
-            type_to_parent_types=domain.type_to_parent_types)
-        all_ground_literals = space.all_ground_literals(State(problem.initial_state, 
-            problem.objects, problem.goal))
+        space = LiteralSpace(
+            list(set(domain.predicates.values()) - set(action_predicates)),
+            type_to_parent_types=domain.type_to_parent_types,
+        )
+        all_ground_literals = space.all_ground_literals(
+            State(problem.initial_state, problem.objects, problem.goal)
+        )
 
         ispresent = Predicate("ispresent", 1, [Type("entity")])
         islight = Predicate("islight", 1, [Type("object")])
@@ -65,30 +84,32 @@ class TestSpaces(unittest.TestCase):
             attending(rene, cylinder1),
         }
 
-
-
-    def test_dynamic_action_space(self, verbose=False):
-        """
-        """
+    def test_dynamic_action_space(self, verbose: bool = False) -> None:
+        """ """
         dir_path = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "pddl")
+            os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "pddl"
+        )
 
         for name in [
-                # "Manymiconic",
-                # "Manygripper",
-                "Blocks_operator_actions",
-                "Hanoi_operator_actions",
-            ]:
+            # "Manymiconic",
+            # "Manygripper",
+            "Blocks_operator_actions",
+            "Hanoi_operator_actions",
+        ]:
             domain_file = os.path.join(dir_path, "{}.pddl".format(name.lower()))
             problem_dir = os.path.join(dir_path, name.lower())
             # problem_dir = os.path.join(dir_path, name.lower()+"_test")
 
-            env1 = PDDLEnv(domain_file, problem_dir,
+            env1 = PDDLEnv(
+                domain_file,
+                problem_dir,
                 operators_as_actions=True,
                 dynamic_action_space=False,
             )
 
-            env2 = PDDLEnv(domain_file, problem_dir,
+            env2 = PDDLEnv(
+                domain_file,
+                problem_dir,
                 operators_as_actions=True,
                 dynamic_action_space=True,
             )
@@ -103,13 +124,19 @@ class TestSpaces(unittest.TestCase):
                 start_time = time.time()
                 valid_actions1 = env1.action_space.all_ground_literals(state1)
                 if verbose:
-                    print("Computing valid action spaces without instantiator took {} seconds".format(
-                        time.time() - start_time))
+                    print(
+                        "Computing valid action spaces without instantiator took {} seconds".format(
+                            time.time() - start_time
+                        )
+                    )
                 start_time = time.time()
                 valid_actions2 = env2.action_space.all_ground_literals(state2)
                 if verbose:
-                    print("Computing valid action spaces *with* instantiator took {} seconds".format(
-                        time.time() - start_time))
+                    print(
+                        "Computing valid action spaces *with* instantiator took {} seconds".format(
+                            time.time() - start_time
+                        )
+                    )
                 assert valid_actions2.issubset(valid_actions1)
                 action = env2.action_space.sample(state2)
                 state1, _, _, _, _ = env1.step(action)
@@ -118,19 +145,19 @@ class TestSpaces(unittest.TestCase):
             if verbose:
                 print("Test passed for environment {}.".format(name))
 
-
-
-    def test_dynamic_action_space_same_obj(self):
-        """
-        """
+    def test_dynamic_action_space_same_obj(self) -> None:
+        """ """
         dir_path = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "pddl")
+            os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "pddl"
+        )
 
         name = "dynamic_action_space_same_obj"
         domain_file = os.path.join(dir_path, "{}.pddl".format(name.lower()))
         problem_dir = os.path.join(dir_path, name.lower())
 
-        env = PDDLEnv(domain_file, problem_dir,
+        env = PDDLEnv(
+            domain_file,
+            problem_dir,
             operators_as_actions=True,
             dynamic_action_space=True,
         )
@@ -154,7 +181,6 @@ class TestSpaces(unittest.TestCase):
             assert act2.predicate.name == "unstack"
             assert act2.variables[0].name == "d"
             assert act2.variables[1].name == "c"
-
 
 
 if __name__ == "__main__":

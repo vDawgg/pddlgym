@@ -10,7 +10,7 @@
 	(gripper_empty gripper)
 	(on_loc block1 table)
 	(on_obj block2 block1)))
-  (:init 
+  (:init
 	(on_loc block2 table)
 	(on_obj block1 block2)
 ))

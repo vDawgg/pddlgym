@@ -27,7 +27,7 @@
 	(at c3 l1)
 	(at c4 l1)
 	(at c5 l6)))
-  (:init 
+  (:init
 	(at c0 l1)
 	(at c1 l0)
 	(at c2 l8)
@@ -198,4 +198,3 @@
 	(sail l8)
 	(sail l9)
 ))
-        

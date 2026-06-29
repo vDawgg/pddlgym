@@ -4,7 +4,7 @@
         b0 - block
 	b1 - block
   )
-  (:init 
+  (:init
 	(ontable b0)
 	(ontable b1)
   )

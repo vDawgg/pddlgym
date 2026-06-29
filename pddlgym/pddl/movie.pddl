@@ -14,12 +14,12 @@
                (pop ?x)
                (cheese ?x)
                (crackers ?x))
-  
+
   (:action rewind-movie-2
            :parameters ()
 	   :precondition (counter-at-two-hours)
            :effect (movie-rewound))
-  
+
   (:action rewind-movie
            :parameters ()
 	   :precondition (counter-at-other-than-two-hours)
@@ -39,7 +39,7 @@
            :parameters (?x)
            :precondition (chips ?x)
            :effect (have-chips))
-  
+
   (:action get-dip
            :parameters (?x)
            :precondition (dip ?x)
@@ -49,12 +49,12 @@
            :parameters (?x)
            :precondition (pop ?x)
            :effect (have-pop))
-  
+
   (:action get-cheese
            :parameters (?x)
            :precondition (cheese ?x)
            :effect (have-cheese))
-  
+
   (:action get-crackers
            :parameters (?x)
            :precondition (crackers ?x)

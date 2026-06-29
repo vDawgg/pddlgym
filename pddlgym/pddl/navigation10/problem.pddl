@@ -626,4 +626,3 @@
   (:goal (and
     (robot-at f19-0f)))
 )
-    

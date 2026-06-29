@@ -1,17 +1,23 @@
-"""Utilities
-"""
+"""Utilities"""
+
+from __future__ import annotations
+
 from collections import defaultdict
 import contextlib
 import sys
 import itertools
-import numpy as np
-import os
 import gym
 import imageio
+from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple, cast
 
 
-def get_object_combinations(objects, arity, var_types=None, 
-                            type_to_parent_types=None, allow_duplicates=False):
+def get_object_combinations(
+    objects: List,
+    arity: int,
+    var_types: Optional[List] = None,
+    type_to_parent_types: Optional[Dict] = None,
+    allow_duplicates: bool = False,
+) -> Iterator[Tuple]:
     type_to_objs = defaultdict(list)
 
     for obj in sorted(objects):
@@ -32,19 +38,30 @@ def get_object_combinations(objects, arity, var_types=None,
             continue
         yield choice
 
-def run_demo(env, policy, max_num_steps=10, render=False,
-             video_path=None, fps=3, verbose=False, seed=None,
-             check_reward=False):
 
-    images = []
+def run_demo(
+    env: gym.Env,
+    policy: Callable,
+    max_num_steps: int = 10,
+    render: bool = False,
+    video_path: Optional[str] = None,
+    fps: int = 3,
+    verbose: bool = False,
+    seed: Optional[int] = None,
+    check_reward: bool = False,
+) -> None:
+
+    images: List = []
 
     if seed is not None:
-        env.seed(seed)
+        cast(Any, env).seed(seed)
 
     obs, _ = env.reset()
 
     if seed is not None:
         env.action_space.seed(seed)
+
+    tot_reward = 0.0
 
     for t in range(max_num_steps):
         if verbose:
@@ -52,13 +69,14 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
         if render:
             images.append(env.render())
-    
+
         action = policy(obs)
         if verbose:
             print("Act:", action)
 
         obs, reward, done, _, _ = env.step(action)
         env.render()
+        tot_reward += reward
         if verbose:
             print("Rew:", reward)
 
@@ -71,7 +89,8 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
     if render:
         images.append(env.render())
-        imageio.mimwrite(video_path, images, fps=fps)
+        assert video_path is not None
+        imageio.mimwrite(video_path, cast(List, images), fps=fps)
         print("Wrote out video to", video_path)
 
     env.close()
@@ -82,15 +101,15 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
 
 class DummyFile:
-    def write(self, x):
+    def write(self, x: str) -> None:
         pass
 
-    def flush(self):
+    def flush(self) -> None:
         pass
 
 
 @contextlib.contextmanager
-def nostdout():
+def nostdout() -> Iterator[None]:
     save_stdout = sys.stdout
     sys.stdout = DummyFile()
     yield

@@ -23,7 +23,7 @@
 	b8 - block
 	b9 - block
   )
-  (:init 
+  (:init
 	(clear b0)
 	(clear b13)
 	(clear b17)

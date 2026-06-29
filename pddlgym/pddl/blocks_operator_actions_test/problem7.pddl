@@ -7,11 +7,11 @@
         a - block
         c - block
     )
-    (:init 
-        (clear c) 
+    (:init
+        (clear c)
         (clear d)
         (clear e)
-        (ontable a) 
+        (ontable a)
         (ontable d)
         (ontable e)
         (on b a)

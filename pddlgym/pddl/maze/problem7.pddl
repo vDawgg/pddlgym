@@ -67,7 +67,7 @@
 	loc-8-8 - location
 	player-1 - player
   )
-  (:init 
+  (:init
 	(at player-1 loc-3-7)
 	(clear loc-2-3)
 	(clear loc-2-5)

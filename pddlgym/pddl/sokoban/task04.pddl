@@ -86,7 +86,7 @@
 	(at-goal stone-01)
 	(at-goal stone-02)
 	(at-goal stone-03)))
-  (:init 
+  (:init
 	(at player-01 pos-11-03)
 	(at stone-01 pos-03-03)
 	(at stone-02 pos-04-03)
@@ -292,4 +292,3 @@
 	(move-dir pos-11-06 pos-12-06 dir-right)
 	(move-dir pos-12-06 pos-11-06 dir-left)
 ))
-        

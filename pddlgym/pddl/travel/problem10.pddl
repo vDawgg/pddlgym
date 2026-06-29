@@ -29,7 +29,7 @@
 	(visited fl)
 	(visited ok)
 	(visited id)))
-  (:init 
+  (:init
 	(drive fl fl car-0)
 	(drive fl fl car-1)
 	(drive fl fl car-2)
@@ -930,4 +930,3 @@
 	(planeavailable plane-2)
 	(planeavailable plane-3)
 ))
-        

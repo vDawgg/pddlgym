@@ -1,6 +1,6 @@
 (define (problem blocks)
     (:domain conditionalblocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block
@@ -8,14 +8,14 @@
         e - block
         robot - robot
     )
-    (:init 
-        (clear c) 
-        (clear a) 
-        (clear b) 
-        (clear d) 
-        (ontable c) 
+    (:init
+        (clear c)
+        (clear a)
+        (clear b)
+        (clear d)
+        (ontable c)
         (ontable a)
-        (ontable b) 
+        (ontable b)
         (ontable e)
         (on d e)
         (handempty robot)

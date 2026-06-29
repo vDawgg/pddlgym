@@ -10,7 +10,7 @@
 
   ; (:actions move)
 
-  
+
 
 	(:action move-train
 		:parameters (?x - default ?y - default ?z - default)
@@ -26,4 +26,3 @@
 	)
 
 )
-        

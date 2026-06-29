@@ -29,7 +29,7 @@
  (e2) (o0) (o1) (o2) (o3) (sb3) (sb7) (sb8) (sb11) (sb12) (sb13)
  (sb16) (sb17) (sb19) (sb20))
 
- (:functions (total-cost)) 
+ (:functions (total-cost))
 
  (:action copy_0_navigate_rover0_waypoint1_waypoint2 :parameters ()
  :precondition (and (at_rover0_waypoint1) (safe_sb3) (normal-mode))

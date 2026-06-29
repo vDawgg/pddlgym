@@ -19,7 +19,7 @@
 :parameters (?curpos ?lockpos ?key ?shape)
 :precondition (and (place ?curpos) (place ?lockpos) (key ?key) (shape ?shape)
           (conn ?curpos ?lockpos) (key-shape ?key ?shape)
-                   (lock-shape ?lockpos ?shape) (at-robot ?curpos) 
+                   (lock-shape ?lockpos ?shape) (at-robot ?curpos)
                    (locked ?lockpos) (holding ?key))
 :effect (and  (open ?lockpos) (not (locked ?lockpos))))
 
@@ -32,7 +32,7 @@
 
 (:action pickup
 :parameters (?curpos ?key)
-:precondition (and (place ?curpos) (key ?key) 
+:precondition (and (place ?curpos) (key ?key)
                   (at-robot ?curpos) (at ?key ?curpos) (arm-empty ))
 :effect (and (holding ?key)
    (not (at ?key ?curpos)) (not (arm-empty ))))
@@ -47,9 +47,6 @@
 
 (:action putdown
 :parameters (?curpos ?key)
-:precondition (and (place ?curpos) (key ?key) 
+:precondition (and (place ?curpos) (key ?key)
                   (at-robot ?curpos) (holding ?key))
 :effect (and (arm-empty ) (at ?key ?curpos) (not (holding ?key)))))
-
-
-	

@@ -1,4 +1,4 @@
-(define (problem baking) 
+(define (problem baking)
     (:domain baking)
 
     (:objects
@@ -46,9 +46,8 @@
     (bakesouffle new-1 oven-1)
     )
 
-    (:goal (and 
+    (:goal (and
         (ovenisfull oven-0)
         (ovenisfull oven-1)
     ))
 )
-    

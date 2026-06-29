@@ -20,7 +20,7 @@
 	(visited id)
 	(visited hi)
 	(visited fl)))
-  (:init 
+  (:init
 	(drive fl fl car-0)
 	(drive fl hi car-0)
 	(drive fl id car-0)
@@ -111,4 +111,3 @@
 	(planeavailable plane-3)
 	(planeavailable plane-4)
 ))
-        

@@ -6,7 +6,7 @@
     	B10 B0 B1 B4 B6 B7 B9 B3 B8 B2 B11 B5 - batch-atom
 	A1 A2 A3 A4 - area
 	S12 S13 S34 - pipe
-	
+
 
   )
   (:init
@@ -38,13 +38,13 @@
 	(may-interface oc1b gasoleo)
 	(may-interface oca1 oc1b)
 	(may-interface oc1b oca1)
-	
+
 
     ;; Network topology definition
     	(connect A1 A2 S12)
 	(connect A1 A3 S13)
 	(connect A3 A4 S34)
-	
+
 
     ;; Batch-atoms products
     	(is-product B10 oc1b)
@@ -59,7 +59,7 @@
 	(is-product B2 rat-a)
 	(is-product B11 gasoleo)
 	(is-product B5 oc1b)
-	
+
 
     ;; Batch-atoms initially located in areas
     	(on B10 A4)
@@ -69,7 +69,7 @@
 	(on B8 A4)
 	(on B2 A2)
 	(on B11 A2)
-	
+
 
     ;; Batch-atoms initially located in pipes
     	(first B5 S12)
@@ -80,7 +80,7 @@
 	(last B9 S13)
 	(first B4 S34)
 	(last B4 S34)
-	
+
     ;; Unitary pipeline segments
     		(not-unitary S12)
 		(not-unitary S13)
@@ -90,6 +90,6 @@
   (:goal (and
     	(on B6 A2)
 	(on B11 A1)
-	
+
   ))
 )

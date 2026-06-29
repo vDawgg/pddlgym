@@ -95,4 +95,3 @@
   (:goal (and
     (robot-at f4-0f)))
 )
-    

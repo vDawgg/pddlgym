@@ -1,7 +1,5 @@
 from pddlgym.demo import run_all
 
-import gym
-import pddlgym
 
 import unittest
 
@@ -13,5 +11,5 @@ class TestSystem(unittest.TestCase):
         print("Test passed.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

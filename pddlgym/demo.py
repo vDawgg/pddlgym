@@ -1,17 +1,27 @@
-"""Demonstrates basic PDDLGym usage with random action sampling
-"""
-import matplotlib; matplotlib.use('agg') # For rendering
+"""Demonstrates basic PDDLGym usage with random action sampling"""
+
+from __future__ import annotations
+
+import matplotlib
+
+matplotlib.use("agg")  # For rendering
 
 from pddlgym.utils import run_demo
+from pddlgym.core import PDDLEnv
 import pddlgym
+
 
 def demo_random(env_name, render=True, problem_index=0, verbose=True):
     env = pddlgym.make("PDDLEnv{}-v0".format(env_name.capitalize()))
+    assert isinstance(env, PDDLEnv)
     env.fix_problem_index(problem_index)
-    policy = lambda s : env.action_space.sample(s)
+
+    def policy(s):
+        return env.action_space.sample(s)
+
     video_path = "/tmp/{}_random_demo.mp4".format(env_name)
-    run_demo(env, policy, render=render, verbose=verbose, seed=0,
-             video_path=video_path)
+    run_demo(env, policy, render=render, verbose=verbose, seed=0, video_path=video_path)
+
 
 def run_all(render=True, verbose=True):
     ## Some probabilistic environments
@@ -30,5 +40,5 @@ def run_all(render=True, verbose=True):
     # demo_random("fridge", render=render, verbose=verbose)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_all(render=False, verbose=True)

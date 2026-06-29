@@ -26,7 +26,7 @@
 	(not (visited mn))
 	(not (visited wn))
 	(visited tx)))
-  (:init 
+  (:init
 	(drive hi hi car-0)
 	(drive hi hi car-1)
 	(drive hi hi car-2)
@@ -676,4 +676,3 @@
 	(planeavailable plane-0)
 	(planeavailable plane-1)
 ))
-        

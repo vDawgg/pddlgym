@@ -114,7 +114,7 @@
 	b98 - block
 	b99 - block
   )
-  (:init 
+  (:init
 	(clear b0)
 	(clear b101)
 	(clear b103)

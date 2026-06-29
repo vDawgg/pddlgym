@@ -1,14 +1,14 @@
 (define (domain footwear)
     (:requirements :strips :typing)
     (:types sock shoe foot place)
-    (:predicates 
+    (:predicates
         (isblue ?sock - sock)
         (isred ?sock - sock)
         (isstriped ?sock - sock)
         (isplain ?sock - sock)
         (socksmatch ?sock1 - sock ?sock2 - sock)
         (sockfree ?sock - sock)
-        
+
         (isdressshoe ?shoe - shoe)
         (issneaker ?shoe - shoe)
         (isboot ?shoe - shoe)
@@ -40,7 +40,7 @@
     (:action puton-sock
         :parameters (?foot - foot ?sock - sock ?place - place)
         :precondition (and
-            (at ?place) 
+            (at ?place)
             (home ?place)
             (isbare ?foot)
             (sockfree ?sock)
@@ -73,7 +73,7 @@
     (:action puton-shoe
         :parameters (?foot - foot ?shoe - shoe ?place - place)
         :precondition (and
-            (at ?place) 
+            (at ?place)
             (home ?place)
             (hassock ?foot)
             (shoefree ?shoe)
@@ -109,7 +109,7 @@
     (:action goto-home
         :parameters (?from - place ?to - place)
         :precondition (and
-            (at ?from) 
+            (at ?from)
             (home ?to)
         )
         :effect (and
@@ -121,7 +121,7 @@
     (:action goto-office
         :parameters (?from - place ?to - place ?s1 - sock ?s2 - sock ?sh1 - shoe ?sh2 - shoe)
         :precondition (and
-            (at ?from) 
+            (at ?from)
             (office ?to)
             (socksmatch ?s1 ?s2)
             (wearingsock ?s1)
@@ -142,7 +142,7 @@
     (:action goto-gym
         :parameters (?from - place ?to - place ?sh1 - shoe ?sh2 - shoe)
         :precondition (and
-            (at ?from) 
+            (at ?from)
             (gym ?to)
             (issneaker ?sh1)
             (issneaker ?sh2)
@@ -160,7 +160,7 @@
     (:action goto-forest
         :parameters (?from - place ?to - place ?sh1 - shoe ?sh2 - shoe)
         :precondition (and
-            (at ?from) 
+            (at ?from)
             (forest ?to)
             (isboot ?sh1)
             (isboot ?sh2)
@@ -178,7 +178,7 @@
     (:action goto-beach
         :parameters (?from - place ?to - place ?sh1 - shoe ?sh2 - shoe)
         :precondition (and
-            (at ?from) 
+            (at ?from)
             (beach ?to)
             (issandle ?sh1)
             (issandle ?sh2)

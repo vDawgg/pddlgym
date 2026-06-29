@@ -18,7 +18,7 @@
 
   ; (:actions down up board depart)
 
-  
+
 
 	(:action down
 		:parameters (?f1 - floor ?f2 - floor)
@@ -29,7 +29,7 @@
 			(lift-at ?f2)
 			(not (lift-at ?f1)))
 	)
-	
+
 
 	(:action board
 		:parameters (?f - floor ?p - passenger)
@@ -39,7 +39,7 @@
 		:effect (and
 			(boarded ?p))
 	)
-	
+
 
 	(:action up
 		:parameters (?f1 - floor ?f2 - floor)
@@ -50,7 +50,7 @@
 			(lift-at ?f2)
 			(not (lift-at ?f1)))
 	)
-	
+
 
 	(:action depart
 		:parameters (?f - floor ?p - passenger)
@@ -64,4 +64,3 @@
 	)
 
 )
-        

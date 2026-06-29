@@ -1,8 +1,8 @@
-(define (problem rearrangement-notyping) 
+(define (problem rearrangement-notyping)
     (:domain rearrangement-notyping)
 
     (:objects
-    
+
 	monkey-0
 	pawn-1
 	robot
@@ -29,7 +29,7 @@
     )
 
     (:init
-    
+
 	(ismonkey monkey-0)
 	(ispawn pawn-1)
 	(isrobot robot)
@@ -39,7 +39,7 @@
 	(handsfree robot)
 
     ; action literals
-    
+
 	(pick monkey-0)
 	(place monkey-0)
 	(pick pawn-1)
@@ -68,4 +68,3 @@
 
     (:goal (and  (holding pawn-1)  (at pawn-1 loc-2-4) ))
 )
-    

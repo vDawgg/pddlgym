@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .utils import get_asset_path, render_from_layout
 
 import matplotlib.pyplot as plt
@@ -7,52 +9,53 @@ NUM_OBJECTS = 6
 AGENT, LOG, PLANK, GRASS, FRAME, BACKGROUND = range(NUM_OBJECTS)
 
 TOKEN_IMAGES = {
-    AGENT : plt.imread(get_asset_path('minecraft_agent.png')),
-    LOG : plt.imread(get_asset_path('minecraft_log.jpg')),
-    PLANK : plt.imread(get_asset_path('minecraft_plank.png')),
-    GRASS : plt.imread(get_asset_path('minecraft_grass.jpg')),
-    FRAME : plt.imread(get_asset_path('minecraft_frame.png')),
-    BACKGROUND : plt.imread(get_asset_path('minecraft_background.png')),
+    AGENT: plt.imread(get_asset_path("minecraft_agent.png")),
+    LOG: plt.imread(get_asset_path("minecraft_log.jpg")),
+    PLANK: plt.imread(get_asset_path("minecraft_plank.png")),
+    GRASS: plt.imread(get_asset_path("minecraft_grass.jpg")),
+    FRAME: plt.imread(get_asset_path("minecraft_frame.png")),
+    BACKGROUND: plt.imread(get_asset_path("minecraft_background.png")),
 }
+
 
 def loc_str_to_loc(loc_str):
     # assert len(loc_str) == 5
     # return (int(loc_str[3]), int(loc_str[4]))
     split = loc_str.split("-")
-    assert split[0] == 'loc' and len(split) == 3
+    assert split[0] == "loc" and len(split) == 3
     return (int(split[1]), int(split[2]))
+
 
 def get_locations(obs, thing):
     locs = []
     for lit in obs:
-        if thing == 'agent':
+        if thing == "agent":
             if lit.predicate.name == "agentat":
                 locs.append(loc_str_to_loc(lit.variables[0]))
-        elif lit.predicate.name != 'at':
+        elif lit.predicate.name != "at":
             continue
         elif lit.variables[0].startswith(thing):
             locs.append(loc_str_to_loc(lit.variables[1]))
     return locs
+
 
 def build_layout(obs):
     # Get location boundaries
     max_r, max_c = 2, 2
     for lit in obs:
         for v in lit.variables:
-            if 'loc' in v:
+            if "loc" in v:
                 r, c = loc_str_to_loc(v)
                 max_r = max(max_r, r)
                 max_c = max(max_c, c)
-    layout = np.zeros((max_r+1, max_c+1, NUM_OBJECTS))
+    layout = np.zeros((max_r + 1, max_c + 1, NUM_OBJECTS))
     layout[..., BACKGROUND] = 1
 
     # Put things in the layout
-    agent_loc = get_locations(obs, 'agent')[0]
+    agent_loc = get_locations(obs, "agent")[0]
     layout[agent_loc[0], agent_loc[1], AGENT] = 1
 
-    for thing, thing_type in zip(
-        ['log', 'grass'],
-        [LOG, GRASS]):
+    for thing, thing_type in zip(["log", "grass"], [LOG, GRASS]):
         locs = get_locations(obs, thing)
         for loc in locs:
             r, c = loc
@@ -70,7 +73,8 @@ def build_layout(obs):
             elif lit.variables[0].startswith("new"):
                 thing_type = PLANK
             else:
-                import ipdb; ipdb.set_trace()
+                # Unknown thing type - use PLANK as fallback
+                thing_type = PLANK
 
             inventory_layout[next_inventory_r, 0, thing_type] = 1
             next_inventory_r += 1
@@ -88,6 +92,7 @@ def build_layout(obs):
 
     return final_layout
 
+
 def get_token_images(obs_cell):
     if obs_cell[BACKGROUND]:
         yield TOKEN_IMAGES[BACKGROUND]
@@ -103,6 +108,7 @@ def get_token_images(obs_cell):
         yield TOKEN_IMAGES[AGENT]
     return
 
-def render(obs, mode='human', close=False):
+
+def render(obs, mode="human", close=False):
     layout = build_layout(obs)
     return render_from_layout(layout, get_token_images)

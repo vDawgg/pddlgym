@@ -5,7 +5,7 @@
 (define (domain blocks)
     (:requirements :strips :typing)
     (:types block)
-    (:predicates 
+    (:predicates
         (on ?x - block ?y - block)
         (ontable ?x - block)
         (clear ?x - block)
@@ -17,8 +17,8 @@
     (:action pick-up
         :parameters (?x - block)
         :precondition (and
-            (clear ?x) 
-            (ontable ?x) 
+            (clear ?x)
+            (ontable ?x)
             (handempty)
         )
         :effect (and
@@ -32,11 +32,11 @@
 
     (:action put-down
         :parameters (?x - block)
-        :precondition (and 
+        :precondition (and
             (holding ?x)
             (handfull)
         )
-        :effect (and 
+        :effect (and
             (not (holding ?x))
             (clear ?x)
             (handempty)
@@ -47,11 +47,11 @@
     (:action stack
         :parameters (?x - block ?y - block)
         :precondition (and
-            (holding ?x) 
+            (holding ?x)
             (clear ?y)
             (handfull)
         )
-        :effect (and 
+        :effect (and
             (not (holding ?x))
             (not (clear ?y))
             (clear ?x)
@@ -68,7 +68,7 @@
             (clear ?x)
             (handempty)
         )
-        :effect (and 
+        :effect (and
             (holding ?x)
             (clear ?y)
             (not (clear ?x))

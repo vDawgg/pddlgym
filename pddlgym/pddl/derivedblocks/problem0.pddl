@@ -1,6 +1,6 @@
 (define (problem blocks)
     (:domain blocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block
@@ -8,14 +8,14 @@
         robot - robot
     )
     (:init
-        (clear c) 
+        (clear c)
         (clear a)
-        (clear b) 
-        (clear d) 
-        (ontable c) 
+        (clear b)
+        (clear d)
+        (ontable c)
         (ontable a)
-        (ontable b) 
-        (ontable d) 
+        (ontable b)
+        (ontable d)
         (handempty robot)
 
         ; action literals

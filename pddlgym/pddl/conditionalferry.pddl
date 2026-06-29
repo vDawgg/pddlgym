@@ -16,7 +16,7 @@
 
   ; (:actions board sail)
 
-  
+
 
 	(:action board
 		:parameters (?car - obj ?loc - obj ?ferry - ferry)
@@ -32,7 +32,7 @@
 			(not (empty-ferry ?ferry))
 			(full-ferry ?ferry))
 	)
-	
+
 
 	(:action sail
 		:parameters (?from - obj ?to - obj)
@@ -45,7 +45,7 @@
 			(at-ferry ?to)
 			(not (at-ferry ?from)))
 	)
-	
+
 
 	(:action debark
 		:parameters (?car - obj ?loc - obj ?ferry - ferry)
@@ -63,4 +63,3 @@
 	)
 
 )
-        

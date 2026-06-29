@@ -37,7 +37,7 @@
 	r6_c3 - loc
 	r6_c4 - loc
   )
-  (:init 
+  (:init
 	(adjacent r0_c0 r0_c1)
 	(adjacent r0_c0 r1_c0)
 	(adjacent r0_c1 r0_c0)

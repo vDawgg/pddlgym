@@ -1,8 +1,16 @@
+from __future__ import annotations
+
+from typing import Any, Dict, Optional, Tuple
+
 from pddlgym.core import PDDLEnv
-from pddlgym.rendering import sar_render, slow_sar_render, posar_render, myopic_posar_render
+from pddlgym.rendering import (
+    sar_render,
+    slow_sar_render,
+    posar_render,
+    myopic_posar_render,
+)
 from pddlgym.structs import Type, Predicate, Not, State, LiteralConjunction
 import gym
-import functools
 import pddlgym
 import os
 import numpy as np
@@ -15,22 +23,22 @@ def get_sar_successor_state(state, action):
         - One robot called robot0
     """
     # Remake predicates to keep this function self-contained
-    person_type = Type('person')
-    robot_type = Type('robot')
-    location_type = Type('location')
-    direction_type = Type('direction')
-    clear = Predicate('clear', 1, [location_type])
+    person_type = Type("person")
+    robot_type = Type("robot")
+    location_type = Type("location")
+    direction_type = Type("direction")
+    clear = Predicate("clear", 1, [location_type])
     conn = Predicate("conn", 3, [location_type, location_type, direction_type])
-    robot_at = Predicate('robot-at', 2, [robot_type, location_type])
-    carrying = Predicate('carrying', 2, [robot_type, person_type])
-    person_at = Predicate('person-at', 2, [person_type, location_type])
-    handsfree = Predicate('handsfree', 1, [robot_type])
+    robot_at = Predicate("robot-at", 2, [robot_type, location_type])
+    carrying = Predicate("carrying", 2, [robot_type, person_type])
+    person_at = Predicate("person-at", 2, [person_type, location_type])
+    handsfree = Predicate("handsfree", 1, [robot_type])
 
     # Parse the state
-    robot_location = None # location
-    robot_carrying = None # person
-    adjacency_map = {} # (location, direction) -> location
-    people_locs = {} # person -> location
+    robot_location = None  # location
+    robot_carrying = None  # person
+    adjacency_map = {}  # (location, direction) -> location
+    people_locs = {}  # person -> location
     clear_locs = set()
 
     for lit in state.literals:
@@ -75,18 +83,18 @@ def get_sar_successor_state(state, action):
             next_robot_location = adjacency_map[(robot_location, direction)]
             if next_robot_location in clear_locs:
                 is_valid = True
-                pos_preconds = { 
+                pos_preconds = {
                     conn(robot_location, next_robot_location, direction),
                     robot_at("robot0", robot_location),
                     clear(next_robot_location),
                 }
                 pos_effects = {
                     robot_at("robot0", next_robot_location),
-                    clear(robot_location)
+                    clear(robot_location),
                 }
                 neg_effects = {
                     robot_at("robot0", robot_location),
-                    clear(next_robot_location)
+                    clear(next_robot_location),
                 }
 
     elif action.predicate.name == "pickup":
@@ -108,7 +116,7 @@ def get_sar_successor_state(state, action):
             person_loc = people_locs[person]
             if person_loc == robot_location:
                 is_valid = True
-                pos_preconds = { 
+                pos_preconds = {
                     robot_at("robot0", robot_location),
                     person_at(person, person_loc),
                     handsfree("robot0"),
@@ -136,7 +144,7 @@ def get_sar_successor_state(state, action):
         """
         if robot_carrying is not None:
             is_valid = True
-            pos_preconds = { 
+            pos_preconds = {
                 robot_at("robot0", robot_location),
                 carrying("robot0", robot_carrying),
             }
@@ -163,9 +171,10 @@ def get_sar_successor_state(state, action):
 
 
 class PDDLSearchAndRescueEnv(PDDLEnv):
-
     def __init__(self, level=1, test=False, render_version="fast"):
-        dir_path = os.path.join(os.path.dirname(os.path.realpath(pddlgym.__file__)), "pddl")
+        dir_path = os.path.join(
+            os.path.dirname(os.path.realpath(pddlgym.__file__)), "pddl"
+        )
         domain_file = os.path.join(dir_path, "searchandrescue.pddl")
         problem_dir = os.path.join(dir_path, f"searchandrescue_level{level}")
         if test:
@@ -175,39 +184,37 @@ class PDDLSearchAndRescueEnv(PDDLEnv):
         else:
             assert render_version == "slow"
             render = slow_sar_render
-        super().__init__(domain_file=domain_file, problem_dir=problem_dir, render=render)
+        super().__init__(
+            domain_file=domain_file, problem_dir=problem_dir, render=render
+        )
+        assert self._render is not None
 
     def _get_successor_state(self, state, action, domain, **kwargs):
-        """Custom (faster than generic)
-        """
+        """Custom (faster than generic)"""
         return get_sar_successor_state(state, action)
 
     def get_successor_state(self, state, action):
-        """Allow for public access
-        """
+        """Allow for public access"""
         return self._get_successor_state(state, action, self.domain)
 
     def get_possible_actions(self):
-        """Light wrapper around the action space, for convenience.
-        """
+        """Light wrapper around the action space, for convenience."""
         assert not self._dynamic_action_space
         if not self._state:
             raise Exception("Must all reset() before get_possible_actions().")
         return sorted(self.action_space.all_ground_literals(self._state))
 
     def _action_valid_test(self, state, action):
-        """
-        """
+        """ """
         raise NotImplementedError("Should not be called.")
 
     def render_from_state(self, state):
-        """Light wrapper around the render function, for convenience
-        """
+        """Light wrapper around the render function, for convenience"""
+        assert self._render is not None
         return self._render(state.literals)
 
     def check_goal(self, state):
-        """Allow for public access
-        """
+        """Allow for public access"""
         return self._is_goal_reached(state)
 
 
@@ -215,20 +222,21 @@ class SearchAndRescueEnv(PDDLSearchAndRescueEnv):
     """Changes the state space to just be positions of objects
     and the identity of the person being carried.
     """
-    person_type = Type('person')
-    robot_type = Type('robot')
-    location_type = Type('location')
-    direction_type = Type('direction')
-    wall_type = Type('wall')
-    hospital_type = Type('hospital')
-    clear = Predicate('clear', 1, [location_type])
+
+    person_type = Type("person")
+    robot_type = Type("robot")
+    location_type = Type("location")
+    direction_type = Type("direction")
+    wall_type = Type("wall")
+    hospital_type = Type("hospital")
+    clear = Predicate("clear", 1, [location_type])
     conn = Predicate("conn", 3, [location_type, location_type, direction_type])
-    robot_at = Predicate('robot-at', 2, [robot_type, location_type])
-    person_at = Predicate('person-at', 2, [person_type, location_type])
-    wall_at = Predicate('wall-at', 2, [wall_type, location_type])
-    hospital_at = Predicate('hospital-at', 2, [hospital_type, location_type])
-    carrying = Predicate('carrying', 2, [robot_type, person_type])
-    handsfree = Predicate('handsfree', 1, [robot_type])
+    robot_at = Predicate("robot-at", 2, [robot_type, location_type])
+    person_at = Predicate("person-at", 2, [person_type, location_type])
+    wall_at = Predicate("wall-at", 2, [wall_type, location_type])
+    hospital_at = Predicate("hospital-at", 2, [hospital_type, location_type])
+    carrying = Predicate("carrying", 2, [robot_type, person_type])
+    handsfree = Predicate("handsfree", 1, [robot_type])
 
     @property
     def observation_space(self):
@@ -239,10 +247,10 @@ class SearchAndRescueEnv(PDDLSearchAndRescueEnv):
         new_state_literals = set()
 
         directions_to_deltas = {
-            self.direction_type('up') : (-1, 0),
-            self.direction_type('down') : (1, 0),
-            self.direction_type('left') : (0, -1),
-            self.direction_type('right') : (0, 1),
+            self.direction_type("up"): (-1, 0),
+            self.direction_type("down"): (1, 0),
+            self.direction_type("left"): (0, -1),
+            self.direction_type("right"): (0, 1),
         }
 
         # conn
@@ -298,23 +306,26 @@ class SearchAndRescueEnv(PDDLSearchAndRescueEnv):
                     new_state_literals.add(clear_lit)
 
         # objects
-        new_objects = frozenset({o for lit in new_state_literals for o in lit.variables })
+        new_objects = frozenset(
+            {o for lit in new_state_literals for o in lit.variables}
+        )
 
         # goal
-        new_goal = LiteralConjunction([self.person_at(person, hospital_loc) \
-            for person in sorted(state["rescue"])])
+        new_goal = LiteralConjunction(
+            [self.person_at(person, hospital_loc) for person in sorted(state["rescue"])]
+        )
 
         new_state = State(frozenset(new_state_literals), new_objects, new_goal)
 
         return new_state
 
     def _internal_to_state(self, internal_state):
-        state = { "carrying" : None }
+        state = {"carrying": None}
         state["rescue"] = set()
         for lit in internal_state.goal.literals:
             assert lit.predicate == self.person_at
             state["rescue"].add(lit.variables[0].name)
-        state["rescue"] = frozenset(state["rescue"]) # make hashable
+        state["rescue"] = frozenset(state["rescue"])  # make hashable
         for lit in internal_state.literals:
             if lit.predicate.name.endswith("at"):
                 obj_name = lit.variables[0].name
@@ -323,12 +334,12 @@ class SearchAndRescueEnv(PDDLSearchAndRescueEnv):
             if lit.predicate.name == "carrying":
                 person_name = lit.variables[1].name
                 state["carrying"] = person_name
-        state = tuple(sorted(state.items())) # make hashable
+        state = tuple(sorted(state.items()))  # make hashable
         return state
 
     def _loc_to_rc(self, loc_str):
         assert loc_str.startswith("f") and loc_str.endswith("f")
-        r, c = loc_str[1:-1].split('-')
+        r, c = loc_str[1:-1].split("-")
         return (int(r), int(c))
 
     def set_state(self, state):
@@ -339,8 +350,10 @@ class SearchAndRescueEnv(PDDLSearchAndRescueEnv):
         assert isinstance(self._state, State), "Do not call get_state"
         return self._state
 
-    def reset(self):
-        internal_state, debug_info = super().reset()
+    def reset(
+        self, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None
+    ) -> Tuple[Any, Dict[str, Any]]:
+        internal_state, debug_info = super().reset(seed=seed, options=options)
         return self._internal_to_state(internal_state), debug_info
 
     def step(self, action):
@@ -366,38 +379,51 @@ class SearchAndRescueEnv(PDDLSearchAndRescueEnv):
         return super().check_goal(internal_state)
 
 
-class POSARXrayEnv(gym.Env):
-    """Partially observable search and rescue
-    """
+class POSARXrayEnv(gym.Env[Any, int]):
+    """Partially observable search and rescue"""
+
     height, width = 7, 7
     room_locs = [(6, 0), (0, 6), (6, 6), (3, 6)]
     robot_starts = [(4, 3)]
-    wall_locs = [(1, 1), (2, 4), (1, 4), (1, 5), (2, 5), (2, 6),
-                 (3, 2), (4, 4), (4, 6), (5, 1), (5, 3), (5, 4)]
+    wall_locs = [
+        (1, 1),
+        (2, 4),
+        (1, 4),
+        (1, 5),
+        (2, 5),
+        (2, 6),
+        (3, 2),
+        (4, 4),
+        (4, 6),
+        (5, 1),
+        (5, 3),
+        (5, 4),
+    ]
     fire_locs = [(1, 2), (2, 3), (4, 0)]
     sense_radius = 0
     actions = up, down, left, right, pickup, do_xray = range(6)
 
     def __init__(self, seed=0):
-        self._state = None # set in reset
+        self._state = None  # set in reset
         self._problem_idx = None
         self.seed(seed)
 
     @property
     def problems(self):
-        return [(s, i) for s in self.robot_starts \
-                for i in range(len(self.room_locs))]
+        return [(s, i) for s in self.robot_starts for i in range(len(self.room_locs))]
 
     def fix_problem_index(self, idx):
         self._problem_idx = idx
 
     def seed(self, seed=0):
         self._seed = seed
-        self._rng = np.random.RandomState(seed)        
+        self._rng = np.random.RandomState(seed)
 
-    def reset(self):
-        """
-        """
+    def reset(
+        self, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None
+    ) -> Tuple[Any, Dict[str, Any]]:
+        if seed is not None:
+            self.seed(seed)
         if self._problem_idx is None:
             # Randomize the robot location
             robot_loc = self.robot_starts[self._rng.choice(len(self.robot_starts))]
@@ -408,29 +434,28 @@ class POSARXrayEnv(gym.Env):
         # Turn xray vision off
         xray = False
         # Set the state
-        self._state = self._construct_state(robot=robot_loc, 
-            person=person_room_id, xray=xray, rescued=False)
+        self._state = self._construct_state(
+            robot=robot_loc, person=person_room_id, xray=xray, rescued=False
+        )
         # Get the observation
         return self.get_observation(self._state), {}
 
     def _construct_state(self, robot, person, xray, rescued):
-        """
-        """
+        """ """
         d = {
-            "robot" : robot,
-            "person" : person,
-            "xray" : xray,
-            "rescued" : rescued,
+            "robot": robot,
+            "person": person,
+            "xray": xray,
+            "rescued": rescued,
         }
         return self._flat_dict_to_hashable(d)
 
     # @functools.lru_cache(maxsize=10000)
     def get_observation(self, state):
-        """
-        """
+        """ """
         if state is None:
             state = self._state
-        state = dict(state)
+        state = dict(state)  # type: ignore
 
         obs = {}
 
@@ -457,7 +482,7 @@ class POSARXrayEnv(gym.Env):
             if room_id not in sensed_rooms:
                 obs[f"room{room_id}"] = "?"
             else:
-                if (room_id == state["person"]):
+                if room_id == state["person"]:
                     obs[f"room{room_id}"] = "person"
                 else:
                     obs[f"room{room_id}"] = "empty"
@@ -471,8 +496,8 @@ class POSARXrayEnv(gym.Env):
         obs = dict(obs)
         # Create base state
         base_state = {
-            "robot" : obs["robot"],
-            "rescued" : obs["rescued"],
+            "robot": obs["robot"],
+            "rescued": obs["rescued"],
         }
         if "xray" in obs:
             base_state["xray"] = obs["xray"]
@@ -482,7 +507,7 @@ class POSARXrayEnv(gym.Env):
         person = None
         for k, v in obs.items():
             if k.startswith("room") and v == "person":
-                person = int(k[len("room"):])
+                person = int(k[len("room") :])
         # If the person is observed, there is only one possible state
         if person is not None:
             base_state["person"] = person
@@ -491,7 +516,7 @@ class POSARXrayEnv(gym.Env):
         states = []
         for k, v in obs.items():
             if k.startswith("room") and v == "?":
-                person = int(k[len("room"):])
+                person = int(k[len("room") :])
                 state = base_state.copy()
                 state["person"] = person
                 states.append(self._flat_dict_to_hashable(state))
@@ -517,16 +542,21 @@ class POSARXrayEnv(gym.Env):
             # If we're in a fire location, we're trapped forever
             if robot not in self.fire_locs:
                 rob_r, rob_c = robot
-                dr, dc = {self.up : (-1, 0), self.down : (1, 0),
-                          self.right : (0, 1), self.left : (0, -1)}[action]
+                dr, dc = {
+                    self.up: (-1, 0),
+                    self.down: (1, 0),
+                    self.right: (0, 1),
+                    self.left: (0, -1),
+                }[action]
 
                 if 0 <= rob_r + dr < self.height and 0 <= rob_c + dc < self.width:
                     if (rob_r + dr, rob_c + dc) not in self.wall_locs:
                         robot = (rob_r + dr, rob_c + dc)
 
         # Pickup
-        if state['rescued'] or \
-            (action == self.pickup and robot == self.room_locs[person]):
+        if state["rescued"] or (
+            action == self.pickup and robot == self.room_locs[person]
+        ):
             rescued = True
         else:
             rescued = False
@@ -539,15 +569,14 @@ class POSARXrayEnv(gym.Env):
         return state["rescued"]
 
     def step(self, action):
-        """
-        """
+        """ """
         self._state = self.get_successor_state(self._state, action)
 
         # We're done if the person is rescued
         done = self.check_goal(self._state)
         reward = float(done)
 
-        return self.get_observation(self._state), reward, done, {}
+        return self.get_observation(self._state), reward, done, False, {}
 
     def render(self, *args, **kwargs):
         return posar_render(self.get_observation(self._state), self)
@@ -565,19 +594,19 @@ class POSARNoXrayEnv(POSARXrayEnv):
     def get_observation(self, *args, **kwargs):
         obs = super().get_observation(*args, **kwargs)
         obs = dict(obs)
-        assert obs["xray"] == False
+        assert not obs["xray"]
         del obs["xray"]
         return self._flat_dict_to_hashable(obs)
 
 
-class MyopicPOSAREnv(gym.Env):
-    """The agent now does not know where the fires or people might be
-    """
-    height, width = 5, 5 # modified in subclasses
+class MyopicPOSAREnv(gym.Env[Any, int]):
+    """The agent now does not know where the fires or people might be"""
+
+    height, width = 5, 5  # modified in subclasses
     actions = up, down, left, right, pickup = range(5)
 
     def __init__(self, seed=0):
-        self._state = None # set in reset
+        self._state = None  # set in reset
         self._problem_idx = None
         self.seed(seed)
 
@@ -590,16 +619,18 @@ class MyopicPOSAREnv(gym.Env):
 
     def seed(self, seed=0):
         self._seed = seed
-        self._rng = np.random.RandomState(seed)        
+        self._rng = np.random.RandomState(seed)
 
-    def reset(self):
-        """
-        """
+    def reset(
+        self, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None
+    ) -> Tuple[Any, Dict[str, Any]]:
+        if seed is not None:
+            self.seed(seed)
         if self._problem_idx is None:
             problem_idx = self._rng.choice(len(self.problems))
         else:
             problem_idx = self._problem_idx
-        # Set state            
+        # Set state
         self._state = self.problems[problem_idx]
         # Get the observation
         return self.get_observation(self._state), {}
@@ -622,14 +653,18 @@ class MyopicPOSAREnv(gym.Env):
             # If we're in a fire location, we're trapped forever
             if robot not in fire_locs:
                 rob_r, rob_c = robot
-                dr, dc = {self.up : (-1, 0), self.down : (1, 0),
-                          self.right : (0, 1), self.left : (0, -1)}[action]
+                dr, dc = {
+                    self.up: (-1, 0),
+                    self.down: (1, 0),
+                    self.right: (0, 1),
+                    self.left: (0, -1),
+                }[action]
 
                 if 0 <= rob_r + dr < self.height and 0 <= rob_c + dc < self.width:
                     robot = (rob_r + dr, rob_c + dc)
 
         # Pickup
-        if state['rescued'] or (action == self.pickup and robot == person):
+        if state["rescued"] or (action == self.pickup and robot == person):
             rescued = True
         else:
             rescued = False
@@ -644,29 +679,28 @@ class MyopicPOSAREnv(gym.Env):
         return state["rescued"]
 
     def step(self, action):
-        """
-        """
+        """ """
         self._state = self.get_successor_state(self._state, action)
 
         # We're done if the person is rescued
         done = self.check_goal(self._state)
         reward = float(done)
 
-        return self.get_observation(self._state), reward, done, {}
+        return self.get_observation(self._state), reward, done, False, {}
 
     def _flat_dict_to_hashable(self, d):
         return tuple(sorted(d.items()))
 
     def get_observation(self, state):
-        """Can only observe: 
-            - the current robot location
-            - what's at the location: empty, person, or fire
-            - smoke, i.e., a fire that is within manhattan distance 1
-            - whether the person has been rescued
+        """Can only observe:
+        - the current robot location
+        - what's at the location: empty, person, or fire
+        - smoke, i.e., a fire that is within manhattan distance 1
+        - whether the person has been rescued
         """
         if state is None:
             state = self._state
-        state = dict(state)
+        state = dict(state)  # type: ignore
 
         obs = {}
 
@@ -687,7 +721,7 @@ class MyopicPOSAREnv(gym.Env):
 
         # Are we fire-adjacent?
         obs["smoke"] = False
-        for (dr, dc) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+        for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
             if (rob_r + dr, rob_c + dc) in state["fire_locs"]:
                 obs["smoke"] = True
                 break
@@ -712,22 +746,29 @@ class TinyMyopicPOSAREnv(MyopicPOSAREnv):
     def problems(self):
         initial_states = []
 
-        initial_states.append(self._flat_dict_to_hashable({
-            "robot" : (0, 2),
-            "person" : (0, 4),
-            "fire_locs" : frozenset({(0, 0)}),
-            "rescued" : False,
-        }))
+        initial_states.append(
+            self._flat_dict_to_hashable(
+                {
+                    "robot": (0, 2),
+                    "person": (0, 4),
+                    "fire_locs": frozenset({(0, 0)}),
+                    "rescued": False,
+                }
+            )
+        )
 
-        initial_states.append(self._flat_dict_to_hashable({
-            "robot" : (0, 2),
-            "person" : (0, 0),
-            "fire_locs" : frozenset({(0, 4)}),
-            "rescued" : False,
-        }))
+        initial_states.append(
+            self._flat_dict_to_hashable(
+                {
+                    "robot": (0, 2),
+                    "person": (0, 0),
+                    "fire_locs": frozenset({(0, 4)}),
+                    "rescued": False,
+                }
+            )
+        )
 
         return initial_states
-
 
 
 class SmallMyopicPOSAREnv(MyopicPOSAREnv):
@@ -739,33 +780,49 @@ class SmallMyopicPOSAREnv(MyopicPOSAREnv):
 
         # Important to not initialize robot in smoke
 
-        initial_states.append(self._flat_dict_to_hashable({
-            "robot" : (0, 2),
-            "person" : (0, 0),
-            "fire_locs" : frozenset({(2, 2)}),
-            "rescued" : False,
-        }))
+        initial_states.append(
+            self._flat_dict_to_hashable(
+                {
+                    "robot": (0, 2),
+                    "person": (0, 0),
+                    "fire_locs": frozenset({(2, 2)}),
+                    "rescued": False,
+                }
+            )
+        )
 
-        initial_states.append(self._flat_dict_to_hashable({
-            "robot" : (1, 2),
-            "person" : (2, 0),
-            "fire_locs" : frozenset({(0, 1)}),
-            "rescued" : False,
-        }))
+        initial_states.append(
+            self._flat_dict_to_hashable(
+                {
+                    "robot": (1, 2),
+                    "person": (2, 0),
+                    "fire_locs": frozenset({(0, 1)}),
+                    "rescued": False,
+                }
+            )
+        )
 
-        initial_states.append(self._flat_dict_to_hashable({
-            "robot" : (1, 2),
-            "person" : (2, 2),
-            "fire_locs" : frozenset({(2, 0)}),
-            "rescued" : False,
-        }))
+        initial_states.append(
+            self._flat_dict_to_hashable(
+                {
+                    "robot": (1, 2),
+                    "person": (2, 2),
+                    "fire_locs": frozenset({(2, 0)}),
+                    "rescued": False,
+                }
+            )
+        )
 
-        initial_states.append(self._flat_dict_to_hashable({
-            "robot" : (1, 2),
-            "person" : (0, 4),
-            "fire_locs" : frozenset({(0, 3), (2, 0)}),
-            "rescued" : False,
-        }))
+        initial_states.append(
+            self._flat_dict_to_hashable(
+                {
+                    "robot": (1, 2),
+                    "person": (0, 4),
+                    "fire_locs": frozenset({(0, 3), (2, 0)}),
+                    "rescued": False,
+                }
+            )
+        )
 
         return initial_states
 
@@ -802,28 +859,49 @@ class LargePOSARRadius1Env(POSARRadius1Env):
     height, width = 9, 9
     room_locs = [(0, i) for i in range(9)] + [(8, i) for i in range(9)]
     robot_starts = [(4, 3), (4, 4), (4, 5)]
-    wall_locs = [(1, 1), (2, 4), (1, 4), (1, 5), (2, 1), (2, 7), (2, 8),
-                 (3, 0), (3, 2), (4, 6), (4, 7), (5, 1), (5, 3), (5, 4),
-                 (6, 2), (6, 5), (6, 6), (6, 8), (7, 3), (7, 4)]
+    wall_locs = [
+        (1, 1),
+        (2, 4),
+        (1, 4),
+        (1, 5),
+        (2, 1),
+        (2, 7),
+        (2, 8),
+        (3, 0),
+        (3, 2),
+        (4, 6),
+        (4, 7),
+        (5, 1),
+        (5, 3),
+        (5, 4),
+        (6, 2),
+        (6, 5),
+        (6, 6),
+        (6, 8),
+        (7, 3),
+        (7, 4),
+    ]
     fire_locs = []
 
 
 if __name__ == "__main__":
     import imageio
+
     np.random.seed(0)
-    for env_name in ["PDDLSearchAndRescueLevel7"]: #, "MyopicPOSAR"]:
+    for env_name in ["PDDLSearchAndRescueLevel7"]:  # , "MyopicPOSAR"]:
         imgs = []
         env = pddlgym.make(f"{env_name}-v0")
+        assert isinstance(env, PDDLEnv)
+        assert isinstance(env, PDDLSearchAndRescueEnv)
         env.fix_problem_index(1)
         obs, _ = env.reset()
         print(obs)
         imgs.append(env.render())
         plan = np.random.choice(env.get_possible_actions(), size=50)
         for act in plan:
-            obs, reward, done, _ = env.step(act)
+            obs, reward, done, truncated, _ = env.step(act)
             print(obs, reward, done)
             imgs.append(env.render())
             if done:
                 break
         imageio.mimsave(f"/tmp/{env_name}_random.mp4", imgs)
-

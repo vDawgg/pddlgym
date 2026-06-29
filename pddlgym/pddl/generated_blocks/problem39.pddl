@@ -10,7 +10,7 @@
 	b6 - block
 	b7 - block
   )
-  (:init 
+  (:init
 	(clear b0)
 	(clear b2)
 	(clear b4)

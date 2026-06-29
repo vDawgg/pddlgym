@@ -14,7 +14,7 @@
 	  f3-1f - location
 	  f3-2f - location
 	)
-	(:init 
+	(:init
         (conn f1-1f f1-0f up)
 	    (conn f1-1f f2-1f right)
 	    (conn f1-1f f1-2f down)

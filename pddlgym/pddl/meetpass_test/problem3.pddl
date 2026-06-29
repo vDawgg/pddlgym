@@ -13,7 +13,7 @@
   )
   (:goal (and
 	(at train1 track5)))
-  (:init 
+  (:init
 	(at train1 track1)
 	(at train2 track2)
 	(at train3 track4)
@@ -112,4 +112,3 @@
 	(move train3 train2)
 	(move train3 train3)
 ))
-        

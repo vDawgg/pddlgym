@@ -19,7 +19,7 @@
 
   ; (:actions fly drive walk)
 
-  
+
 
 	(:action fly-to-purple
 		:parameters (?from - state ?to - state ?plane - plane)
@@ -33,7 +33,7 @@
 			(not (planeavailable ?plane))
 			(visited ?to))
 	)
-	
+
 
 	(:action fly-red
 		:parameters (?from - state ?to - state ?plane - plane)
@@ -49,7 +49,7 @@
 			(not (planeavailable ?plane))
 			(visited ?to))
 	)
-	
+
 
 	(:action drive
 		:parameters (?from - state ?to - state ?thru - state ?car - car)
@@ -65,7 +65,7 @@
 			(not (caravailable ?car))
 			(visited ?to))
 	)
-	
+
 
 	(:action fly-blue
 		:parameters (?from - state ?to - state ?plane - plane)
@@ -81,7 +81,7 @@
 			(not (planeavailable ?plane))
 			(visited ?to))
 	)
-	
+
 
 	(:action walk
 		:parameters (?from - state ?to - state)
@@ -93,7 +93,7 @@
 			(at ?to)
 			(visited ?to))
 	)
-	
+
 
 	(:action fly-from-purple
 		:parameters (?from - state ?to - state ?plane - plane)
@@ -109,4 +109,3 @@
 	)
 
 )
-        

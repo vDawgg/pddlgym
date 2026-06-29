@@ -19,7 +19,7 @@
 	b8 - block
 	b9 - block
   )
-  (:init 
+  (:init
 	(on b0 b1)
 	(on b11 b12)
 	(on b13 b14)

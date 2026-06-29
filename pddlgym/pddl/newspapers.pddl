@@ -1,7 +1,7 @@
 (define (domain newspapers)
     (:requirements :strips :typing)
     (:types loc paper)
-    (:predicates 
+    (:predicates
         (at ?loc - loc)
         (isHomeBase ?loc - loc)
         (satisfied ?loc - loc)
@@ -9,7 +9,7 @@
         (unpacked ?paper - paper)
         (carrying ?paper - paper)
     )
-    
+
     (:action pick-up
         :parameters (?paper - paper ?loc - loc)
         :precondition (and
@@ -22,18 +22,18 @@
             (carrying ?paper)
         )
     )
-    
+
     (:action move
         :parameters (?from - loc ?to - loc)
         :precondition (and
-            (at ?from) 
+            (at ?from)
         )
         :effect (and
             (not (at ?from))
             (at ?to)
         )
     )
-    
+
     (:action deliver
         :parameters (?paper - paper ?loc - loc)
         :precondition (and
@@ -47,5 +47,5 @@
             (satisfied ?loc)
         )
     )
-    
+
 )

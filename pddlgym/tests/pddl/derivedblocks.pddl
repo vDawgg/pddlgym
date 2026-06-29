@@ -2,7 +2,7 @@
 (define (domain derivedblocks)
   (:requirements :typing)
   (:types loc obj robot)
-  
+
   (:predicates (on_loc ?v0 - obj ?v1 - loc)
 	(on_obj ?v0 - obj ?v1 - obj)
 	(in_gripper ?v0 - obj ?v1 - robot)
@@ -14,7 +14,7 @@
   )
   ; (:actions stack pick place)
 
-  
+
 
 	(:action pick_from_loc
 		:parameters (?o1 - obj ?l - loc ?r - robot)
@@ -26,7 +26,7 @@
 			(in_gripper ?o1 ?r)
 			(not (on_loc ?o1 ?l)))
 	)
-	
+
 
 	(:action place_on_loc
 		:parameters (?o1 - obj ?l - loc ?r - robot)
@@ -36,7 +36,7 @@
 			(not (in_gripper ?o1 ?r))
 			(on_loc ?o1 ?l))
 	)
-	
+
 
 	(:action unstack
 		:parameters (?o1 - obj ?o2 - obj ?r - robot)
@@ -48,7 +48,7 @@
 			(in_gripper ?o1 ?r)
 			(not (on_obj ?o1 ?o2)))
 	)
-	
+
 
 	(:action stack
 		:parameters (?o1 - obj ?o2 - obj ?r - robot)
@@ -67,4 +67,3 @@
 
 
 )
-        

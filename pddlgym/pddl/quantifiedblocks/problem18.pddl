@@ -6,7 +6,7 @@
 	b2 - block
 	b3 - block
   )
-  (:init 
+  (:init
 	(on b1 b2)
 	(ontable b0)
 	(ontable b2)

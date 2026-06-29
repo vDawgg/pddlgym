@@ -22,7 +22,7 @@
 	(visited hi)
 	(visited nj)
 	(visited pe)))
-  (:init 
+  (:init
 	(drive az az car-0)
 	(drive az az car-1)
 	(drive az ca car-0)
@@ -329,4 +329,3 @@
 	(planeavailable plane-0)
 	(planeavailable plane-1)
 ))
-        

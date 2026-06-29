@@ -1,11 +1,11 @@
 (define (problem easyblocks)
     (:domain easyblocks)
-    (:objects 
+    (:objects
         a - block
         robot - robot
     )
-    (:init 
-        (clear a) 
+    (:init
+        (clear a)
         (ontable a)
         (handempty robot)
 

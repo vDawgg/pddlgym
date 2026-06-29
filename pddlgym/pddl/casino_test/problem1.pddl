@@ -1,4 +1,4 @@
-(define (problem casino) 
+(define (problem casino)
     (:domain casino)
 
     (:objects
@@ -195,4 +195,3 @@
 
     (:goal (and (HavePrize1 prize-1-1) (HavePrize1 prize-1-2) (HavePrize1 prize-1-3) (HavePrize1 prize-1-4) (HavePrize2 prize-2-1) (HavePrize2 prize-2-2) (HavePrize2 prize-2-3) (HavePrize2 prize-2-4) (HavePrize3 prize-3-1) (HavePrize3 prize-3-2) (HavePrize3 prize-3-3) (HavePrize3 prize-3-4)))
 )
-    

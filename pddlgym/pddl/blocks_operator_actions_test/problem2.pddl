@@ -1,16 +1,16 @@
 (define (problem blocks)
     (:domain blocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block
         c - block
     )
-    (:init 
-        (clear c) 
-        (clear b) 
-        (clear d) 
-        (ontable c) 
+    (:init
+        (clear c)
+        (clear b)
+        (clear d)
+        (ontable c)
         (ontable a)
         (ontable d)
         (on b a)

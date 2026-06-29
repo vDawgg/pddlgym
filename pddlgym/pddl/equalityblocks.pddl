@@ -5,7 +5,7 @@
 (define (domain blocks)
     (:requirements :strips :typing :equality)
     (:types block)
-    (:predicates 
+    (:predicates
         (on ?x - block ?y - block)
         (ontable ?x - block)
     )
@@ -30,7 +30,7 @@
             (forall (?z - block) (not (on ?z ?y))) ; clear
             (not (= ?x ?y))
         )
-        :effect (and 
+        :effect (and
             (on ?x ?y)
             (not (ontable ?x))
         )
@@ -44,7 +44,7 @@
             (forall (?z - block) (not (on ?z ?y))) ; clear
             (not (= ?x ?y))
         )
-        :effect (and 
+        :effect (and
             (on ?x ?y)
             (not (on ?x ?w))
         )

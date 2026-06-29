@@ -1,4 +1,4 @@
-(define (problem baking) 
+(define (problem baking)
     (:domain baking)
 
     (:objects
@@ -11,7 +11,7 @@
     )
 
     (:init
-    
+
     (isegg egg-0)
     (isflour flour-0)
     (hypothetical new-0)
@@ -31,4 +31,3 @@
 
     (:goal (and (iscake new-0) ))
 )
-    

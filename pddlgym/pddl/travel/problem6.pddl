@@ -29,7 +29,7 @@
 	(visited mi)
 	(visited ms)
 	(visited wa)))
-  (:init 
+  (:init
 	(drive ak ak car-0)
 	(drive ak fl car-0)
 	(drive ak hi car-0)
@@ -262,4 +262,3 @@
 	(planeavailable plane-7)
 	(planeavailable plane-8)
 ))
-        

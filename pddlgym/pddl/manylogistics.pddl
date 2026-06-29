@@ -1,5 +1,5 @@
 (define (domain logistics-strips)
-  (:requirements :strips) 
+  (:requirements :strips)
   (:predicates 	(OBJ ?obj)
 	       	(TRUCK ?truck)
                	(LOCATION ?loc)
@@ -9,7 +9,7 @@
 		(at ?obj ?loc)
 		(in ?obj1 ?obj2)
 		(in-city ?obj ?city))
- 
+
   ; (:types )		; default object
 
 (:action LOAD-TRUCK

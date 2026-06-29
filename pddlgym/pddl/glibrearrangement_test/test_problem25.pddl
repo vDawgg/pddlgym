@@ -1,8 +1,8 @@
-(define (problem glibrearrangement) 
+(define (problem glibrearrangement)
     (:domain glibrearrangement)
 
     (:objects
-    
+
 	pawn-0 - moveable
 	bear-1 - moveable
 	monkey-2 - moveable
@@ -26,7 +26,7 @@
     )
 
     (:init
-    
+
 	(IsPawn pawn-0)
 	(IsBear bear-1)
 	(IsMonkey monkey-2)
@@ -40,7 +40,7 @@
 	(Handsfree robot)
 
     ; Action literals
-    
+
 	(Pick pawn-0)
 	(Place pawn-0)
 	(Pick bear-1)
@@ -68,4 +68,3 @@
 
     (:goal (and  (At pawn-3 loc-2-2)  (At monkey-2 loc-0-3)  (At pawn-0 loc-0-2) ))
 )
-    

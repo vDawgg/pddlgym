@@ -1,16 +1,16 @@
 (define (problem blocks)
     (:domain blocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block
         c - block
     )
-    (:init 
+    (:init
         (on a b)
         (on b c)
         (on c d)
-        (ontable d) 
+        (ontable d)
     )
     (:goal (or (and (on c b) (on b a)) (and (on d c) (on c b))))
 )

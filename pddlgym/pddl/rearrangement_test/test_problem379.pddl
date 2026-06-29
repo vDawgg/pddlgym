@@ -1,8 +1,8 @@
-(define (problem rearrangement) 
+(define (problem rearrangement)
     (:domain rearrangement)
 
     (:objects
-    
+
 	monkey-0 - moveable
 	robot - moveable
 	loc-0-0 - static
@@ -33,7 +33,7 @@
     )
 
     (:init
-    
+
 	(ismonkey monkey-0)
 	(isrobot robot)
 	(at monkey-0 loc-2-2)
@@ -41,7 +41,7 @@
 	(handsfree robot)
 
     ; action literals
-    
+
 	(pick monkey-0)
 	(place monkey-0)
 	(moveto loc-0-0)
@@ -73,4 +73,3 @@
 
     (:goal (and  (at monkey-0 loc-4-0) ))
 )
-    

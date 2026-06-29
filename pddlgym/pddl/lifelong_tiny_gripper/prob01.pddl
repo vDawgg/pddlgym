@@ -1,13 +1,13 @@
 (define (problem strips-gripper-x-2)
    (:domain lifelong-tiny-gripper)
-   (:objects 
-        rooma - room 
+   (:objects
+        rooma - room
         roomb - room
-        ball4 - ball 
-        ball3 - ball 
-        ball2 - ball 
-        ball1 - ball 
-        left - gripper 
+        ball4 - ball
+        ball3 - ball
+        ball2 - ball
+        ball1 - ball
+        left - gripper
     )
    (:init (room rooma)
           (room roomb)

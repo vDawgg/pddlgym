@@ -5,16 +5,16 @@
  * (C) Copyright 2001 Albert Ludwigs University Freiburg
  *     Institute of Computer Science
  *
- * All rights reserved. Use of this software is permitted for 
- * non-commercial research purposes, and it may be copied only 
+ * All rights reserved. Use of this software is permitted for
+ * non-commercial research purposes, and it may be copied only
  * for that use.  All copies must include this copyright message.
  * This software is made available AS IS, and neither the authors
  * nor the  Albert Ludwigs University Freiburg make any warranty
- * about the software or its performance. 
+ * about the software or its performance.
  *********************************************************************/
 
 
-/* 
+/*
  * Modified by Tom Silver 2020
 
  The number of goal cars is now fixed, rather than being equal
@@ -22,7 +22,7 @@
  */
 
 
-/* 
+/*
  * C code for generating random ferry problems
  */
 
@@ -132,7 +132,7 @@ int main( int argc, char *argv[] )
     }
   }
   printf("\n(empty-ferry)");
-  
+
   print_random_origins();
   printf("\n)");
 
@@ -149,8 +149,8 @@ int main( int argc, char *argv[] )
   exit( 0 );
 
 }
-  
-  
+
+
 
 
 
@@ -200,7 +200,7 @@ void create_random_locations( void )
  */
 
 
-  
+
 
 
 
@@ -225,10 +225,10 @@ void print_random_origins( void )
    number generator. */
 void shuffle(int *array, size_t n)
 {
-    if (n > 1) 
+    if (n > 1)
     {
         size_t i;
-        for (i = 0; i < n - 1; i++) 
+        for (i = 0; i < n - 1; i++)
         {
           size_t j = i + random() / (RAND_MAX / (n - i) + 1);
           int t = array[j];
@@ -332,4 +332,3 @@ Bool process_command_line( int argc, char *argv[] )
   return TRUE;
 
 }
-

@@ -6,11 +6,11 @@
 (define (domain tsp)
   (:requirements :strips :typing)
   (:types place path)
-  (:predicates 
-    (in ?x - place) 
-    (visited ?x - place) 
+  (:predicates
+    (in ?x - place)
+    (visited ?x - place)
     (not-visited ?x - place)
-    (starting ?x - place) 
+    (starting ?x - place)
     (complete ?p - path)
     (not-complete ?p - path)
     (connected ?x - place ?y - place)

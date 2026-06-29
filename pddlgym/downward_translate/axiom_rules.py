@@ -1,4 +1,3 @@
-from . import options
 from . import pddl
 from . import sccs
 from . import timers
@@ -8,6 +7,7 @@ from itertools import chain
 
 
 DEBUG = False
+
 
 class AxiomDependencies(object):
     def __init__(self, axioms):
@@ -79,8 +79,11 @@ def compute_necessary_literals(dependencies, goals, operators):
             necessary_literals.add(g)
 
     for op in operators:
-        derived_preconditions = (l for l in op.precondition if l.positive()
-                                 in dependencies.derived_variables)
+        derived_preconditions = (
+            lit
+            for lit in op.precondition
+            if lit.positive() in dependencies.derived_variables
+        )
         necessary_literals.update(derived_preconditions)
 
         for condition, effect in chain(op.add_effects, op.del_effects):
@@ -91,15 +94,15 @@ def compute_necessary_literals(dependencies, goals, operators):
 
     literals_to_process = list(necessary_literals)
     while literals_to_process:
-        l = literals_to_process.pop()
-        atom = l.positive()
+        lit = literals_to_process.pop()
+        atom = lit.positive()
         for body_atom in dependencies.positive_dependencies[atom]:
-            l2 = body_atom.negate() if l.negated else body_atom
+            l2 = body_atom.negate() if lit.negated else body_atom
             if l2 not in necessary_literals:
                 literals_to_process.append(l2)
                 necessary_literals.add(l2)
         for body_atom in dependencies.negative_dependencies[atom]:
-            l2 = body_atom if l.negated else body_atom.negate()
+            l2 = body_atom if lit.negated else body_atom.negate()
             if l2 not in necessary_literals:
                 literals_to_process.append(l2)
                 necessary_literals.add(l2)
@@ -124,6 +127,7 @@ def get_strongly_connected_components(dependencies):
     index_groups = sccs.get_sccs_adjacency_list(adjacency_list)
     groups = [[sorted_vars[i] for i in g] for g in index_groups]
     return groups
+
 
 # Expects a list of axioms *with the same head* and returns a subset consisting
 # of all non-dominated axioms whose conditions have been cleaned up
@@ -150,7 +154,7 @@ def compute_simplified_axioms(axioms):
 
     for axiom in axioms:
         if id(axiom) in axioms_to_skip:
-            continue   # Required to keep one of multiple identical axioms.
+            continue  # Required to keep one of multiple identical axioms.
         if not axiom.condition:  # empty condition: dominates everything
             return [axiom]
         literals = iter(axiom.condition)
@@ -192,7 +196,9 @@ def compute_clusters(axioms, goals, operators):
         for cluster in clusters:
             for variable in cluster.variables:
                 old_size = len(cluster.axioms[variable])
-                cluster.axioms[variable] = compute_simplified_axioms(cluster.axioms[variable])
+                cluster.axioms[variable] = compute_simplified_axioms(
+                    cluster.axioms[variable]
+                )
                 removed += old_size - len(cluster.axioms[variable])
     print("Translator axioms removed by simplifying: %d" % removed)
 
@@ -353,8 +359,10 @@ def verify_layering_condition(axioms, axiom_layers):
         body = axiom.condition
         for cond in body:
             cond_positive = cond.positive()
-            if (cond_positive in variables_in_heads and
-                axiom_layers[cond_positive] == axiom_layers[head_positive]):
+            if (
+                cond_positive in variables_in_heads
+                and axiom_layers[cond_positive] == axiom_layers[head_positive]
+            ):
                 assert cond in literals_in_heads
 
     # 3. For every rule head <- ... cond ... where cond is a literal
@@ -370,4 +378,7 @@ def verify_layering_condition(axioms, axiom_layers):
             if cond_positive in variables_in_heads:
                 # We need the assertion to be on a single line for
                 # our error handler to be able to print the line.
-                assert (axiom_layers[cond_positive] <= axiom_layers[head_positive]), (axiom_layers[cond_positive], axiom_layers[head_positive])
+                assert axiom_layers[cond_positive] <= axiom_layers[head_positive], (
+                    axiom_layers[cond_positive],
+                    axiom_layers[head_positive],
+                )

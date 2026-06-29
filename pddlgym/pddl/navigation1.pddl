@@ -1,7 +1,7 @@
 (define (domain navigation1)
   (:requirements :typing :probabilistic-effects)
   (:types location direction)
-  
+
   (:constants down - direction
     left - direction
     right - direction
@@ -17,7 +17,7 @@
     (move ?v0 - direction)
   )
   ; (:actions move)
-  
+
 
     (:action move-robot
         :parameters (?from - location ?to - location ?dir - direction)
@@ -86,4 +86,3 @@
             ))
     )
 )
-        

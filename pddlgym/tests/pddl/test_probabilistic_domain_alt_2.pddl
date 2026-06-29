@@ -9,7 +9,7 @@
   )
 
   ; (:actions actionpred)
-(and 
+(and
   (:action action1
    :parameters (?a - type1 ?b - type1 ?c - type2 ?d - type2)
    :precondition (and (actionpred ?b)
@@ -17,7 +17,7 @@
                       (pred3 ?a ?c ?d)
                       (pred2 ?c)
                       )
-   :effect       (and 
+   :effect       (and
                       (probabilistic
                         0.5  (and (not (pred2 ?c)))
                         0.4  (and (not (pred1 ?b)))

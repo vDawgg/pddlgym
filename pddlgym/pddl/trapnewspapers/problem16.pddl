@@ -42,7 +42,7 @@
 	paper-8 - paper
 	paper-9 - paper
   )
-  (:init 
+  (:init
 	(at loc-0)
 	(ishomebase loc-0)
 	(safe loc-0)

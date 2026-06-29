@@ -37,7 +37,7 @@
 	room8
 	room9
   )
-  (:init 
+  (:init
 	(at ball0 room5)
 	(at ball10 room0)
 	(at ball11 room1)

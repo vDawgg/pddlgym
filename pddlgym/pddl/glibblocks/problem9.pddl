@@ -1,6 +1,6 @@
 (define (problem glibblocks)
     (:domain glibblocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block

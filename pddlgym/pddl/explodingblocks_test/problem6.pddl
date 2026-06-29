@@ -1,6 +1,6 @@
 (define (problem explodingblocks)
     (:domain explodingblocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block

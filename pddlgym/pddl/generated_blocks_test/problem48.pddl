@@ -11,7 +11,7 @@
 	b7 - block
 	b8 - block
   )
-  (:init 
+  (:init
 	(clear b0)
 	(clear b2)
 	(clear b4)

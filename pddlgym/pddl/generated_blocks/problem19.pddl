@@ -4,7 +4,7 @@
         b0 - block
 	b1 - block
   )
-  (:init 
+  (:init
 	(clear b0)
 	(clear b1)
 	(handempty )

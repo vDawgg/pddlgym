@@ -22,7 +22,7 @@
 	(not (visited mo))
 	(not (visited mn))
 	(not (visited wn))))
-  (:init 
+  (:init
 	(drive ia ia car-0)
 	(drive ia ia car-1)
 	(drive ia ia car-2)
@@ -475,4 +475,3 @@
 	(caravailable car-2)
 	(caravailable car-3)
 ))
-        

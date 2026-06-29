@@ -1,10 +1,10 @@
-(define (problem 47) (:domain spanner) (:objects 
+(define (problem 47) (:domain spanner) (:objects
      bob - man
  spanner1 spanner2 spanner3 spanner4 spanner5 spanner6 spanner7 spanner8 spanner9 spanner10 spanner11 spanner12 spanner13 - spanner
      nut1 nut2 nut3 nut4 nut5 nut6 nut7 nut8 nut9 nut10 nut11 nut12 nut13 - nut
      location1 location2 location3 location4 location5 location6 location7 location8 location9 location10 location11 location12 location13 location14 location15 - location
      shed gate - location
-    ) (:init 
+    ) (:init
     (at bob shed)
     (at spanner1 location14)
     (useable spanner1)

@@ -5,7 +5,7 @@
 	b1 - block
 	b2 - block
   )
-  (:init 
+  (:init
 	(clear b0)
 	(clear b1)
 	(clear b2)

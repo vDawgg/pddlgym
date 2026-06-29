@@ -1,4 +1,4 @@
-(define (problem doors) 
+(define (problem doors)
     (:domain doors)
 
     (:objects
@@ -225,4 +225,3 @@
 
     (:goal (and (at loc-0-7)))
 )
-    

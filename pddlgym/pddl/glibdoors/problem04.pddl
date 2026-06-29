@@ -1,4 +1,4 @@
-(define (problem doors) 
+(define (problem doors)
     (:domain glibdoors)
 
     (:objects
@@ -114,4 +114,3 @@
 
     (:goal (and (at loc-7-3)))
 )
-    

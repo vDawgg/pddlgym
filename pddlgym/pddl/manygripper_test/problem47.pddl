@@ -353,7 +353,7 @@
 	room98
 	room99
   )
-  (:init 
+  (:init
 	(at ball0 room47)
 	(at ball100 room28)
 	(at ball101 room136)

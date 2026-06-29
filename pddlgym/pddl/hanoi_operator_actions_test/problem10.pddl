@@ -104,7 +104,7 @@
 (on d1 d2)
 )
 (:goal
-(and 
+(and
 (on d10 peg3)
 (on d9 d10)
 (on d8 d9)
@@ -118,5 +118,3 @@
 )
 )
 )
-
-

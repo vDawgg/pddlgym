@@ -3,11 +3,11 @@
 
 (define (problem logistics-c5-s1-p5-a5)
 (:domain logistics-strips)
-(:objects a0 a1 a2 a3 a4 
-          c0 c1 c2 c3 c4 
-          t0 t1 t2 t3 t4 
-          l00 l10 l20 l30 l40 
-          p0 p1 p2 p3 p4 
+(:objects a0 a1 a2 a3 a4
+          c0 c1 c2 c3 c4
+          t0 t1 t2 t3 t4
+          l00 l10 l20 l30 l40
+          p0 p1 p2 p3 p4
 )
 (:init
 (AIRPLANE a0)
@@ -71,5 +71,3 @@
 )
 )
 )
-
-

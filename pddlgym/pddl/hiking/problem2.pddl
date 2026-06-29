@@ -92,7 +92,7 @@
 	r8_c8 - loc
 	r8_c9 - loc
   )
-  (:init 
+  (:init
 	(adjacent r0_c0 r0_c1)
 	(adjacent r0_c0 r1_c0)
 	(adjacent r0_c1 r0_c0)

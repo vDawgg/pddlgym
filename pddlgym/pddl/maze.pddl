@@ -1,7 +1,7 @@
 (define (domain maze)
     (:requirements :strips :typing )
     (:types player location)
-    (:predicates 
+    (:predicates
         (move-dir-up ?v0 - location ?v1 - location)
         (move-dir-down ?v0 - location ?v1 - location)
         (move-dir-left ?v0 - location ?v1 - location)

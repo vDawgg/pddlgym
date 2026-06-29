@@ -1,17 +1,17 @@
 (define (problem strips-gripper-x-1)
    (:domain easygripper)
-   (:objects 
-        rooma - room 
+   (:objects
+        rooma - room
         roomb - room
         ball8 - ball
         ball7 - ball
         ball6 - ball
         ball5 - ball
         ball4 - ball
-        ball3 - ball 
-        ball2 - ball 
-        ball1 - ball 
-        left - gripper 
+        ball3 - ball
+        ball2 - ball
+        ball1 - ball
+        left - gripper
         right - gripper
     )
    (:init (room rooma)

@@ -1,26 +1,26 @@
 (define (problem strips-gripper-x-8)
    (:domain onearmedgripper)
-   (:objects 
+   (:objects
         rooma - room
         roomb - room
-        ball18 - ball 
-        ball17 - ball 
-        ball16 - ball 
-        ball15 - ball 
-        ball14 - ball 
+        ball18 - ball
+        ball17 - ball
+        ball16 - ball
+        ball15 - ball
+        ball14 - ball
         ball13 - ball
-        ball12 - ball 
-        ball11 - ball 
-        ball10 - ball 
-        ball9 - ball 
-        ball8 - ball 
-        ball7 - ball 
-        ball6 - ball 
-        ball5 - ball 
-        ball4 - ball 
+        ball12 - ball
+        ball11 - ball
+        ball10 - ball
+        ball9 - ball
+        ball8 - ball
+        ball7 - ball
+        ball6 - ball
+        ball5 - ball
+        ball4 - ball
         ball3 - ball
-        ball2 - ball 
-        ball1 - ball 
+        ball2 - ball
+        ball1 - ball
         left - gripper
    )
    (:init (room rooma)

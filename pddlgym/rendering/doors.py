@@ -10,30 +10,32 @@ NUM_OBJECTS = 5
 PLAYER, LOCKED_ROOM, UNLOCKED_ROOM, KEY, BOUNDARY = range(NUM_OBJECTS)
 
 TOKEN_IMAGES = {
-    PLAYER : plt.imread(get_asset_path('doors_player.png')),
-    LOCKED_ROOM : plt.imread(get_asset_path('doors_locked_room.png')),
-    UNLOCKED_ROOM : plt.imread(get_asset_path('doors_unlocked_room.png')),
-    BOUNDARY : plt.imread(get_asset_path('doors_boundary.png')),
-    KEY : plt.imread(get_asset_path('doors_key.png')),
+    PLAYER: plt.imread(get_asset_path("doors_player.png")),
+    LOCKED_ROOM: plt.imread(get_asset_path("doors_locked_room.png")),
+    UNLOCKED_ROOM: plt.imread(get_asset_path("doors_unlocked_room.png")),
+    BOUNDARY: plt.imread(get_asset_path("doors_boundary.png")),
+    KEY: plt.imread(get_asset_path("doors_key.png")),
 }
+
 
 def loc_str_to_loc(loc_str):
     split = loc_str.split("-")
-    assert split[0] == 'loc' and len(split) == 3
+    assert split[0] == "loc" and len(split) == 3
     return (int(split[1]), int(split[2]))
 
+
 def get_player_loc(obs):
-    locs = []
     for lit in obs:
-        if lit.predicate.name.lower() == 'at':
+        if lit.predicate.name.lower() == "at":
             return loc_str_to_loc(lit.variables[0])
     raise Exception("player not found in obs (no at literal)")
 
+
 def get_key_locs(obs):
-    locs = []
     for lit in obs:
-        if lit.predicate.name.lower() == 'keyat':
+        if lit.predicate.name.lower() == "keyat":
             yield loc_str_to_loc(lit.variables[1])
+
 
 def get_rooms(obs):
     rooms_to_locs = defaultdict(set)
@@ -57,11 +59,11 @@ def build_layout(obs):
     max_r, max_c = 2, 2
     for lit in obs:
         for v in lit.variables:
-            if 'loc' in v:
+            if "loc" in v:
                 r, c = loc_str_to_loc(v)
                 max_r = max(max_r, r)
                 max_c = max(max_c, c)
-    layout = np.zeros((max_r+1, max_c+1, NUM_OBJECTS))
+    layout = np.zeros((max_r + 1, max_c + 1, NUM_OBJECTS))
 
     # Put things in the layout
     player_loc = get_player_loc(obs)
@@ -93,19 +95,20 @@ def build_layout(obs):
             # Check for neighboring rooms
 
             # Boundary above
-            if r == 0 or loc_to_room[(r-1, c)] != room:
+            if r == 0 or loc_to_room[(r - 1, c)] != room:
                 layout[r, c, BOUNDARY] = 1
             # Boundary left
-            if c == 0 or loc_to_room[(r, c-1)] != room:
+            if c == 0 or loc_to_room[(r, c - 1)] != room:
                 layout[r, c, BOUNDARY] = 1
             # Boundary below
-            if r == layout.shape[0]-1 or loc_to_room[(r+1, c)] != room:
+            if r == layout.shape[0] - 1 or loc_to_room[(r + 1, c)] != room:
                 layout[r, c, BOUNDARY] = 1
             # Boundary right
-            if c == layout.shape[1]-1 or loc_to_room[(r, c+1)] != room:
+            if c == layout.shape[1] - 1 or loc_to_room[(r, c + 1)] != room:
                 layout[r, c, BOUNDARY] = 1
 
     return layout
+
 
 def get_token_images(obs_cell):
     if obs_cell[LOCKED_ROOM]:
@@ -120,6 +123,7 @@ def get_token_images(obs_cell):
         yield TOKEN_IMAGES[KEY]
     return
 
-def render(obs, mode='human', close=False):
+
+def render(obs, mode="human", close=False):
     layout = build_layout(obs)
     return render_from_layout(layout, get_token_images)

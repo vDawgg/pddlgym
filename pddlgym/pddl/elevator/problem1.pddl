@@ -7,7 +7,7 @@
   )
   (:goal (and
 	(served p0)))
-  (:init 
+  (:init
 	(above f0 f1)
 	(board f0 p0)
 	(board f1 p0)
@@ -21,4 +21,3 @@
 	(up f0)
 	(up f1)
 ))
-        

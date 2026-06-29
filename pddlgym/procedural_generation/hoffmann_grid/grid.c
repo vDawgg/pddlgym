@@ -6,16 +6,16 @@
  * (C) Copyright 2001 Albert Ludwigs University Freiburg
  *     Institute of Computer Science
  *
- * All rights reserved. Use of this software is permitted for 
- * non-commercial research purposes, and it may be copied only 
+ * All rights reserved. Use of this software is permitted for
+ * non-commercial research purposes, and it may be copied only
  * for that use.  All copies must include this copyright message.
  * This software is made available AS IS, and neither the authors
  * nor the  Albert Ludwigs University Freiburg make any warranty
- * about the software or its performance. 
+ * about the software or its performance.
  *********************************************************************/
 
 
-/* 
+/*
  * C code for generating randomozied grid problems...
  */
 
@@ -194,8 +194,8 @@ int main( int argc, char *argv[] )
   exit( 0 );
 
 }
-  
-  
+
+
 
 
 
@@ -307,7 +307,7 @@ void create_random_positions( void )
  */
 
 
-  
+
 
 
 
@@ -349,7 +349,7 @@ void print_key_positions( void )
 
   for ( i = 0; i < gnum_keytypes; i++ ) {
     for ( j = 0; j < gkey_number[i]; j++ ) {
-      printf("\n(at key%d-%d f%d-%df)", i, j, 
+      printf("\n(at key%d-%d f%d-%df)", i, j,
 	     gx_key_pos[i][j], gy_key_pos[i][j]);
     }
   }
@@ -367,7 +367,7 @@ void print_key_goal_positions( void )
   for ( i = 0; i < gnum_keytypes; i++ ) {
     for ( j = 0; j < gkey_number[i]; j++ ) {
       if ( gx_key_goal_pos[i][j] == -1 ) continue;
-      printf("\n(at key%d-%d f%d-%df)", i, j, 
+      printf("\n(at key%d-%d f%d-%df)", i, j,
 	     gx_key_goal_pos[i][j], gy_key_goal_pos[i][j]);
     }
   }
@@ -504,7 +504,7 @@ Bool setup_key_numbers( int vec )
     if ( gkey_number[i] < 0 ) return FALSE;
     current = ( int ) (current/10);
   }
-  
+
   return TRUE;
 
 }
@@ -528,7 +528,7 @@ Bool setup_lock_numbers( int vec )
     if ( glock_number[i] < 0 ) return FALSE;
     current = ( int ) (current/10);
   }
-  
+
   return TRUE;
 
 }

@@ -5,17 +5,17 @@
  * (C) Copyright 2001 Albert Ludwigs University Freiburg
  *     Institute of Computer Science
  *
- * All rights reserved. Use of this software is permitted for 
- * non-commercial research purposes, and it may be copied only 
+ * All rights reserved. Use of this software is permitted for
+ * non-commercial research purposes, and it may be copied only
  * for that use.  All copies must include this copyright message.
  * This software is made available AS IS, and neither the authors
  * nor the  Albert Ludwigs University Freiburg make any warranty
- * about the software or its performance. 
+ * about the software or its performance.
  *********************************************************************/
 
 
 
-/* 
+/*
  * C code for generating random logistics problems
  */
 
@@ -111,7 +111,7 @@ int main( int argc, char *argv[] )
 
   /* header
    */
-  printf("(define (problem logistics-c%d-s%d-p%d-a%d)", 
+  printf("(define (problem logistics-c%d-s%d-p%d-a%d)",
 	 gcities, gcity_size, gpackages, gairplanes);
   printf("\n(:domain logistics-strips)");
 
@@ -177,8 +177,8 @@ int main( int argc, char *argv[] )
   exit( 0 );
 
 }
-  
-  
+
+
 
 
 
@@ -244,7 +244,7 @@ void create_random_locations( void )
  */
 
 
-  
+
 
 
 

@@ -1,4 +1,4 @@
-(define (problem doors) 
+(define (problem doors)
     (:domain glibdoors)
 
     (:objects
@@ -210,4 +210,3 @@
 
     (:goal (and (at loc-7-7) (not (keyat key-0 loc-4-4)) (unlocked room-1)))
 )
-    

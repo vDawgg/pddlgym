@@ -2,7 +2,7 @@
 (define (domain searchandrescue)
   (:requirements :typing)
   (:types robot person wall hospital location direction)
-  
+
   (:constants down - direction
 	left - direction
 	right - direction
@@ -22,7 +22,7 @@
   )
   ; (:actions dropoff pickup move)
 
-  
+
 
 	(:action move-robot
 		:parameters (?robot - robot ?from - location ?to - location ?dir - direction)
@@ -36,7 +36,7 @@
 			(not (clear ?to))
 			(clear ?from))
 	)
-	
+
 
 	(:action pickup-person
 		:parameters (?robot - robot ?person - person ?loc - location)
@@ -49,7 +49,7 @@
 			(not (handsfree ?robot))
 			(carrying ?robot ?person))
 	)
-	
+
 
 	(:action dropoff-person
 		:parameters (?robot - robot ?person - person ?loc - location)
@@ -63,4 +63,3 @@
 	)
 
 )
-        

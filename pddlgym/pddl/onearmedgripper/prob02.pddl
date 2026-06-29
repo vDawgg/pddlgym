@@ -1,6 +1,6 @@
 (define (problem strips-gripper-x-2)
    (:domain onearmedgripper)
-   (:objects 
+   (:objects
         rooma - room
         roomb - room
         ball6 - ball

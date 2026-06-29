@@ -3,19 +3,21 @@ from pddlgym.structs import LiteralConjunction
 import pddlgym
 import os
 import numpy as np
+
 np.random.seed(0)
 
 
 PDDLDIR = os.path.join(os.path.dirname(pddlgym.__file__), "pddl")
 
+
 def sample_blocks(domain, num_blocks):
-    block_type = domain.types['block']
-    ontable = domain.predicates['ontable']
-    clear = domain.predicates['clear']
-    handempty = domain.predicates['handempty']
+    block_type = domain.types["block"]
+    ontable = domain.predicates["ontable"]
+    clear = domain.predicates["clear"]
+    handempty = domain.predicates["handempty"]
 
     blocks = set()
-    blocks_state = { handempty() }
+    blocks_state = {handempty()}
 
     for block_num in range(num_blocks):
         block = block_type("b{}".format(block_num))
@@ -24,9 +26,10 @@ def sample_blocks(domain, num_blocks):
 
     return blocks, blocks_state
 
+
 def create_goal(domain, objects, pile_heights):
-    on = domain.predicates['on']
-    ontable = domain.predicates['ontable']
+    on = domain.predicates["on"]
+    ontable = domain.predicates["ontable"]
 
     remaining_blocks = sorted(objects)
 
@@ -34,11 +37,15 @@ def create_goal(domain, objects, pile_heights):
 
     for pile_height in pile_heights:
         assert 2 < pile_height
-        block_idxs = np.random.choice(len(remaining_blocks), size=pile_height, replace=False)
+        block_idxs = np.random.choice(
+            len(remaining_blocks), size=pile_height, replace=False
+        )
         blocks_in_pile = []
         for idx in block_idxs:
             blocks_in_pile.append(remaining_blocks[idx])
-        remaining_blocks = [b for i, b in enumerate(remaining_blocks) if i not in block_idxs]
+        remaining_blocks = [
+            b for i, b in enumerate(remaining_blocks) if i not in block_idxs
+        ]
         # left is top
         for b1, b2 in zip(blocks_in_pile[:-1], blocks_in_pile[1:]):
             goal_lits.append(on(b1, b2))
@@ -46,15 +53,16 @@ def create_goal(domain, objects, pile_heights):
 
     return LiteralConjunction(goal_lits)
 
+
 def sample_problem(domain, problem_dir, problem_outfile):
-    
 
-    blocks, block_state = sample_blocks(domain,
-        num_blocks=np.random.randint(30, 61))
+    blocks, block_state = sample_blocks(domain, num_blocks=np.random.randint(30, 61))
 
-    goal = create_goal(domain, blocks, 
-        pile_heights=np.random.randint(3, 7, 
-            size=np.random.randint(1, 3)))
+    goal = create_goal(
+        domain,
+        blocks,
+        pile_heights=np.random.randint(3, 7, size=np.random.randint(1, 3)),
+    )
 
     objects = blocks
     initial_state = block_state
@@ -72,10 +80,13 @@ def sample_problem(domain, problem_dir, problem_outfile):
     )
     print("Wrote out to {}.".format(filepath))
 
+
 def generate_problems():
-    domain = PDDLDomainParser(os.path.join(PDDLDIR, "manyblocksnopiles.pddl"),
+    domain = PDDLDomainParser(
+        os.path.join(PDDLDIR, "manyblocksnopiles.pddl"),
         expect_action_preds=False,
-        operators_as_actions=True)
+        operators_as_actions=True,
+    )
 
     for problem_idx in range(50):
         if problem_idx < 40:

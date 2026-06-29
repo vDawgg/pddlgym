@@ -1,8 +1,8 @@
 (define (problem tsp7)
   (:domain tsp)
-  (:objects 
-    c1 - place 
-    c2 - place 
+  (:objects
+    c1 - place
+    c2 - place
     c3 - place
     c4 - place
     c5 - place
@@ -10,7 +10,7 @@
     c7 - place
     p - path
   )
-  (:init 
+  (:init
     (connected c1 c2)
     (connected c2 c1)
     (connected c2 c3)
@@ -25,15 +25,15 @@
     (connected c7 c6)
     (connected c7 c1)
     (connected c1 c7)
-    (visited c1) 
-    (not-visited c2) 
+    (visited c1)
+    (not-visited c2)
     (not-visited c3)
     (not-visited c4)
     (not-visited c5)
     (not-visited c6)
     (not-visited c7)
-    (in c1) 
-    (starting c1) 
+    (in c1)
+    (starting c1)
     (not-complete p)
 
     (moveto c1)

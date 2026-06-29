@@ -1,6 +1,6 @@
 (define (problem blocks)
     (:domain conditionalblocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block

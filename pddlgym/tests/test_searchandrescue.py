@@ -1,15 +1,18 @@
+from __future__ import annotations
+
 import pddlgym
 import numpy as np
 
 import unittest
+from pddlgym.custom.searchandrescue import SearchAndRescueEnv
 
 
 class TestSearchAndRescue(unittest.TestCase):
-    def skip_test_searchandrescue(self, num_actions_to_test=10, verbose=False):
-        """Test state encoding and decoding
-        """
+    def skip_test_searchandrescue(self, num_actions_to_test=10, verbose=False) -> None:
+        """Test state encoding and decoding"""
         for level in range(1, 7):
             env = pddlgym.make(f"SearchAndRescueLevel{level}-v0")
+            assert isinstance(env, SearchAndRescueEnv)
             if level == 1:
                 assert len(env.problems) == 20
             else:
@@ -23,12 +26,17 @@ class TestSearchAndRescue(unittest.TestCase):
             done = False
             for t, act in enumerate(actions):
                 if verbose:
-                    print(f"Taking action {t}/{num_actions_to_test}", end='\r', flush=True)
+                    print(
+                        f"Taking action {t}/{num_actions_to_test}", end="\r", flush=True
+                    )
 
+                assert env._state is not None
                 assert state == env._internal_to_state(env._state)
                 assert env._state.literals == env._state_to_internal(state).literals
                 assert env._state.objects == env._state_to_internal(state).objects
-                assert set(env._state.goal.literals) == set(env._state_to_internal(state).goal.literals)
+                assert set(env._state.goal.literals) == set(
+                    env._state_to_internal(state).goal.literals
+                )
                 assert env.check_goal(state) == done
                 for a in all_actions:
                     ns = env.get_successor_state(state, a)
@@ -40,35 +48,37 @@ class TestSearchAndRescue(unittest.TestCase):
             if verbose:
                 print()
 
-
-    def test_searchandrescue_walls(self, num_problems_to_test=2, num_actions_to_test=10):
-        """Test that when we try to move into walls, we stay put.
-        """
+    def test_searchandrescue_walls(
+        self, num_problems_to_test=2, num_actions_to_test=10
+    ) -> None:
+        """Test that when we try to move into walls, we stay put."""
         rng = np.random.RandomState(0)
         for level in [1, 2]:
             env = pddlgym.make(f"SearchAndRescueLevel{level}-v0")
+            assert isinstance(env, SearchAndRescueEnv)
             assert len(env.problems) >= num_problems_to_test
             for idx in range(num_problems_to_test):
                 env.fix_problem_index(idx)
                 state, debug_info = env.reset()
 
-                all_actions = dropoff, down, left, right, up, pickup = env.get_possible_actions()
+                all_actions = dropoff, down, left, right, up, pickup = (
+                    env.get_possible_actions()
+                )
 
                 act_to_delta = {
-                    dropoff : (0, 0),
-                    down : (1, 0),
-                    left : (0, -1),
-                    right : (0, 1),
-                    up : (-1, 0),
-                    pickup : (0, 0),
+                    dropoff: (0, 0),
+                    down: (1, 0),
+                    left: (0, -1),
+                    right: (0, 1),
+                    up: (-1, 0),
+                    pickup: (0, 0),
                 }
 
                 actions = rng.choice(all_actions, size=num_actions_to_test)
                 done = False
                 robot_r, robot_c = dict(state)["robot0"]
-                walls = { dict(state)[k] for k in dict(state) if k.startswith("wall") } 
+                walls = {dict(state)[k] for k in dict(state) if k.startswith("wall")}
                 for t, act in enumerate(actions):
-
                     dr, dc = act_to_delta[act]
                     can_r, can_c = robot_r + dr, robot_c + dc
 

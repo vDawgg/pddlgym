@@ -15,7 +15,7 @@
 	paper-5 - paper
 	paper-6 - paper
   )
-  (:init 
+  (:init
 	(at loc-0)
 	(ishomebase loc-0)
 	(unpacked paper-0)

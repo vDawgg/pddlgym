@@ -29,7 +29,7 @@
 	(at c4 l8)
 	(at c5 l9)
 	(at c6 l9)))
-  (:init 
+  (:init
 	(at c0 l5)
 	(at c1 l10)
 	(at c2 l6)
@@ -204,4 +204,3 @@
 	(sail l8)
 	(sail l9)
 ))
-        

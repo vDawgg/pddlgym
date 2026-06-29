@@ -467,4 +467,3 @@
 
 (:metric minimize (total-cost))
 )
-

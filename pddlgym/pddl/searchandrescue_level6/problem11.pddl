@@ -49,7 +49,7 @@
 	wall1-5 - wall
 	wall4-1 - wall
   )
-  (:init 
+  (:init
 	(clear f0-0f)
 	(clear f0-1f)
 	(clear f0-3f)

@@ -37,7 +37,7 @@
             (robot-at ?to))
     )
 
-    
+
     (:action move-robot-col-0
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -51,7 +51,7 @@
               0.9675943218171597  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-1
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -65,7 +65,7 @@
               0.8609694661055174  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-2
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -79,7 +79,7 @@
               0.785361424450659  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-3
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -93,7 +93,7 @@
               0.6585869757044647  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-4
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -107,7 +107,7 @@
               0.5686922220306264  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-5
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -121,7 +121,7 @@
               0.46721192658878863  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-6
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -135,7 +135,7 @@
               0.34874760276741457  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-7
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -149,7 +149,7 @@
               0.269837946126548  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-8
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -163,7 +163,7 @@
               0.15569190546456313  (robot-at ?to)
             ))
     )
-    
+
     (:action move-robot-col-9
         :parameters (?from - location ?to - location ?dir - direction)
         :precondition (and (move ?dir)
@@ -177,4 +177,3 @@
               0.08043588125534973  (robot-at ?to)
             ))
     )
-    

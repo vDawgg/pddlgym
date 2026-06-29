@@ -1,13 +1,15 @@
 from .utils import fig2data
 import matplotlib.pyplot as plt
+
 try:
     import networkx as nx
+
     IMPORT_SUCCESS = True
 except ImportError:
     IMPORT_SUCCESS = False
 
 
-def render(obs, mode='human', close=False):
+def render(obs, mode="human", close=False):
     if not IMPORT_SUCCESS:
         raise Exception("Must `pip install networkx` to render in Tireworld.")
 
@@ -36,11 +38,11 @@ def render(obs, mode='human', close=False):
     color_map = []
     for node in G:
         if node == node_at:
-            color_map.append('red')
-        elif node in has_spare: 
-            color_map.append('green') 
+            color_map.append("red")
+        elif node in has_spare:
+            color_map.append("green")
         else:
-            color_map.append('yellow')
+            color_map.append("yellow")
 
     fig = plt.figure()
     title = "Flat tire!" if flattire else "Tire not flat"

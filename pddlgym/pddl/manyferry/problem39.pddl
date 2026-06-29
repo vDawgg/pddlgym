@@ -3,8 +3,8 @@
 
 (define (problem ferry-l12-c3)
 (:domain ferry)
-(:objects l0 l1 l2 l3 l4 l5 l6 l7 l8 l9 l10 l11 
-          c0 c1 c2 
+(:objects l0 l1 l2 l3 l4 l5 l6 l7 l8 l9 l10 l11
+          c0 c1 c2
 )
 (:init
 (location l0)
@@ -168,5 +168,3 @@
 )
 )
 )
-
-

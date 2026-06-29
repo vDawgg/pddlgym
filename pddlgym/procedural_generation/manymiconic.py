@@ -11,14 +11,14 @@ def _get_str(num_floors, num_pass, num_buildings):
     mystr += "\t)\n\n(:init\n"
     for bldg in range(num_buildings):
         for i in range(num_floors):
-            for j in range(i+1, num_floors):
+            for j in range(i + 1, num_floors):
                 mystr += "\t(above f{}_b{} f{}_b{})\n".format(i, bldg, j, bldg)
     mystr += "\n"
     for bldg in range(num_buildings):
         for i in range(num_pass):
-            orig = random.randint(0, num_floors-1)
+            orig = random.randint(0, num_floors - 1)
             while True:
-                dest = random.randint(0, num_floors-1)
+                dest = random.randint(0, num_floors - 1)
                 if dest != orig:
                     break
             mystr += "\t(origin p{}_b{} f{}_b{})\n".format(i, bldg, orig, bldg)
@@ -37,7 +37,7 @@ def _get_str(num_floors, num_pass, num_buildings):
 def _main():
     # Train problems
     for i in range(40):
-        num_floors = 10+random.randint(0, 10)
+        num_floors = 10 + random.randint(0, 10)
         num_pass = 1
         num_buildings = 3
         mystr = _get_str(num_floors, num_pass, num_buildings)
@@ -45,7 +45,7 @@ def _main():
             f.write(mystr)
     # Test problems
     for i in range(10):
-        num_floors = 20+random.randint(0, 10)
+        num_floors = 20 + random.randint(0, 10)
         num_pass = 2
         num_buildings = 100
         mystr = _get_str(num_floors, num_pass, num_buildings)

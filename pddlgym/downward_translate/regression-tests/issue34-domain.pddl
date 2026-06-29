@@ -26,8 +26,8 @@
   (not-unitary ?pipe - pipe)
 
   ;; These predicates represent the pipeline segment contents
-  ;; We define the first (nearest to  ``from'' area) and 
-  ;; last (nearest to  ``to'' area) batch-atom in a pipeline 
+  ;; We define the first (nearest to  ``from'' area) and
+  ;; last (nearest to  ``to'' area) batch-atom in a pipeline
   ;; segment, and their sequence is represented by the
   ;; (follow) predicate
   (last ?batch-atom - batch-atom ?pipe - pipe)
@@ -90,7 +90,7 @@
 
  )
   :effect
-   (and 
+   (and
      ;; switch into correct update mode for this pipe
      (push-updating ?pipe)
      (not (normal ?pipe))
@@ -140,7 +140,7 @@
 
  )
   :effect
-   (and 
+   (and
      ;; back to normal mode
      (not (push-updating ?pipe))
      (normal ?pipe)
@@ -196,7 +196,7 @@
 
  )
   :effect
-   (and 
+   (and
      ;; switch into correct update mode for this pipe
      (pop-updating ?pipe)
      (not (normal ?pipe))
@@ -246,7 +246,7 @@
 
  )
   :effect
-   (and 
+   (and
      ;; back to normal mode
      (not (pop-updating ?pipe))
      (normal ?pipe)
@@ -300,7 +300,7 @@
 
  )
   :effect
-   (and 
+   (and
      ;; The inserted unitary batch will be the pipeline segment
      ;; new first batch
      (first ?batch-atom-in ?pipe)
@@ -355,7 +355,7 @@
 
  )
   :effect
-   (and 
+   (and
      ;; The inserted unitary batch will be the pipeline segment
      ;; new last batch
      (last ?batch-atom-in ?pipe)

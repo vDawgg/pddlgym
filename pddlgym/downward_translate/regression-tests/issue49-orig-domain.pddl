@@ -1091,7 +1091,7 @@
 	           (increase (total-cost) 10)))
 
     (:action reaction_R00014left
-         :precondition 
+         :precondition
            (and
              (C00022)
              (C00068)
@@ -1102,7 +1102,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00200left
-         :precondition 
+         :precondition
            (and
              (C00074)
                     )
@@ -1112,7 +1112,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00235left
-         :precondition 
+         :precondition
            (and
              (C00024)
                     )
@@ -1122,7 +1122,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00341left
-         :precondition 
+         :precondition
            (and
              (C00036)
                     )
@@ -1132,7 +1132,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00658left
-         :precondition 
+         :precondition
            (and
              (C00631)
                     )
@@ -1142,7 +1142,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00658right
-         :precondition 
+         :precondition
            (and
              (C00074)
                     )
@@ -1152,7 +1152,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00710left
-         :precondition 
+         :precondition
            (and
              (C00084)
                     )
@@ -1162,7 +1162,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00710right
-         :precondition 
+         :precondition
            (and
              (C00033)
                     )
@@ -1172,7 +1172,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00754left
-         :precondition 
+         :precondition
            (and
              (C00469)
                     )
@@ -1182,7 +1182,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00754right
-         :precondition 
+         :precondition
            (and
              (C00084)
                     )
@@ -1192,7 +1192,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01015left
-         :precondition 
+         :precondition
            (and
              (C00118)
                     )
@@ -1202,7 +1202,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01015right
-         :precondition 
+         :precondition
            (and
              (C00111)
                     )
@@ -1212,7 +1212,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01061left
-         :precondition 
+         :precondition
            (and
              (C00118)
                     )
@@ -1222,7 +1222,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01061right
-         :precondition 
+         :precondition
            (and
              (C00236)
                     )
@@ -1232,7 +1232,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01070left
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -1243,7 +1243,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01070right
-         :precondition 
+         :precondition
            (and
              (C00111)
              (C00118)
@@ -1254,7 +1254,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01512left
-         :precondition 
+         :precondition
            (and
              (C00197)
                     )
@@ -1264,7 +1264,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01512right
-         :precondition 
+         :precondition
            (and
              (C00236)
                     )
@@ -1274,7 +1274,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01518left
-         :precondition 
+         :precondition
            (and
              (C00631)
                     )
@@ -1284,7 +1284,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01518right
-         :precondition 
+         :precondition
            (and
              (C00197)
                     )
@@ -1294,7 +1294,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01600left
-         :precondition 
+         :precondition
            (and
              (C00221)
                     )
@@ -1304,7 +1304,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01662left
-         :precondition 
+         :precondition
            (and
              (C00236)
                     )
@@ -1314,7 +1314,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01662right
-         :precondition 
+         :precondition
            (and
              (C01159)
                     )
@@ -1324,7 +1324,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01786left
-         :precondition 
+         :precondition
            (and
              (C00267)
                     )
@@ -1334,7 +1334,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02569left
-         :precondition 
+         :precondition
            (and
              (C15973)
              (C00024)
@@ -1345,7 +1345,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02569right
-         :precondition 
+         :precondition
            (and
              (C16255)
                     )
@@ -1356,7 +1356,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02739left
-         :precondition 
+         :precondition
            (and
              (C00668)
                     )
@@ -1366,7 +1366,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02739right
-         :precondition 
+         :precondition
            (and
              (C01172)
                     )
@@ -1376,7 +1376,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02740left
-         :precondition 
+         :precondition
            (and
              (C00668)
                     )
@@ -1386,7 +1386,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02740right
-         :precondition 
+         :precondition
            (and
              (C05345)
                     )
@@ -1396,7 +1396,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03270left
-         :precondition 
+         :precondition
            (and
              (C05125)
              (C15972)
@@ -1408,7 +1408,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03321left
-         :precondition 
+         :precondition
            (and
              (C01172)
                     )
@@ -1418,7 +1418,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03321right
-         :precondition 
+         :precondition
            (and
              (C05345)
                     )
@@ -1428,7 +1428,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04779left
-         :precondition 
+         :precondition
            (and
              (C05345)
                     )
@@ -1438,7 +1438,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04780left
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -1448,7 +1448,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07618left
-         :precondition 
+         :precondition
            (and
              (C15973)
                     )
@@ -1458,7 +1458,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07618right
-         :precondition 
+         :precondition
            (and
              (C15972)
                     )
@@ -1468,7 +1468,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00014left
-         :precondition 
+         :precondition
            (and
              (C00068)
              (C00022)
@@ -1479,7 +1479,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00268left
-         :precondition 
+         :precondition
            (and
              (C05379)
                     )
@@ -1489,7 +1489,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00268right
-         :precondition 
+         :precondition
            (and
              (C00026)
                     )
@@ -1499,7 +1499,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00341left
-         :precondition 
+         :precondition
            (and
              (C00036)
                     )
@@ -1509,7 +1509,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00342left
-         :precondition 
+         :precondition
            (and
              (C00149)
                     )
@@ -1519,7 +1519,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00342right
-         :precondition 
+         :precondition
            (and
              (C00036)
                     )
@@ -1529,7 +1529,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00351left
-         :precondition 
+         :precondition
            (and
              (C00036)
              (C00024)
@@ -1540,7 +1540,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00351right
-         :precondition 
+         :precondition
            (and
              (C00158)
                     )
@@ -1551,7 +1551,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00405left
-         :precondition 
+         :precondition
            (and
              (C00042)
                     )
@@ -1561,7 +1561,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00405right
-         :precondition 
+         :precondition
            (and
              (C00091)
                     )
@@ -1571,7 +1571,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00412left
-         :precondition 
+         :precondition
            (and
              (C00042)
                     )
@@ -1581,7 +1581,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00412right
-         :precondition 
+         :precondition
            (and
              (C00122)
                     )
@@ -1591,7 +1591,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00621left
-         :precondition 
+         :precondition
            (and
              (C00068)
              (C00026)
@@ -1602,7 +1602,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01082left
-         :precondition 
+         :precondition
            (and
              (C00149)
                     )
@@ -1612,7 +1612,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01082right
-         :precondition 
+         :precondition
            (and
              (C00122)
                     )
@@ -1622,7 +1622,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01325left
-         :precondition 
+         :precondition
            (and
              (C00158)
                     )
@@ -1632,7 +1632,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01325right
-         :precondition 
+         :precondition
            (and
              (C00417)
                     )
@@ -1642,7 +1642,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01899left
-         :precondition 
+         :precondition
            (and
              (C00311)
                     )
@@ -1652,7 +1652,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01899right
-         :precondition 
+         :precondition
            (and
              (C05379)
                     )
@@ -1662,7 +1662,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01900left
-         :precondition 
+         :precondition
            (and
              (C00417)
                     )
@@ -1672,7 +1672,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01900right
-         :precondition 
+         :precondition
            (and
              (C00311)
                     )
@@ -1682,7 +1682,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02569left
-         :precondition 
+         :precondition
            (and
              (C15973)
              (C00024)
@@ -1693,7 +1693,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02569right
-         :precondition 
+         :precondition
            (and
              (C16255)
                     )
@@ -1704,7 +1704,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02570left
-         :precondition 
+         :precondition
            (and
              (C15973)
              (C00091)
@@ -1715,7 +1715,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02570right
-         :precondition 
+         :precondition
            (and
              (C16254)
                     )
@@ -1726,7 +1726,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03270left
-         :precondition 
+         :precondition
            (and
              (C15972)
              (C05125)
@@ -1738,7 +1738,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03316left
-         :precondition 
+         :precondition
            (and
              (C15972)
              (C05381)
@@ -1750,7 +1750,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07618left
-         :precondition 
+         :precondition
            (and
              (C15973)
                     )
@@ -1760,7 +1760,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07618right
-         :precondition 
+         :precondition
            (and
              (C15972)
                     )
@@ -1770,7 +1770,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01049left
-         :precondition 
+         :precondition
            (and
              (C00117)
                     )
@@ -1780,7 +1780,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01049right
-         :precondition 
+         :precondition
            (and
              (C00119)
                     )
@@ -1790,7 +1790,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01056left
-         :precondition 
+         :precondition
            (and
              (C00117)
                     )
@@ -1800,7 +1800,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01056right
-         :precondition 
+         :precondition
            (and
              (C00199)
                     )
@@ -1810,7 +1810,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01070left
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -1820,7 +1820,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01070right
-         :precondition 
+         :precondition
            (and
              (C00118)
                     )
@@ -1830,7 +1830,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01529left
-         :precondition 
+         :precondition
            (and
              (C00199)
                     )
@@ -1840,7 +1840,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01529right
-         :precondition 
+         :precondition
            (and
              (C00231)
                     )
@@ -1850,7 +1850,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01541left
-         :precondition 
+         :precondition
            (and
              (C00204)
                     )
@@ -1860,7 +1860,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01641left
-         :precondition 
+         :precondition
            (and
              (C05382)
              (C00118)
@@ -1872,7 +1872,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01641right
-         :precondition 
+         :precondition
            (and
              (C00231)
              (C00117)
@@ -1884,7 +1884,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01737left
-         :precondition 
+         :precondition
            (and
              (C00257)
                     )
@@ -1894,7 +1894,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01741left
-         :precondition 
+         :precondition
            (and
              (C00257)
                     )
@@ -1904,7 +1904,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01827left
-         :precondition 
+         :precondition
            (and
              (C05382)
              (C00118)
@@ -1916,7 +1916,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01827right
-         :precondition 
+         :precondition
            (and
              (C00279)
              (C05345)
@@ -1928,7 +1928,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01830left
-         :precondition 
+         :precondition
            (and
              (C05345)
              (C00118)
@@ -1940,7 +1940,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01830right
-         :precondition 
+         :precondition
            (and
              (C00279)
              (C00231)
@@ -1952,7 +1952,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02035left
-         :precondition 
+         :precondition
            (and
              (C01236)
                     )
@@ -1962,7 +1962,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02035right
-         :precondition 
+         :precondition
            (and
              (C00345)
                     )
@@ -1972,7 +1972,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02036left
-         :precondition 
+         :precondition
            (and
              (C00345)
                     )
@@ -1982,7 +1982,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02736left
-         :precondition 
+         :precondition
            (and
              (C01172)
                     )
@@ -1992,7 +1992,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02739left
-         :precondition 
+         :precondition
            (and
              (C00668)
                     )
@@ -2002,7 +2002,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02739right
-         :precondition 
+         :precondition
            (and
              (C01172)
                     )
@@ -2012,7 +2012,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02740left
-         :precondition 
+         :precondition
            (and
              (C00668)
                     )
@@ -2022,7 +2022,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02740right
-         :precondition 
+         :precondition
            (and
              (C05345)
                     )
@@ -2032,7 +2032,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04779left
-         :precondition 
+         :precondition
            (and
              (C05345)
                     )
@@ -2042,7 +2042,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04780left
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -2052,7 +2052,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05605left
-         :precondition 
+         :precondition
            (and
              (C04442)
                     )
@@ -2063,7 +2063,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05605right
-         :precondition 
+         :precondition
            (and
              (C00022)
              (C00118)
@@ -2074,7 +2074,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R06836left
-         :precondition 
+         :precondition
            (and
              (C01151)
                     )
@@ -2084,7 +2084,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00286left
-         :precondition 
+         :precondition
            (and
              (C00029)
                     )
@@ -2094,7 +2094,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00286right
-         :precondition 
+         :precondition
            (and
              (C00167)
                     )
@@ -2104,7 +2104,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00289left
-         :precondition 
+         :precondition
            (and
              (C00103)
                     )
@@ -2114,7 +2114,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01529left
-         :precondition 
+         :precondition
            (and
              (C00199)
                     )
@@ -2124,7 +2124,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01529right
-         :precondition 
+         :precondition
            (and
              (C00231)
                     )
@@ -2134,7 +2134,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01541left
-         :precondition 
+         :precondition
            (and
              (C00204)
                     )
@@ -2144,7 +2144,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01541right
-         :precondition 
+         :precondition
            (and
              (C04442)
                     )
@@ -2154,7 +2154,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01639left
-         :precondition 
+         :precondition
            (and
              (C00310)
                     )
@@ -2164,7 +2164,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01639right
-         :precondition 
+         :precondition
            (and
              (C00231)
                     )
@@ -2174,7 +2174,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02454left
-         :precondition 
+         :precondition
            (and
              (C00514)
                     )
@@ -2184,7 +2184,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02454right
-         :precondition 
+         :precondition
            (and
              (C00905)
                     )
@@ -2194,7 +2194,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05605left
-         :precondition 
+         :precondition
            (and
              (C04442)
                     )
@@ -2204,7 +2204,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05605right
-         :precondition 
+         :precondition
            (and
              (C00118)
                     )
@@ -2214,7 +2214,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00867left
-         :precondition 
+         :precondition
            (and
              (C00095)
                     )
@@ -2224,7 +2224,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01015left
-         :precondition 
+         :precondition
            (and
              (C00118)
                     )
@@ -2234,7 +2234,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01015right
-         :precondition 
+         :precondition
            (and
              (C00111)
                     )
@@ -2244,7 +2244,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01070left
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -2254,7 +2254,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01070right
-         :precondition 
+         :precondition
            (and
              (C00118)
                     )
@@ -2264,7 +2264,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02071left
-         :precondition 
+         :precondition
            (and
              (C01094)
                     )
@@ -2274,7 +2274,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02071right
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -2284,7 +2284,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02568left
-         :precondition 
+         :precondition
            (and
              (C01094)
                     )
@@ -2295,7 +2295,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02568right
-         :precondition 
+         :precondition
            (and
              (C00577)
              (C00111)
@@ -2306,7 +2306,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02630left
-         :precondition 
+         :precondition
            (and
              (C00159)
                     )
@@ -2316,7 +2316,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02704left
-         :precondition 
+         :precondition
            (and
              (C00392)
                     )
@@ -2326,7 +2326,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03232left
-         :precondition 
+         :precondition
            (and
              (C00095)
                     )
@@ -2336,7 +2336,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03774left
-         :precondition 
+         :precondition
            (and
              (C01934)
                     )
@@ -2346,7 +2346,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03774right
-         :precondition 
+         :precondition
            (and
              (C03979)
                     )
@@ -2356,7 +2356,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04076left
-         :precondition 
+         :precondition
            (and
              (C00247)
                     )
@@ -2366,7 +2366,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04779left
-         :precondition 
+         :precondition
            (and
              (C05345)
                     )
@@ -2376,7 +2376,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04780left
-         :precondition 
+         :precondition
            (and
              (C05378)
                     )
@@ -2386,7 +2386,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05820left
-         :precondition 
+         :precondition
            (and
              (C00794)
                     )
@@ -2396,7 +2396,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00289left
-         :precondition 
+         :precondition
            (and
              (C00103)
                     )
@@ -2406,7 +2406,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00289right
-         :precondition 
+         :precondition
            (and
              (C00029)
                     )
@@ -2416,7 +2416,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00291left
-         :precondition 
+         :precondition
            (and
              (C00029)
                     )
@@ -2426,7 +2426,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00291right
-         :precondition 
+         :precondition
            (and
              (C00052)
                     )
@@ -2436,7 +2436,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01064left
-         :precondition 
+         :precondition
            (and
              (C01286)
                     )
@@ -2446,7 +2446,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01101left
-         :precondition 
+         :precondition
            (and
              (C05402)
                     )
@@ -2457,7 +2457,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01103left
-         :precondition 
+         :precondition
            (and
              (C00492)
                     )
@@ -2467,7 +2467,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01104left
-         :precondition 
+         :precondition
            (and
              (C05401)
                     )
@@ -2478,7 +2478,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01104right
-         :precondition 
+         :precondition
            (and
              (C00124)
              (C00116)
@@ -2489,7 +2489,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01194left
-         :precondition 
+         :precondition
            (and
              (C01235)
                     )
@@ -2500,7 +2500,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01194right
-         :precondition 
+         :precondition
            (and
              (C00137)
              (C00124)
@@ -2511,7 +2511,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01329left
-         :precondition 
+         :precondition
            (and
              (C05400)
                     )
@@ -2522,7 +2522,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01329right
-         :precondition 
+         :precondition
            (and
              (C00159)
              (C00124)
@@ -2533,7 +2533,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01786left
-         :precondition 
+         :precondition
            (and
              (C00267)
                     )
@@ -2543,7 +2543,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01786right
-         :precondition 
+         :precondition
            (and
              (C00668)
                     )
@@ -2553,7 +2553,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02410left
-         :precondition 
+         :precondition
            (and
              (C00492)
                     )
@@ -2563,7 +2563,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02926left
-         :precondition 
+         :precondition
            (and
              (C05399)
                     )
@@ -2574,7 +2574,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02926right
-         :precondition 
+         :precondition
            (and
              (C00794)
              (C00124)
@@ -2585,7 +2585,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03033left
-         :precondition 
+         :precondition
            (and
              (C00880)
                     )
@@ -2595,7 +2595,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03236left
-         :precondition 
+         :precondition
            (and
              (C01097)
                     )
@@ -2605,7 +2605,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03236right
-         :precondition 
+         :precondition
            (and
              (C03785)
                     )
@@ -2615,7 +2615,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03237left
-         :precondition 
+         :precondition
            (and
              (C01097)
                     )
@@ -2625,7 +2625,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03237right
-         :precondition 
+         :precondition
            (and
              (C03785)
                     )
@@ -2635,7 +2635,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03238left
-         :precondition 
+         :precondition
            (and
              (C01097)
                     )
@@ -2645,7 +2645,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03238right
-         :precondition 
+         :precondition
            (and
              (C03785)
                     )
@@ -2655,7 +2655,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03239left
-         :precondition 
+         :precondition
            (and
              (C01097)
                     )
@@ -2665,7 +2665,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03239right
-         :precondition 
+         :precondition
            (and
              (C03785)
                     )
@@ -2675,7 +2675,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03387left
-         :precondition 
+         :precondition
            (and
              (C01216)
                     )
@@ -2685,7 +2685,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03634left
-         :precondition 
+         :precondition
            (and
              (C01613)
                     )
@@ -2696,7 +2696,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03635left
-         :precondition 
+         :precondition
            (and
              (C01613)
                     )
@@ -2706,7 +2706,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05549left
-         :precondition 
+         :precondition
            (and
              (C05404)
                     )
@@ -2717,7 +2717,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00286left
-         :precondition 
+         :precondition
            (and
              (C00029)
                     )
@@ -2727,7 +2727,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02279left
-         :precondition 
+         :precondition
            (and
              (C00679)
                     )
@@ -2737,7 +2737,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02279right
-         :precondition 
+         :precondition
            (and
              (C00433)
                     )
@@ -2747,7 +2747,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02957left
-         :precondition 
+         :precondition
            (and
              (C02670)
                     )
@@ -2757,7 +2757,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02957right
-         :precondition 
+         :precondition
            (and
              (C00818)
                     )
@@ -2767,7 +2767,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05608left
-         :precondition 
+         :precondition
            (and
              (C00879)
                     )
@@ -2777,7 +2777,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R05608right
-         :precondition 
+         :precondition
            (and
              (C00679)
                     )
@@ -2787,7 +2787,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07675left
-         :precondition 
+         :precondition
            (and
              (C01825)
                     )
@@ -2797,7 +2797,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01626left
-         :precondition 
+         :precondition
            (and
              (C00083)
                     )
@@ -2807,7 +2807,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01626right
-         :precondition 
+         :precondition
            (and
              (C01209)
                     )
@@ -2817,7 +2817,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04355left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C03939)
@@ -2828,7 +2828,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04385left
-         :precondition 
+         :precondition
            (and
              (C06250)
                     )
@@ -2838,7 +2838,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04386left
-         :precondition 
+         :precondition
            (and
              (C04419)
              (C00024)
@@ -2850,7 +2850,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04386right
-         :precondition 
+         :precondition
            (and
              (C06250)
              (C00083)
@@ -2862,7 +2862,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04429left
-         :precondition 
+         :precondition
            (and
              (C04246)
                     )
@@ -2872,7 +2872,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04429right
-         :precondition 
+         :precondition
            (and
              (C05745)
                     )
@@ -2882,7 +2882,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04533left
-         :precondition 
+         :precondition
            (and
              (C04618)
                     )
@@ -2892,7 +2892,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04533right
-         :precondition 
+         :precondition
            (and
              (C05744)
                     )
@@ -2902,7 +2902,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04534left
-         :precondition 
+         :precondition
            (and
              (C05753)
                     )
@@ -2912,7 +2912,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04534right
-         :precondition 
+         :precondition
            (and
              (C04619)
                     )
@@ -2922,7 +2922,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04535left
-         :precondition 
+         :precondition
            (and
              (C04619)
                     )
@@ -2932,7 +2932,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04535right
-         :precondition 
+         :precondition
            (and
              (C05754)
                     )
@@ -2942,7 +2942,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04536left
-         :precondition 
+         :precondition
            (and
              (C05750)
                     )
@@ -2952,7 +2952,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04536right
-         :precondition 
+         :precondition
            (and
              (C04620)
                     )
@@ -2962,7 +2962,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04543left
-         :precondition 
+         :precondition
            (and
              (C05762)
                     )
@@ -2972,7 +2972,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04543right
-         :precondition 
+         :precondition
            (and
              (C04633)
                     )
@@ -2982,7 +2982,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04566left
-         :precondition 
+         :precondition
            (and
              (C05759)
                     )
@@ -2992,7 +2992,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04566right
-         :precondition 
+         :precondition
            (and
              (C04688)
                     )
@@ -3002,7 +3002,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04724left
-         :precondition 
+         :precondition
            (and
              (C05758)
                     )
@@ -3012,7 +3012,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04724right
-         :precondition 
+         :precondition
            (and
              (C05223)
                     )
@@ -3022,7 +3022,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04726left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05223)
@@ -3033,7 +3033,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04952left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05745)
@@ -3044,7 +3044,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04953left
-         :precondition 
+         :precondition
            (and
              (C05746)
                     )
@@ -3054,7 +3054,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04953right
-         :precondition 
+         :precondition
            (and
              (C05747)
                     )
@@ -3064,7 +3064,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04955left
-         :precondition 
+         :precondition
            (and
              (C05748)
                     )
@@ -3074,7 +3074,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04955right
-         :precondition 
+         :precondition
            (and
              (C05749)
                     )
@@ -3084,7 +3084,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04957left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05749)
@@ -3095,7 +3095,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04958left
-         :precondition 
+         :precondition
            (and
              (C05751)
                     )
@@ -3105,7 +3105,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04958right
-         :precondition 
+         :precondition
            (and
              (C05752)
                     )
@@ -3115,7 +3115,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04960left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05752)
@@ -3126,7 +3126,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04961left
-         :precondition 
+         :precondition
            (and
              (C05754)
                     )
@@ -3136,7 +3136,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04961right
-         :precondition 
+         :precondition
            (and
              (C05755)
                     )
@@ -3146,7 +3146,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04963left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05755)
@@ -3157,7 +3157,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04964left
-         :precondition 
+         :precondition
            (and
              (C05756)
                     )
@@ -3167,7 +3167,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04964right
-         :precondition 
+         :precondition
            (and
              (C05757)
                     )
@@ -3177,7 +3177,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04965left
-         :precondition 
+         :precondition
            (and
              (C05757)
                     )
@@ -3187,7 +3187,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04965right
-         :precondition 
+         :precondition
            (and
              (C05758)
                     )
@@ -3197,7 +3197,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04966left
-         :precondition 
+         :precondition
            (and
              (C05760)
                     )
@@ -3207,7 +3207,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04966right
-         :precondition 
+         :precondition
            (and
              (C05761)
                     )
@@ -3217,7 +3217,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04968left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05761)
@@ -3228,7 +3228,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04969left
-         :precondition 
+         :precondition
            (and
              (C05763)
                     )
@@ -3238,7 +3238,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04969right
-         :precondition 
+         :precondition
            (and
              (C05764)
                     )
@@ -3248,7 +3248,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07762left
-         :precondition 
+         :precondition
            (and
              (C01209)
              (C05764)
@@ -3259,7 +3259,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07762right
-         :precondition 
+         :precondition
            (and
              (C16219)
                     )
@@ -3270,7 +3270,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07763left
-         :precondition 
+         :precondition
            (and
              (C16219)
                     )
@@ -3280,7 +3280,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07763right
-         :precondition 
+         :precondition
            (and
              (C16220)
                     )
@@ -3290,7 +3290,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07764left
-         :precondition 
+         :precondition
            (and
              (C16220)
                     )
@@ -3300,7 +3300,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R07764right
-         :precondition 
+         :precondition
            (and
              (C16221)
                     )
@@ -3310,7 +3310,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04170left
-         :precondition 
+         :precondition
            (and
              (C05262)
                     )
@@ -3320,7 +3320,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04170right
-         :precondition 
+         :precondition
            (and
              (C03221)
                     )
@@ -3330,7 +3330,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04737left
-         :precondition 
+         :precondition
            (and
              (C05259)
                     )
@@ -3340,7 +3340,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04737right
-         :precondition 
+         :precondition
            (and
              (C05258)
                     )
@@ -3350,7 +3350,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04738left
-         :precondition 
+         :precondition
            (and
              (C05258)
                     )
@@ -3360,7 +3360,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04738right
-         :precondition 
+         :precondition
            (and
              (C05272)
                     )
@@ -3370,7 +3370,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04739left
-         :precondition 
+         :precondition
            (and
              (C05261)
                     )
@@ -3380,7 +3380,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04739right
-         :precondition 
+         :precondition
            (and
              (C05260)
                     )
@@ -3390,7 +3390,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04740left
-         :precondition 
+         :precondition
            (and
              (C05260)
                     )
@@ -3400,7 +3400,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04740right
-         :precondition 
+         :precondition
            (and
              (C05273)
                     )
@@ -3410,7 +3410,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04741left
-         :precondition 
+         :precondition
            (and
              (C05263)
                     )
@@ -3420,7 +3420,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04741right
-         :precondition 
+         :precondition
            (and
              (C05262)
                     )
@@ -3430,7 +3430,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04743left
-         :precondition 
+         :precondition
            (and
              (C05265)
                     )
@@ -3440,7 +3440,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04743right
-         :precondition 
+         :precondition
            (and
              (C05264)
                     )
@@ -3450,7 +3450,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04744left
-         :precondition 
+         :precondition
            (and
              (C05264)
                     )
@@ -3460,7 +3460,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04744right
-         :precondition 
+         :precondition
            (and
              (C05275)
                     )
@@ -3470,7 +3470,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04745left
-         :precondition 
+         :precondition
            (and
              (C05267)
                     )
@@ -3480,7 +3480,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04745right
-         :precondition 
+         :precondition
            (and
              (C05266)
                     )
@@ -3490,7 +3490,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04746left
-         :precondition 
+         :precondition
            (and
              (C05266)
                     )
@@ -3500,7 +3500,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04746right
-         :precondition 
+         :precondition
            (and
              (C05276)
                     )
@@ -3510,7 +3510,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04748left
-         :precondition 
+         :precondition
            (and
              (C05269)
                     )
@@ -3520,7 +3520,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04748right
-         :precondition 
+         :precondition
            (and
              (C05268)
                     )
@@ -3530,7 +3530,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04749left
-         :precondition 
+         :precondition
            (and
              (C05268)
                     )
@@ -3540,7 +3540,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04749right
-         :precondition 
+         :precondition
            (and
              (C05271)
                     )
@@ -3550,7 +3550,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00238left
-         :precondition 
+         :precondition
            (and
              (C00024)
                     )
@@ -3560,7 +3560,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00238right
-         :precondition 
+         :precondition
            (and
              (C00332)
                     )
@@ -3570,7 +3570,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00623left
-         :precondition 
+         :precondition
            (and
              (C00226)
                     )
@@ -3580,7 +3580,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00623right
-         :precondition 
+         :precondition
            (and
              (C00071)
                     )
@@ -3590,7 +3590,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R00631left
-         :precondition 
+         :precondition
            (and
              (C00162)
                     )
@@ -3600,7 +3600,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01175left
-         :precondition 
+         :precondition
            (and
              (C00136)
                     )
@@ -3610,7 +3610,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01177left
-         :precondition 
+         :precondition
            (and
              (C00136)
              (C00024)
@@ -3622,7 +3622,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01177right
-         :precondition 
+         :precondition
            (and
              (C05269)
              (C00010)
@@ -3634,7 +3634,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01279left
-         :precondition 
+         :precondition
            (and
              (C00154)
                     )
@@ -3644,7 +3644,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01406left
-         :precondition 
+         :precondition
            (and
              (C00638)
              (C00229)
@@ -3655,7 +3655,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01406right
-         :precondition 
+         :precondition
            (and
              (C00173)
                     )
@@ -3666,7 +3666,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01975left
-         :precondition 
+         :precondition
            (and
              (C01144)
                     )
@@ -3676,7 +3676,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R01975right
-         :precondition 
+         :precondition
            (and
              (C00332)
                     )
@@ -3686,7 +3686,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R02487left
-         :precondition 
+         :precondition
            (and
              (C00527)
                     )
@@ -3696,7 +3696,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03026left
-         :precondition 
+         :precondition
            (and
              (C01144)
                     )
@@ -3706,7 +3706,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03026right
-         :precondition 
+         :precondition
            (and
              (C00877)
                     )
@@ -3716,7 +3716,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03276left
-         :precondition 
+         :precondition
            (and
              (C01144)
                     )
@@ -3726,7 +3726,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03276right
-         :precondition 
+         :precondition
            (and
              (C03561)
                     )
@@ -3736,7 +3736,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03777left
-         :precondition 
+         :precondition
            (and
              (C01944)
                     )
@@ -3746,7 +3746,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03778left
-         :precondition 
+         :precondition
            (and
              (C00024)
              (C01944)
@@ -3758,7 +3758,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03778right
-         :precondition 
+         :precondition
            (and
              (C05265)
              (C00010)
@@ -3770,7 +3770,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03857left
-         :precondition 
+         :precondition
            (and
              (C01832)
                     )
@@ -3780,7 +3780,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03858left
-         :precondition 
+         :precondition
            (and
              (C01832)
              (C00024)
@@ -3792,7 +3792,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03858right
-         :precondition 
+         :precondition
            (and
              (C00010)
              (C05261)
@@ -3804,7 +3804,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03990left
-         :precondition 
+         :precondition
            (and
              (C02593)
                     )
@@ -3814,7 +3814,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03991left
-         :precondition 
+         :precondition
            (and
              (C02593)
              (C00024)
@@ -3826,7 +3826,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R03991right
-         :precondition 
+         :precondition
            (and
              (C05259)
              (C00010)
@@ -3838,7 +3838,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04170left
-         :precondition 
+         :precondition
            (and
              (C05262)
                     )
@@ -3848,7 +3848,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04170right
-         :precondition 
+         :precondition
            (and
              (C03221)
                     )
@@ -3858,7 +3858,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04737left
-         :precondition 
+         :precondition
            (and
              (C05258)
                     )
@@ -3868,7 +3868,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04737right
-         :precondition 
+         :precondition
            (and
              (C05259)
                     )
@@ -3878,7 +3878,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04738left
-         :precondition 
+         :precondition
            (and
              (C05258)
                     )
@@ -3888,7 +3888,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04738right
-         :precondition 
+         :precondition
            (and
              (C05272)
                     )
@@ -3898,7 +3898,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04739left
-         :precondition 
+         :precondition
            (and
              (C05260)
                     )
@@ -3908,7 +3908,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04739right
-         :precondition 
+         :precondition
            (and
              (C05261)
                     )
@@ -3918,7 +3918,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04740left
-         :precondition 
+         :precondition
            (and
              (C05260)
                     )
@@ -3928,7 +3928,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04740right
-         :precondition 
+         :precondition
            (and
              (C05273)
                     )
@@ -3938,7 +3938,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04741left
-         :precondition 
+         :precondition
            (and
              (C05262)
                     )
@@ -3948,7 +3948,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04741right
-         :precondition 
+         :precondition
            (and
              (C05263)
                     )
@@ -3958,7 +3958,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04742left
-         :precondition 
+         :precondition
            (and
              (C00024)
              (C05274)
@@ -3970,7 +3970,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04742right
-         :precondition 
+         :precondition
            (and
              (C00010)
              (C05263)
@@ -3982,7 +3982,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04743left
-         :precondition 
+         :precondition
            (and
              (C05264)
                     )
@@ -3992,7 +3992,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04743right
-         :precondition 
+         :precondition
            (and
              (C05265)
                     )
@@ -4002,7 +4002,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04744left
-         :precondition 
+         :precondition
            (and
              (C05264)
                     )
@@ -4012,7 +4012,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04744right
-         :precondition 
+         :precondition
            (and
              (C05275)
                     )
@@ -4022,7 +4022,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04745left
-         :precondition 
+         :precondition
            (and
              (C05266)
                     )
@@ -4032,7 +4032,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04745right
-         :precondition 
+         :precondition
            (and
              (C05267)
                     )
@@ -4042,7 +4042,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04746left
-         :precondition 
+         :precondition
            (and
              (C05266)
                     )
@@ -4052,7 +4052,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04746right
-         :precondition 
+         :precondition
            (and
              (C05276)
                     )
@@ -4062,7 +4062,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04747left
-         :precondition 
+         :precondition
            (and
              (C05270)
              (C00024)
@@ -4074,7 +4074,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04747right
-         :precondition 
+         :precondition
            (and
              (C05267)
              (C00010)
@@ -4086,7 +4086,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04748left
-         :precondition 
+         :precondition
            (and
              (C05268)
                     )
@@ -4096,7 +4096,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04748right
-         :precondition 
+         :precondition
            (and
              (C05269)
                     )
@@ -4106,7 +4106,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04749left
-         :precondition 
+         :precondition
            (and
              (C05268)
                     )
@@ -4116,7 +4116,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04749right
-         :precondition 
+         :precondition
            (and
              (C05271)
                     )
@@ -4126,7 +4126,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04754left
-         :precondition 
+         :precondition
            (and
              (C05274)
                     )
@@ -4136,7 +4136,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04756left
-         :precondition 
+         :precondition
            (and
              (C05280)
                     )
@@ -4146,7 +4146,7 @@
 	         (increase (total-cost) 1)))
 
     (:action reaction_R04756right
-         :precondition 
+         :precondition
            (and
              (C05279)
                     )

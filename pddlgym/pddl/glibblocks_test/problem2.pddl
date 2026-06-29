@@ -1,19 +1,19 @@
 (define (problem blocks)
     (:domain glibblocks)
-    (:objects 
+    (:objects
         d - block
         b - block
         a - block
         c - block
         robot - robot
     )
-    (:init 
+    (:init
         (clear b)
         (clear d)
         (on c a)
         (on d c)
         (ontable a)
-        (ontable b) 
+        (ontable b)
         (handempty robot)
 
         ; action literals

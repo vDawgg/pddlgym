@@ -1,14 +1,14 @@
 (define (problem easyblocks)
     (:domain easyblocks)
-    (:objects 
+    (:objects
         a - block
         b - block
         c - block
         robot - robot
     )
-    (:init 
-        (clear b) 
-        (ontable b) 
+    (:init
+        (clear b)
+        (ontable b)
         (clear c)
         (ontable a)
         (on c a)
