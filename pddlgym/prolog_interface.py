@@ -383,7 +383,7 @@ print_solutions([H|T]) :- write(H), nl, print_solutions(T).
             f.write(self._prolog_str)
         timeout_str = "gtimeout" if sys.platform == "darwin" else "timeout"
         cmd_str = "{} {} swipl {}".format(timeout_str, self._timeout, tmp_name)
-        output = subprocess.getoutput(cmd_str)
+        output = subprocess.getoutput("{} 2>/dev/null".format(cmd_str))
         if "ERROR" in output or "Warning" in output:
             raise Exception("Prolog terminated with an error: \n{}".format(output))
         lines = output.split("\n")

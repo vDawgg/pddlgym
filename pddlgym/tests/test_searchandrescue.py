@@ -2,17 +2,19 @@ from __future__ import annotations
 
 import pddlgym
 import numpy as np
+from typing import cast
+from pddlgym.custom.searchandrescue import SearchAndRescueEnv
 
 import unittest
-from pddlgym.custom.searchandrescue import SearchAndRescueEnv
 
 
 class TestSearchAndRescue(unittest.TestCase):
     def skip_test_searchandrescue(self, num_actions_to_test=10, verbose=False) -> None:
         """Test state encoding and decoding"""
         for level in range(1, 7):
-            env = pddlgym.make(f"SearchAndRescueLevel{level}-v0")
-            assert isinstance(env, SearchAndRescueEnv)
+            env = cast(
+                SearchAndRescueEnv, pddlgym.make(f"SearchAndRescueLevel{level}-v0")
+            )
             if level == 1:
                 assert len(env.problems) == 20
             else:
@@ -54,8 +56,9 @@ class TestSearchAndRescue(unittest.TestCase):
         """Test that when we try to move into walls, we stay put."""
         rng = np.random.RandomState(0)
         for level in [1, 2]:
-            env = pddlgym.make(f"SearchAndRescueLevel{level}-v0")
-            assert isinstance(env, SearchAndRescueEnv)
+            env = cast(
+                SearchAndRescueEnv, pddlgym.make(f"SearchAndRescueLevel{level}-v0")
+            )
             assert len(env.problems) >= num_problems_to_test
             for idx in range(num_problems_to_test):
                 env.fix_problem_index(idx)

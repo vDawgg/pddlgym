@@ -43,8 +43,8 @@ Atom bar(X).
 Atom foo().
 Atom truck(bollerwagen).
 Atom truck(segway).
-none Atom at(?X, ?X@0) :- Atom truck(?X), Atom location(?Y), Atom =(?X, ?X@0).
-none Atom at(?X, ?Y) :- Atom truck(?X), Atom @object(?Y).
-none Atom at(?X, ?Y) :- Atom truck(X), Atom location(?Y), Atom @object(?X).
-none Atom q(?Y, ?Y@0) :- Atom p(?Y, ?Z, ?Y, ?Z), Atom =(?Y, ?Y@0), Atom =(?Y, ?Y@1), Atom =(?Z, ?Z@2)."""
+None Atom at(?X, ?X@0) :- Atom truck(?X), Atom location(?Y), Atom =(?X, ?X@0).
+None Atom at(?X, ?Y) :- Atom truck(?X), Atom @object(?Y).
+None Atom at(?X, ?Y) :- Atom truck(X), Atom location(?Y), Atom @object(?X).
+None Atom q(?Y, ?Y@0) :- Atom p(?Y, ?Z, ?Y@1, ?Z@2), Atom =(?Y, ?Y@0), Atom =(?Y, ?Y@1), Atom =(?Z, ?Z@2)."""
     )

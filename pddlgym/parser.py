@@ -745,7 +745,9 @@ class PDDLProblemParser(PDDLParser):
         self.problem_name: Optional[str] = None
         self.objects: Optional[List[TypedEntity]] = None
         self.initial_state: Optional[FrozenSet[Literal]] = None
-        self.goal: Optional[Literal] = None
+        self.goal: Optional[
+            Union[Literal, LiteralConjunction, LiteralDisjunction, ForAll, Exists]
+        ] = None
 
         with open(problem_fname, "r") as f:
             self.problem: str = f.read().lower()
@@ -814,7 +816,7 @@ class PDDLProblemParser(PDDLParser):
         assert self.objects is not None
         params = {obj.name: obj.var_type for obj in self.objects}
         goal_lit = self._parse_into_literal(goal, params)
-        assert isinstance(goal_lit, Literal)
+        assert not isinstance(goal_lit, ProbabilisticEffect)
         self.goal = goal_lit
 
     @staticmethod
@@ -880,7 +882,9 @@ class PDDLProblemParser(PDDLParser):
         initial_state: Optional[frozenset[Literal] | set[Literal]] = None,
         problem_name: Optional[str] = None,
         domain_name: Optional[str] = None,
-        goal: Optional[Literal] = None,
+        goal: Optional[
+            Union[Literal, LiteralConjunction, LiteralDisjunction, ForAll, Exists]
+        ] = None,
         fast_downward_order: bool = False,
     ) -> None:
         """Write the problem PDDL string for a given state."""
@@ -899,6 +903,7 @@ class PDDLProblemParser(PDDLParser):
         if goal is None:
             assert self.goal is not None
             goal = self.goal
+        assert isinstance(goal, (Literal, LiteralConjunction))
 
         return PDDLProblemParser.create_pddl_file(
             file_or_filepath,

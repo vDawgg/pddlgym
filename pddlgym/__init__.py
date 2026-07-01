@@ -29,7 +29,7 @@ from gym.envs.registration import register
 import gym
 
 import os
-from typing import Callable, Dict, List, Tuple, Union
+from typing import Callable, Dict, List, Tuple, Union, cast
 
 
 # Save users from having to separately import gym
@@ -58,10 +58,7 @@ def register_pddl_env(name: str, is_test_env: bool, other_args: dict) -> None:
 
 
 def _make_nav_render(name: str) -> Callable:
-    env = make(name)
-    assert isinstance(env, PDDLEnv)
-    domain = env.domain
-    return lambda obs: navigation_render(obs, domain)
+    return lambda obs: navigation_render(obs, cast(PDDLEnv, make(name)).domain)
 
 
 _env_specs: List[Tuple[str, Dict[str, Union[bool, Callable]]]] = [

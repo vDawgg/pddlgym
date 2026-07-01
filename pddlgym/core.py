@@ -141,6 +141,8 @@ def get_successor_state(
             get_all_transitions,
             return_probs=return_probs,
         )
+        if get_all_transitions:
+            return next_state
         assert isinstance(next_state, State)
         state = next_state
 
