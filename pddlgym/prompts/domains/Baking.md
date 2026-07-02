@@ -1,6 +1,6 @@
 ## Domain description
 
-A robot is tasked with baking a recipe with the avilable ingredients. Note that the pan should be clean before baking and that a bar of soap is depleted once used for cleaning, meaning it can no longer be used.
+A robot is tasked with baking a recipe with the available ingredients. Note that the pan should be clean before baking and that a bar of soap is depleted once used for cleaning, meaning it can no longer be used.
 
 The actions available to the robot are:
 - putegginpan
