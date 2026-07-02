@@ -1,0 +1,7 @@
+### Domain:
+
+{domain}
+
+### Problem:
+
+{problem}
