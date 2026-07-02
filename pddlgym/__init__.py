@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from . import tests  # noqa: F401
-from . import core  # noqa: F401
+# TODO: Figure out why these import are even here
+from pddlgym import core  # noqa: F401
 from pddlgym.core import PDDLEnv
-from . import structs  # noqa: F401
-from . import spaces  # noqa: F401
+from pddlgym import structs  # noqa: F401
+from pddlgym import spaces  # noqa: F401
 
 from pddlgym.rendering import (
     rearrangement_render,
