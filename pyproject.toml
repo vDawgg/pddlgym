@@ -6,19 +6,19 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dspy>=3.2.1",
-    "gym>=0.24.0",
+    "gymnasium>=1.0.0",
     "imageio>=2.37.3",
     "imageio-ffmpeg>=0.6.0",
     "matplotlib>=3.11.0",
     "networkx>=3.6.1",
     "pillow>=8,<10",
-    "pre-commit>=4.4.0",
-    "ruff>=0.15.20",
     "scikit-image>=0.24.0",
-    "ty>=0.0.55",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "ty>=0.0.55",
+    "pre-commit>=4.4.0",
+    "ruff>=0.15.20",
 ]

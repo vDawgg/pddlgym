@@ -51,7 +51,7 @@ from typing import (
     overload,
 )
 
-import gym
+import gymnasium as gym
 
 import numpy as np
 

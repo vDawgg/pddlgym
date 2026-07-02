@@ -6,7 +6,7 @@ from collections import defaultdict
 import contextlib
 import sys
 import itertools
-import gym
+import gymnasium as gym
 import imageio
 from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple, cast
 
@@ -76,7 +76,7 @@ def run_demo(
 
         obs, reward, done, _, _ = env.step(action)
         env.render()
-        tot_reward += reward
+        tot_reward += float(reward)
         if verbose:
             print("Rew:", reward)
 

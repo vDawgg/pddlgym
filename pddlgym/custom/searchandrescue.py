@@ -10,7 +10,7 @@ from pddlgym.rendering import (
     myopic_posar_render,
 )
 from pddlgym.structs import Type, Predicate, Not, State, LiteralConjunction
-import gym
+import gymnasium as gym
 import pddlgym
 import os
 import numpy as np
@@ -889,7 +889,7 @@ if __name__ == "__main__":
 
     np.random.seed(0)
     for env_name in ["PDDLSearchAndRescueLevel7"]:  # , "MyopicPOSAR"]:
-        imgs = []
+        imgs: list = []
         env = pddlgym.make(f"{env_name}-v0")
         assert isinstance(env, PDDLEnv)
         assert isinstance(env, PDDLSearchAndRescueEnv)

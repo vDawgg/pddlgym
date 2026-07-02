@@ -25,8 +25,8 @@ from pddlgym.rendering import (
     navigation_render,
     visit_all_render,
 )
-from gym.envs.registration import register
-import gym
+from gymnasium.envs.registration import register
+import gymnasium as gym
 
 import os
 from typing import Callable, Dict, List, Tuple, Union, cast
@@ -35,7 +35,7 @@ from typing import Callable, Dict, List, Tuple, Union, cast
 # Save users from having to separately import gym
 def make(*args, **kwargs) -> gym.Env:
     # env checker fails since obs is not an numpy array like object
-    return gym.make(*args, disable_env_checker=True, **kwargs)
+    return gym.make(*args, disable_env_checker=True, **kwargs).unwrapped
 
 
 def register_pddl_env(name: str, is_test_env: bool, other_args: dict) -> None:
