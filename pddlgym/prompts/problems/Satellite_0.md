@@ -1,0 +1,3 @@
+## Problem description
+
+There is one satellite (satellite0), one instrument (instrument0), three different image modes (image1, spectograph2, thermograph0) and six directions (Star0, GroundSation1, GroundStation2, Phenomenon3, Phenomenon4, Star5, Phenomenon6). The satellite satellite0 has power available. The satellite satelite0 carries the instrument instrument0. The instrument instrument0 support the following modes: thermograph. instrument0 is currently callibrated for the direction Groundstation2. The satellite satellite0 is currrently pointing in the direction of Phenomenon6. The goal is to capture an image of Phenomenon4 with thermograph0, of Star5 with thermograph0 and of Phenomenon6 with thermograph0.

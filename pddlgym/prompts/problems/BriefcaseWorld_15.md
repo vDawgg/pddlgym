@@ -1,0 +1,3 @@
+## Problem description
+
+There are seventeen locations (l0 - l16) and sixteen items (o0 - o15). The robot with the briefcase starts out at location l5. The item o0 starts out at location l13, o1 at l0, o2 at l0, o3 at l9, o4 at l15, o5 at l0, o6 at l8, o7 at l11, o8 at l10, o9 at l14, o10 at l0, o11 at l1, o12 at l11, o13 at l8, o14 at l4 and o15 at l8. The goal is for the robot with the briefcase to be at location l3, the item o0 to be at location l8, o1 at l8, o2 at l7, o3 at l11, o4 at l2, o5 at l5, o6 at l5, o7 at l9, o8 at l14, o9 at l7, o10 at l13, o11 at l15, o12 at l4, o13 at l13, o14 at l12 and o15 at l0.

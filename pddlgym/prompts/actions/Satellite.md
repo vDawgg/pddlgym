@@ -1,0 +1,5 @@
+(turn_to satellite direction_new direction_old)
+(switch_on instrument satellite)
+(switch_off instrument satellite)
+(calibrate satellite instrument direction)
+(take_image satellite direction instrument mode)

@@ -1,0 +1,3 @@
+## Problem description
+
+There are 10 orders that need to be fulfilled (o1 - o10), 10 possible types of products (p1 - p10) and a maximum of 11 possible stacks (n0 - n10). There are no open stacks currently available. The machine is currently available and not configured for any specific product type. None of the orders have started to be processed. Order o1 includes products of type p1, p2, p9, o2 of p5, p8, p9, o3 of p2, p5, p10, o4 of p4, p7, p9, o5 of p1, p3, p6, o6 of p3, p4, p6, o7 of p2, p7, p10, o8 of p4, p5, p7, o9 of p6, p8, p10, o10 of p1, p3, p8. The goal is for all orders to be shipped.

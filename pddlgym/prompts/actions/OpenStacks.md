@@ -1,0 +1,5 @@
+(setup-machine product current-assigned-stack-count)
+(make-product product current-assigned-stack-count)
+(start-order order current-assigned-stack-count new-assigned-stack-count)
+(ship-order order current-assigned-stack-count new-assigned-stack-count)
+(open-new-stack current-open-stack-count new-open-stack-count)

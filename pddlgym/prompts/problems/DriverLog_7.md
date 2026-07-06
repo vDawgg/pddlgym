@@ -1,0 +1,3 @@
+## Problem description
+
+There are three robots (driver1, driver2, driver3), three trucks (truck1, truck2, truck3), seven packages (package1 - package7) and three locations (s0 - s2). The driver driver1 starts out at location s2, driver2 at s0 and driver3 at s1. The truck truck1 starts out at location s2, truck2 at s2 and truck3 at s2. The package package1 starts out at location s0, package2 at s1, package3 at s0, package4 at s0, package5 at s1, package6 at s2 and package7 at s2. The goal is for driver1 to be at s2, driver2 at s0, truck2 at s1, truck3 at s0, package1 at s2, package2 at s0, package3 at s1, package4 at s2, package5 at s1, package6 at s2 and package7 at s1.

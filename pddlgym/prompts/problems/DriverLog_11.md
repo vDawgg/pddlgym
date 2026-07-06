@@ -1,0 +1,3 @@
+## Problem description
+
+There are two robots (driver1, driver2), three trucks (truck1, truck2, truck3), six packages (package1 - package6) and ten locations (s0 - s9). The driver driver1 starts out at location s1 and driver2 at s3. The truck truck1 starts out at location s7, truck2 at s9 and truck3 at s2. The package package1 starts out at location s3, package2 at s4, package3 at s9, package4 at s7, package5 at s4 and package6 at s1. The goal is for driver1 to be at s4, driver2 at s9, truck2 at s5, truck3 at s0, package1 at s2, package2 at s2, package3 at s9, package4 at s1, package5 at s0 and package6 at s2.

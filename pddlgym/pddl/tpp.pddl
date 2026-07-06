@@ -14,12 +14,11 @@
 	     (stored ?g - goods ?l - level)
 	     (on-sale ?g - goods ?m -  market ?l - level)
 	     (next ?l1 ?l2 - level)
-	     (at ?t - truck ?p - place)
-	     (connected ?p1 ?p2 - place))
+	     (at ?t - truck ?p - place))
 
 (:action drive
  :parameters (?t - truck ?from ?to - place)
- :precondition (and (at ?t ?from) (connected ?from ?to))
+ :precondition (and (at ?t ?from))
  :effect (and (not (at ?t ?from)) (at ?t ?to)))
 
 

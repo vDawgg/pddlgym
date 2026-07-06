@@ -1,4 +1,4 @@
-; Domain taken from https://github.com/AI-Planning/classical-domains
+; Problem taken from https://github.com/AI-Planning/classical-domains
 
 (define (problem ZTRAVEL-1-3)
 (:domain zeno-travel)

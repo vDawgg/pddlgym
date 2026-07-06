@@ -1,0 +1,6 @@
+(load-truck item truck location)
+(unload-truck item truck location)
+(board-truck robot truck location)
+(disembark-truck robot truck location)
+(drive-truck truck location-from location-to robot)
+(walk robot location-from location-to)
