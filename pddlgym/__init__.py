@@ -93,7 +93,7 @@ for env_name, kwargs in _env_specs:
 
 
 # Custom environments
-for level in range(1, 8):
+for level in range(1, 3):
     register(
         id=f"SearchAndRescueLevel{level}-v0",
         entry_point="pddlgym.custom.searchandrescue:SearchAndRescueEnv",
