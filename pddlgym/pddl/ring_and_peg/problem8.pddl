@@ -21,6 +21,16 @@
         (pegempty green_peg)
         (at start_position)
         (handempty)
+
+    ; action literals
+    (move green_peg)
+    (move orange_peg)
+    (move purple_peg)
+    (move red_peg)
+    (move start_position)
+    (move yellow_peg)
+    (pick)
+    (place)
     )
     (:goal         (and (onpeg yellow_ring yellow_peg) (onpeg orange_ring orange_peg) (onpeg purple_ring purple_peg)))
 )

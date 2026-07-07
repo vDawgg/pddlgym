@@ -5,8 +5,7 @@
         blue_goal yellow_goal
         resting_position
     )
-    (:init
-        (robot-at resting_position)
+    (:init        (robot-at resting_position)
         (handempty)
         (needle blue_needle_1)
         (needle blue_needle_2)
@@ -22,6 +21,20 @@
         (needle-at yellow_needle_2 yellow_needle_2)
         (needle-at yellow_needle_3 yellow_needle_3)
         (needle-at yellow_needle_4 yellow_needle_4)
+
+        ; action literals
+        (move blue_needle_1)
+        (move blue_needle_2)
+        (move blue_needle_3)
+        (move yellow_needle_1)
+        (move yellow_needle_2)
+        (move yellow_needle_3)
+        (move yellow_needle_4)
+        (move blue_goal)
+        (move yellow_goal)
+        (move resting_position)
+        (pick)
+        (place)
     )
     (:goal         (and (needle-at blue_needle_1 blue_goal) (needle-at blue_needle_2 blue_goal) (needle-at blue_needle_3 blue_goal) (needle-at yellow_needle_1 yellow_goal) (needle-at yellow_needle_2 yellow_goal) (needle-at yellow_needle_3 yellow_goal) (needle-at yellow_needle_4 yellow_goal)))
 )

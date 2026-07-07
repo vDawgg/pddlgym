@@ -15,7 +15,14 @@
 	(stored goods1 level0)
 	(loaded goods1 truck1 level0)
 	(on-sale goods1 market1 level1)
-	(at truck1 depot1))
+	(at truck1 depot1)
+    ; action literals
+    (drive truck1 depot1)
+    (drive truck1 market1)
+    (load goods1 truck1)
+    (unload goods1 truck1)
+    (buy truck1 goods1)
+    )
 
 (:goal (and
 	(stored goods1 level1)))

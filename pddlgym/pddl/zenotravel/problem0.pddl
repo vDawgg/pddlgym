@@ -41,7 +41,17 @@
 	(flevel fl4)
 	(flevel fl5)
 	(flevel fl6)
-)
+
+    ; action literals
+    (board person1 plane1)
+    (debark person1 plane1)
+    (board person2 plane1)
+    (debark person2 plane1)
+    (fly plane1 city0)
+    (fly plane1 city1)
+    (fly plane1 city2)
+    (refuel plane1)
+    )
 (:goal (and
 	(at plane1 city1)
 	(at person1 city0)

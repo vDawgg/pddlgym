@@ -8,11 +8,17 @@
         (wantsPaper ?loc - loc)
         (unpacked ?paper - paper)
         (carrying ?paper - paper)
+	(pick-up ?paper)
+	(move ?to)
+	(deliver ?paper)
     )
+
+    ; (:actions pick-up move deliver)
 
     (:action pick-up
         :parameters (?paper - paper ?loc - loc)
         :precondition (and
+	    (pick-up ?paper)
             (at ?loc)
             (isHomeBase ?loc)
             (unpacked ?paper)
@@ -26,6 +32,7 @@
     (:action move
         :parameters (?from - loc ?to - loc)
         :precondition (and
+	    (move ?to)
             (at ?from)
         )
         :effect (and
@@ -37,6 +44,7 @@
     (:action deliver
         :parameters (?paper - paper ?loc - loc)
         :precondition (and
+	    (deliver ?paper)
             (at ?loc)
             (wantsPaper ?loc)
             (carrying ?paper)

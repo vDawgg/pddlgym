@@ -5,11 +5,17 @@
         (onpeg ?x ?y) (pegempty ?x)
         (handempty) (holding ?x)
         (peg ?x) (ring ?x)
+	(move ?to)
+	(pick)
+	(place)
     )
+
+    ; (:actions move pick place)
 
     (:action move
         :parameters (?from ?to)
         :precondition (and
+	    (move ?to)
             (at ?from)
             (peg ?from) (peg ?to)
         )
@@ -19,6 +25,7 @@
     (:action pick
         :parameters (?x ?y)
         :precondition (and
+	    (pick)
             (at ?y)
             (onpeg ?x ?y)
             (handempty)
@@ -33,6 +40,7 @@
     (:action place
         :parameters (?x ?y)
         :precondition (and
+	    (place)
             (at ?y)
             (holding ?x)
             (pegempty ?y)

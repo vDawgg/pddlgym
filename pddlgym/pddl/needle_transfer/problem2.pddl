@@ -31,7 +31,23 @@
 
     (current-ring teal_ring)
     (sequence teal_ring teal_ring)
-  )
+
+    ; action literals
+    (move left_arm needle)
+    (move left_arm goal)
+    (move left_arm left-rest)
+    (move left_arm right-rest)
+    (move left_arm teal_ring)
+    (move right_arm needle)
+    (move right_arm goal)
+    (move right_arm left-rest)
+    (move right_arm right-rest)
+    (move right_arm teal_ring)
+    (pick left_arm)
+    (pick right_arm)
+    (place left_arm)
+    (place right_arm)
+    )
 
   (:goal
     (and

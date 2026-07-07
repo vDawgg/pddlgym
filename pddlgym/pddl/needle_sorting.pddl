@@ -6,11 +6,17 @@
         (needle-at ?needle ?location)
         (holding ?needle)
         (handempty)
+	(move ?to)
+	(pick)
+	(place)
     )
+
+    ; (:actions move pick place)
 
     (:action move
         :parameters (?from ?to)
         :precondition (and
+	    (move ?to)
             (robot-at ?from)
             (not (robot-at ?to))
         )
@@ -23,6 +29,7 @@
     (:action pick
         :parameters (?needle ?location)
         :precondition (and
+	    (pick)
             (needle ?needle)
             (not (holding ?needle))
             (robot-at ?location)
@@ -39,6 +46,7 @@
     (:action place
         :parameters (?needle ?location)
         :precondition (and
+	    (place)
             (needle ?needle)
             (holding ?needle)
             (robot-at ?location)

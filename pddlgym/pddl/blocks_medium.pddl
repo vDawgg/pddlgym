@@ -12,11 +12,18 @@
         (handempty)
         (handfull)
         (holding ?x - block)
+	(pickup ?x - block)
+        (putdown ?x - block)
+        (stack ?x - block ?y - block)
+        (unstack ?x - block)
     )
+
+    ; (:actions pickup putdown stack unstack)
 
     (:action pick-up
         :parameters (?x - block)
         :precondition (and
+	    (pickup ?x)
             (clear ?x)
             (ontable ?x)
             (handempty)
@@ -33,6 +40,7 @@
     (:action put-down
         :parameters (?x - block)
         :precondition (and
+	    (putdown ?x)
             (holding ?x)
             (handfull)
         )
@@ -47,6 +55,7 @@
     (:action stack
         :parameters (?x - block ?y - block)
         :precondition (and
+	    (stack ?x ?y)
             (holding ?x)
             (clear ?y)
             (handfull)
@@ -64,6 +73,7 @@
     (:action unstack
         :parameters (?x - block ?y - block)
         :precondition (and
+	    (unstack ?x)
             (on ?x ?y)
             (clear ?x)
             (handempty)

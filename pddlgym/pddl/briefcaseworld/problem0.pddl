@@ -10,7 +10,13 @@
 (:init
 (at o0 l1)
 (is-at l1)
-)
+
+    ; action literals
+    (move l0)
+    (move l1)
+    (take-out o0)
+    (put-in o0)
+    )
 (:goal
 (and
 (at o0 l1)

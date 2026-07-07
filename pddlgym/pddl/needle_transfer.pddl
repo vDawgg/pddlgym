@@ -16,11 +16,17 @@
     (needle-at ?needle ?position)
     (current-ring ?ring)
     (sequence ?ring_1 ?ring_2)
+    (move ?robot ?to)
+    (pick ?arm)
+    (place ?arm)
   )
+
+  ; (:actions move pick place)
 
   (:action move
     :parameters (?robot ?from ?to)
     :precondition (and
+	(move ?robot ?to)
         (robot ?robot)
         (or (needle ?to) (ring ?to) (position ?to))
         (or
@@ -38,6 +44,7 @@
   (:action pick
     :parameters (?robot ?other_robot ?needle ?current_ring ?next_ring)
     :precondition (and
+    	(pick ?robot)
         (robot ?robot)
         (robot ?other_robot)
         (needle ?needle)
@@ -86,6 +93,7 @@
   (:action place
     :parameters (?robot ?other_robot ?needle ?location ?current_ring ?next_ring)
     :precondition (and
+    	(place ?robot)
         (robot ?robot)
         (robot ?other_robot)
         (needle ?needle)

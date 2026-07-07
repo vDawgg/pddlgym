@@ -10,4 +10,4 @@ The actions available to the robot are:
 - fly
     - Flys a passenger from one location to another while consuming one level of fuel.
 - refuel
-    - Refuels the plane to a specified fuel level at the current location.
+    - Refuels the plane to the next-highest fuel level at the current location.

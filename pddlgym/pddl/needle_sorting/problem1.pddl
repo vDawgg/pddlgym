@@ -8,8 +8,7 @@
         resting_position
     )
 
-    (:init
-        (robot-at resting_position)
+    (:init        (robot-at resting_position)
         (handempty)
         (needle red_needle_1)
         (needle red_needle_2)
@@ -31,6 +30,24 @@
         (needle-at blue_needle_3 blue_needle_3)
         (needle-at blue_needle_4 blue_needle_4)
         (needle-at blue_needle_5 blue_needle_5)
+
+        ; action literals
+        (move red_needle_1)
+        (move red_needle_2)
+        (move green_needle_1)
+        (move green_needle_2)
+        (move green_needle_3)
+        (move blue_needle_1)
+        (move blue_needle_2)
+        (move blue_needle_3)
+        (move blue_needle_4)
+        (move blue_needle_5)
+        (move red_goal)
+        (move blue_goal)
+        (move green_goal)
+        (move resting_position)
+        (pick)
+        (place)
     )
     (:goal (and
             (needle-at red_needle_1 red_goal)

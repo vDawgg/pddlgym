@@ -13,7 +13,22 @@
 (at o2 l3)
 (at o3 l4)
 (is-at l3)
-)
+
+    ; action literals
+    (move l0)
+    (move l1)
+    (move l2)
+    (move l3)
+    (move l4)
+    (take-out o0)
+    (take-out o1)
+    (take-out o2)
+    (take-out o3)
+    (put-in o0)
+    (put-in o1)
+    (put-in o2)
+    (put-in o3)
+    )
 (:goal
 (and
 (at o0 l4)

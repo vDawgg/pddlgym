@@ -6,8 +6,8 @@ The actions available to the robot are:
 - drive
     - Drives a truck to a specific position.
 - load
-    - Loads goods from a market into a truck. Reuquires the definition of the levels (i.e. amount of goods) in the market and truck before and after loading.
+    - Loads one level of goods from a market into a truck.
 - unload
-    - Unloads goods from a truck into a depot. Requires the definition of the levels in the truck and depot before and after unloading.
+    - Unloads one level of goods from a truck into a depot.
 - buy
-    - Buys a specific amount of goods from a market given a truck is present at the market. Requires teh definition of the levels to be loaded at the market and the levels of goods for sale available at the market before and after buying.
+    - Buys one level of goods from a market given a truck is present at the market.

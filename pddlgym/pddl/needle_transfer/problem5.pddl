@@ -37,7 +37,29 @@
     (sequence green_ring blue_ring)
     (sequence blue_ring yellow_ring)
     (sequence yellow_ring yellow_ring)
-  )
+
+    ; action literals
+    (move left_arm needle)
+    (move left_arm goal)
+    (move left_arm left-rest)
+    (move left_arm right-rest)
+    (move left_arm red_ring)
+    (move left_arm green_ring)
+    (move left_arm blue_ring)
+    (move left_arm yellow_ring)
+    (move right_arm needle)
+    (move right_arm goal)
+    (move right_arm left-rest)
+    (move right_arm right-rest)
+    (move right_arm red_ring)
+    (move right_arm green_ring)
+    (move right_arm blue_ring)
+    (move right_arm yellow_ring)
+    (pick left_arm)
+    (pick right_arm)
+    (place left_arm)
+    (place right_arm)
+    )
 
   (:goal
     (and

@@ -11,8 +11,15 @@
 		(in ?obj1 ?obj)
 		(driving ?d ?v)
 		(empty ?v)
+		(load-truck ?truck ?obj)
+		(unload-truck ?obj ?truck)
+		(board-truck ?driver ?truck)
+		(disembark-truck ?driver ?truck)
+		(drive-truck ?truck ?to)
+		(walk ?driver ?to)
 )
 
+; (:actions load-truck unload-truck board-truck disembark-truck drive-truck walk)
 
 (:action load-truck
   :parameters
@@ -20,7 +27,9 @@
     ?truck
     ?loc)
   :precondition
-   (and (obj ?obj) (truck ?truck) (location ?loc)
+   (and
+   (load-truck ?truck ?obj)
+   (obj ?obj) (truck ?truck) (location ?loc)
    (at ?truck ?loc) (at ?obj ?loc))
   :effect
    (and (not (at ?obj ?loc)) (in ?obj ?truck)))
@@ -31,7 +40,9 @@
     ?truck
     ?loc)
   :precondition
-   (and (obj ?obj) (truck ?truck) (location ?loc)
+   (and
+	(unload-truck ?obj ?truck)
+   	(obj ?obj) (truck ?truck) (location ?loc)
         (at ?truck ?loc) (in ?obj ?truck))
   :effect
    (and (not (in ?obj ?truck)) (at ?obj ?loc)))
@@ -42,7 +53,9 @@
     ?truck
     ?loc)
   :precondition
-   (and (driver ?driver) (truck ?truck) (location ?loc)
+   (and
+   (board-truck ?driver ?truck)
+   (driver ?driver) (truck ?truck) (location ?loc)
    (at ?truck ?loc) (at ?driver ?loc) (empty ?truck))
   :effect
    (and (not (at ?driver ?loc)) (driving ?driver ?truck) (not (empty ?truck))))
@@ -53,7 +66,9 @@
     ?truck
     ?loc)
   :precondition
-   (and (driver ?driver) (truck ?truck) (location ?loc)
+   (and
+	(disembark-truck ?driver ?truck)
+   	(driver ?driver) (truck ?truck) (location ?loc)
         (at ?truck ?loc) (driving ?driver ?truck))
   :effect
    (and (not (driving ?driver ?truck)) (at ?driver ?loc) (empty ?truck)))
@@ -65,7 +80,9 @@
     ?loc-to
     ?driver)
   :precondition
-   (and (truck ?truck) (location ?loc-from) (location ?loc-to) (driver ?driver)
+   (and
+   (drive-truck ?truck ?loc-to)
+   (truck ?truck) (location ?loc-from) (location ?loc-to) (driver ?driver)
    (at ?truck ?loc-from)
    (driving ?driver ?truck))
   :effect
@@ -77,7 +94,9 @@
     ?loc-from
     ?loc-to)
   :precondition
-   (and (driver ?driver) (location ?loc-from) (location ?loc-to)
+   (and
+	(walk ?driver ?loc-to)
+   	(driver ?driver) (location ?loc-from) (location ?loc-to)
 	(at ?driver ?loc-from))
   :effect
    (and (not (at ?driver ?loc-from)) (at ?driver ?loc-to)))
