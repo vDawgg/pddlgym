@@ -17,7 +17,17 @@
     (link shed location1)
     (link location2 gate)
     (link location1 location2)
-) (:goal
+
+    ; action literals
+    (walk location1)
+    (walk location2)
+    (walk shed)
+    (walk gate)
+    (pickup_spanner spanner1)
+    (pickup_spanner spanner2)
+    (tighten_nut nut1)
+    (tighten_nut nut2)
+    ) (:goal
   (and
    (tightened nut1)
    (tightened nut2)
