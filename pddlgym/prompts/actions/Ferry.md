@@ -1,3 +1,3 @@
-(board car obj ferry)
-(sail from to)
-(debark car obj ferry)
+(board car)
+(sail to)
+(debark car)

@@ -1,4 +1,4 @@
-(down floor-1 floor-2)
+(down floor)
 (board floor passenger)
-(up floor floor)
+(up floor)
 (depart floor passenger)

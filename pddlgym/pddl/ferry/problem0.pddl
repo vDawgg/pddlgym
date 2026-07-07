@@ -1,24 +1,22 @@
-(define (problem ferry-l10-c6) (:domain ferry)
+(define (problem ferry-l10-c5) (:domain ferry)
   (:objects
-        c0 c1 c2 c3 c4 c5 - obj
+        c0 c1 c2 c3 c4 - obj
         ferry - ferry
         l0 l1 l2 l3 l4 l5 l6 l7 l8 l9 - obj
   )
   (:init
     ;; Problem-relevant predicates
-    (at c0 l7)
-    (at c1 l6)
-    (at c2 l1)
-    (at c3 l9)
-    (at c4 l0)
-    (at c5 l1)
-    (at-ferry l2)
+    (at c0 l4)
+    (at c1 l8)
+    (at c2 l5)
+    (at c3 l5)
+    (at c4 l6)
+    (at-ferry l5)
     (car c0)
     (car c1)
     (car c2)
     (car c3)
     (car c4)
-    (car c5)
     (empty-ferry ferry)
     (location l0)
     (location l1)
@@ -127,7 +125,6 @@
     (board c2)
     (board c3)
     (board c4)
-    (board c5)
     (board l0)
     (board l1)
     (board l2)
@@ -143,7 +140,6 @@
     (debark c2)
     (debark c3)
     (debark c4)
-    (debark c5)
     (debark l0)
     (debark l1)
     (debark l2)
@@ -159,7 +155,6 @@
     (sail c2)
     (sail c3)
     (sail c4)
-    (sail c5)
     (sail l0)
     (sail l1)
     (sail l2)
@@ -171,5 +166,5 @@
     (sail l8)
     (sail l9)
   )
-  (:goal         (and (at c0 l0) (at c1 l9) (at c2 l6) (at c3 l9) (at c4 l4) (at c5 l8)))
+  (:goal         (and (at c0 l9) (at c1 l0) (at c2 l7) (at c3 l7) (at c4 l4)))
 )

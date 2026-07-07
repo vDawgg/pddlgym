@@ -1,0 +1,3 @@
+## Problem description
+
+There is one ferry (ferry), 25 cars (c0 - c24), and 20 locations (l0 - l19). The ferry start out at location l0. The car c0 is at location l0, c1 at l1, c2 at l2, c3 at l3, c4 at l4, c5 at l5, c6 at l6, c7 at l7, c8 at l8, c9 at l9, c10 at l10, c11 at l11, c12 at l12, c13 at l13, c14 at l14, c15 at l15, c16 at l16, c17 at l17, c18 at l18, c19 at l19, c20 at l0, c21 at l1, c22 at l2, c23 at l3 and c24 at l4. The goal is to transfer car c0 to location l1, c1 to l2, c2 to l3, c3 to l4, c4 to l5, c5 to l6, c6 to l7, c7 to l8, c8 to l9, c9 to l10, c10 to l11, c11 to l12, c12 to l13, c13 to l14, c14 to l15, c15 to l16, c16 to l17, c17 to l18, c18 to l19, c19 to l1, c20 to l2, c21 to l3, c22 to l4, c23 to l5 and c24 to l6.
