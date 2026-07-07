@@ -36,5 +36,7 @@
    (:goal (and (movie-rewound)
                (counter-at-zero)
                (have-chips)
+               (have-dip)
+               (have-pop)
                (have-cheese)
                (have-crackers))))
