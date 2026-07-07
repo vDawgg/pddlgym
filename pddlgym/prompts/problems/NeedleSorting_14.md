@@ -1,0 +1,3 @@
+## Problem description
+
+There are 40 colored needles (the needle locations are called: blue_needle_1 - blue_needle_4, cyan_needle_1 - cyan_needle_4, green_needle_1 - green_needle_4, magenta_needle_1 - magenta_needle_4, orange_needle_1 - orange_needle_4, pink_needle_1 - pink_needle_4, purple_needle_1 - purple_needle_4, red_needle_1 - red_needle_4, teal_needle_1 - teal_needle_4 and yellow_needle_1 - yellow_needle_4) and 10 goals (blue_goal, cyan_goal, green_goal, magenta_goal, orange_goal, pink_goal, purple_goal, red_goal, teal_goal and yellow_goal). The robot arm start out in a default position, while the needles are scattered randomly away from the goal positions. The goal is to move all needles to their matching goals.

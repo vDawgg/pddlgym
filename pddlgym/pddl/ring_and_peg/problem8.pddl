@@ -1,0 +1,26 @@
+(define (problem RING_AND_PEG_08)
+    (:domain RING_AND_PEG)
+    (:objects
+        yellow_ring orange_ring purple_ring
+        yellow_peg orange_peg purple_peg red_peg green_peg start_position
+    )
+    (:init
+        (ring yellow_ring)
+        (ring orange_ring)
+        (ring purple_ring)
+        (peg yellow_peg)
+        (peg orange_peg)
+        (peg purple_peg)
+        (peg red_peg)
+        (peg green_peg)
+        (peg start_position)
+        (onpeg yellow_ring yellow_peg)
+        (onpeg orange_ring purple_peg)
+        (onpeg purple_ring orange_peg)
+        (pegempty red_peg)
+        (pegempty green_peg)
+        (at start_position)
+        (handempty)
+    )
+    (:goal         (and (onpeg yellow_ring yellow_peg) (onpeg orange_ring orange_peg) (onpeg purple_ring purple_peg)))
+)
