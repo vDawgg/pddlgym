@@ -10,20 +10,10 @@ from pddlgym import spaces  # noqa: F401
 
 from pddlgym.rendering import (
     rearrangement_render,
-    sokoban_render,
     minecraft_render,
     blocks_render,
-    doors_render,
     hanoi_render,
-    tsp_render,
-    slidetile_render,
-    tireworld_render,
-    snake_render,
-    exploding_blocks_render,
-    hiking_render,
-    maze_render,
     navigation_render,
-    visit_all_render,
 )
 from gymnasium.envs.registration import register
 import gymnasium as gym
@@ -62,220 +52,36 @@ def _make_nav_render(name: str) -> Callable:
 
 
 _env_specs: List[Tuple[str, Dict[str, Union[bool, Callable]]]] = [
-    ("gripper", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("easygripper", {"operators_as_actions": True, "dynamic_action_space": False}),
-    ("onearmedgripper", {"operators_as_actions": True, "dynamic_action_space": False}),
-    (
-        "tinyonearmedgripper",
-        {"operators_as_actions": True, "dynamic_action_space": False},
-    ),
-    (
-        "lifelong_tiny_gripper",
-        {"operators_as_actions": True, "dynamic_action_space": False},
-    ),
+    ("gripper", {}),
     ("rearrangement", {"render": rearrangement_render}),
-    ("sokoban", {"render": sokoban_render}),
     ("minecraft", {"render": minecraft_render}),
-    ("depot", {"operators_as_actions": True, "dynamic_action_space": True}),
+    ("depot", {}),
     ("baking", {}),
     ("blocks", {"render": blocks_render}),
-    ("derivedblocks", {"render": blocks_render}),
-    ("toomanyblocks", {"render": blocks_render}),
-    ("lifelong_blocks6", {"render": blocks_render}),
-    ("travel", {}),
-    ("doors", {"render": doors_render}),
-    ("casino", {}),
     ("hanoi", {"render": hanoi_render}),
-    (
-        "hanoi_operator_actions",
-        {
-            "render": hanoi_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    ("tsp", {"render": tsp_render}),
-    (
-        "tsp_operator_actions",
-        {
-            "render": tsp_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    ("slidetile", {"render": slidetile_render}),
     ("elevator", {}),
     ("ferry", {}),
-    ("meetpass", {}),
-    ("footwear", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("easyblocks", {"render": blocks_render}),
-    ("conditionalblocks", {"render": blocks_render}),
-    ("conditionalferry", {}),
-    (
-        "blocks_operator_actions",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "generated_blocks",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
     (
         "blocks_medium",
         {
             "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
         },
     ),
-    (
-        "manyblocksnopiles",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "manyexplodingblockssmallpiles",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "manyblockssmallpiles",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "manyblockssmallpilesnoclear",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "manyblockssmallpilesnohand",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "manyblockssmallpilesnoclearhand",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "quantifiedblocks",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "quantifiedblocks2",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    (
-        "quantifiedblocks3",
-        {
-            "render": blocks_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    ("equalityblocks", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("equalityblocks2", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("manygrid", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("manylogistics", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("manymiconic", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("manygripper", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("manyferry", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("movie", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("glibblocks", {"render": blocks_render}),
-    ("glibrearrangement", {"render": rearrangement_render}),
-    ("glibdoors", {"render": doors_render}),
-    ("tireworld", {"render": tireworld_render}),
-    (
-        "manytireworld",
-        {
-            "render": tireworld_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    ("fridge", {"operators_as_actions": True, "dynamic_action_space": True}),
-    (
-        "snake",
-        {
-            "render": snake_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
-    ("river", {}),
-    ("explodingblocks", {"render": exploding_blocks_render}),
-    ("newspapers", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("easynewspapers", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("trapnewspapers", {"operators_as_actions": True, "dynamic_action_space": True}),
-    (
-        "hiking",
-        {
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-            "render": hiking_render,
-        },
-    ),
-    (
-        "maze",
-        {
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-            "render": maze_render,
-        },
-    ),
-    ("spannerlearning", {"operators_as_actions": True, "dynamic_action_space": True}),
-    ("navigation1", {"render": _make_nav_render("PDDLEnvNavigation1-v0")}),
-    ("navigation2", {"render": _make_nav_render("PDDLEnvNavigation2-v0")}),
-    ("navigation3", {"render": _make_nav_render("PDDLEnvNavigation3-v0")}),
-    ("navigation4", {"render": _make_nav_render("PDDLEnvNavigation4-v0")}),
-    ("navigation5", {"render": _make_nav_render("PDDLEnvNavigation5-v0")}),
-    ("navigation6", {"render": _make_nav_render("PDDLEnvNavigation6-v0")}),
-    ("navigation7", {"render": _make_nav_render("PDDLEnvNavigation7-v0")}),
-    ("navigation8", {"render": _make_nav_render("PDDLEnvNavigation8-v0")}),
-    ("navigation9", {"render": _make_nav_render("PDDLEnvNavigation9-v0")}),
-    ("navigation10", {"render": _make_nav_render("PDDLEnvNavigation10-v0")}),
-    (
-        "visit_all",
-        {
-            "render": visit_all_render,
-            "operators_as_actions": True,
-            "dynamic_action_space": True,
-        },
-    ),
+    ("manygripper", {}),
+    ("movie", {}),
+    ("newspapers", {}),
+    ("spannerlearning", {}),
+    ("briefcaseworld", {}),
+    ("driverlog", {}),
+    ("needle_sorting", {}),
+    ("needle_transfer", {}),
+    ("open_stacks", {}),
+    ("ring_and_peg", {}),
+    ("rovers", {}),
+    ("satellite", {}),
+    ("schedule", {}),
+    ("tpp", {}),
+    ("zenotravel", {}),
 ]
 for env_name, kwargs in _env_specs:
     other_args: Dict[str, Union[bool, Callable]] = {
