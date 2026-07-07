@@ -68,7 +68,7 @@ _env_specs: List[Tuple[str, Dict[str, Union[bool, Callable]]]] = [
         },
     ),
     ("manygripper", {}),
-    ("movie", {}),
+    ("movie", {"operators_as_actions": True}),
     ("newspapers", {}),
     ("spannerlearning", {}),
     ("briefcaseworld", {}),
@@ -79,7 +79,7 @@ _env_specs: List[Tuple[str, Dict[str, Union[bool, Callable]]]] = [
     ("ring_and_peg", {}),
     ("rovers", {}),
     ("satellite", {}),
-    ("schedule", {}),
+    ("schedule", {"operators_as_actions": True}),
     ("tpp", {}),
     ("zenotravel", {}),
 ]
