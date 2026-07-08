@@ -1,0 +1,61 @@
+; Problem taken from https://github.com/AI-Planning/classical-domains
+
+
+
+
+(define (problem briefcase-o8)
+(:domain briefcase)
+(:objects l0 l1 l2 l3 l4 l5 l6 l7 l8 - location
+          o0 o1 o2 o3 o4 o5 o6 o7 - portable)
+(:init
+(at o0 l3)
+(at o1 l6)
+(at o2 l1)
+(at o3 l3)
+(at o4 l8)
+(at o5 l8)
+(at o6 l4)
+(at o7 l0)
+(is-at l2)
+
+    ; action literals
+    (move l0)
+    (move l1)
+    (move l2)
+    (move l3)
+    (move l4)
+    (move l5)
+    (move l6)
+    (move l7)
+    (move l8)
+    (take-out o0)
+    (take-out o1)
+    (take-out o2)
+    (take-out o3)
+    (take-out o4)
+    (take-out o5)
+    (take-out o6)
+    (take-out o7)
+    (put-in o0)
+    (put-in o1)
+    (put-in o2)
+    (put-in o3)
+    (put-in o4)
+    (put-in o5)
+    (put-in o6)
+    (put-in o7)
+    )
+(:goal
+(and
+(at o0 l0)
+(at o1 l6)
+(at o2 l8)
+(at o3 l3)
+(at o4 l4)
+(at o5 l5)
+(at o6 l4)
+(at o7 l1)
+(is-at l1)
+)
+)
+)

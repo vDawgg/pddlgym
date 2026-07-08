@@ -26,10 +26,14 @@ from pddlgym.structs import (
     State,
     ProbabilisticEffect,
     LiteralConjunction,
+    LiteralDisjunction,
     NoChange,
+    ForAll,
+    When,
     TypedEntity,
     Predicate,
     DerivedPredicate,
+    Type,
 )
 from pddlgym.spaces import LiteralSpace, LiteralSetSpace, LiteralActionSpace
 
@@ -140,6 +144,7 @@ def get_successor_state(
             assignment,
             get_all_transitions,
             return_probs=return_probs,
+            type_to_parent_types=domain.type_to_parent_types,
         )
         if get_all_transitions:
             return next_state
@@ -271,11 +276,164 @@ def _check_struct_for_strips(struct: Union[Literal, LiteralConjunction]) -> bool
     return False
 
 
+def _ground_literal_safe(
+    lifted_lit: Literal, assignments: Dict[TypedEntity, TypedEntity]
+) -> Literal:
+    """Like ground_literal but tolerates variables that are not in assignments
+    (e.g. PDDL constants), leaving them untouched.
+    """
+    ground_vars = []
+    for v in lifted_lit.variables:
+        if v in assignments:
+            ground_vars.append(assignments[v])
+        else:
+            ground_vars.append(v)
+    return lifted_lit.predicate(*ground_vars)
+
+
+def _condition_holds(
+    cond: Any,
+    state_literals: FrozenSet[Literal],
+    assignments: Dict[TypedEntity, TypedEntity],
+) -> bool:
+    """Evaluate a parsed PDDL condition (parsed with is_effect=False) against a
+    set of ground state literals, using `assignments` to bind variables to
+    objects.
+
+    Supports: Literal (positive/negative, including the built-in `=`
+    predicate), LiteralConjunction (and), LiteralDisjunction (or).
+    """
+    if isinstance(cond, Literal):
+        grounded = _ground_literal_safe(cond, assignments)
+        if cond.predicate.name == "=":
+            a, b = grounded.variables[0], grounded.variables[1]
+            equal = a == b
+            return equal if not cond.is_negative else (not equal)
+        if cond.is_negative:
+            return grounded.positive not in state_literals
+        return grounded in state_literals
+    if isinstance(cond, LiteralConjunction):
+        return all(
+            _condition_holds(c, state_literals, assignments) for c in cond.literals
+        )
+    if isinstance(cond, LiteralDisjunction):
+        return any(
+            _condition_holds(c, state_literals, assignments) for c in cond.literals
+        )
+    raise NotImplementedError(f"Cannot evaluate condition: {cond}")
+
+
+def _flatten_effect(
+    effect: Any,
+    state_literals: FrozenSet[Literal],
+    assignments: Dict[TypedEntity, TypedEntity],
+    objects: FrozenSet[TypedEntity],
+    type_to_parent_types: Optional[Dict[Type, Set[Type]]],
+    out: List[Literal],
+) -> None:
+    """Recursively flatten a lifted effect into a list of ground Literal
+    effects appended to `out`. Conditions inside `When` are evaluated against
+    `state_literals` (the pre-action state). `ForAll` is grounded by
+    enumerating `objects` of the bound variable's type.
+    """
+    if effect == NoChange():
+        return
+    if isinstance(effect, LiteralConjunction):
+        for lit in effect.literals:
+            _flatten_effect(
+                lit, state_literals, assignments, objects, type_to_parent_types, out
+            )
+        return
+    if isinstance(effect, ForAll):
+        for obj_combo in _forall_object_assignments(
+            effect.variables, objects, type_to_parent_types
+        ):
+            extended = dict(assignments)
+            for var, obj in zip(effect.variables, obj_combo):
+                extended[var] = obj
+            _flatten_effect(
+                effect.body,
+                state_literals,
+                extended,
+                objects,
+                type_to_parent_types,
+                out,
+            )
+        return
+    if isinstance(effect, When):
+        if _condition_holds(effect.condition, state_literals, assignments):
+            _flatten_effect(
+                effect.result,
+                state_literals,
+                assignments,
+                objects,
+                type_to_parent_types,
+                out,
+            )
+        return
+    # Plain Literal (possibly with is_anti=True for negative effects)
+    out.append(_ground_literal_safe(effect, assignments))
+
+
+def _forall_object_assignments(
+    variables: List[TypedEntity],
+    objects: FrozenSet[TypedEntity],
+    type_to_parent_types: Optional[Dict[Type, Set[Type]]],
+) -> List[Tuple[TypedEntity, ...]]:
+    """Yield tuples of objects (one per variable) respecting the types of the
+    bound variables, including subtype relationships via `type_to_parent_types`.
+    Subtype expansion uses the same convention as `get_object_combinations`.
+    """
+    type_to_objs: Dict[Any, List[TypedEntity]] = {}
+    for obj in sorted(objects):
+        if type_to_parent_types is None:
+            type_to_objs.setdefault(obj.var_type, []).append(obj)
+        else:
+            for t in type_to_parent_types.get(obj.var_type, {obj.var_type}):
+                type_to_objs.setdefault(t, []).append(obj)
+    choices = [type_to_objs.get(var.var_type, []) for var in variables]
+    return [c for c in product(*choices)]
+
+
 def _compute_new_state_from_lifted_effects(
-    lifted_effects: List[Literal],
+    lifted_effects: List[Any],
     assignments: Dict[TypedEntity, TypedEntity],
     new_literals: Set[Literal],
+    state_literals: Optional[FrozenSet[Literal]] = None,
+    objects: Optional[FrozenSet[TypedEntity]] = None,
+    type_to_parent_types: Optional[Dict[Type, Set[Type]]] = None,
 ) -> Set[Literal]:
+    # When state/objects context is available, flatten conditional (When) and
+    # universal (ForAll) effects into a list of already-ground Literals; this
+    # also evaluates each `When` condition against the pre-action state.
+    # Otherwise (legacy path) the caller passes only plain lifted Literals and
+    # we ground them here.
+    if state_literals is not None and objects is not None:
+        flat_effects: List[Literal] = []
+        for lifted_effect in lifted_effects:
+            _flatten_effect(
+                lifted_effect,
+                state_literals,
+                assignments,
+                objects,
+                type_to_parent_types,
+                flat_effects,
+            )
+        # flat_effects are already ground; apply two-pass remove/add directly.
+        for effect in flat_effects:
+            if effect == NoChange():
+                continue
+            if effect.is_anti:
+                literal = effect.inverted_anti
+                if literal in new_literals:
+                    new_literals.remove(literal)
+        for effect in flat_effects:
+            if effect == NoChange():
+                continue
+            if not effect.is_anti:
+                new_literals.add(effect)
+        return new_literals
+    # Legacy path: lifted_effects are plain lifted Literals.
     for lifted_effect in lifted_effects:
         if lifted_effect == NoChange():
             continue
@@ -300,6 +458,7 @@ def _apply_effects(
     assignments: Dict[TypedEntity, TypedEntity],
     get_all_transitions: bool = False,
     return_probs: bool = False,
+    type_to_parent_types: Optional[Dict[Type, Set[Type]]] = None,
 ) -> Union[State, Dict[State, float], FrozenSet[State]]:
     """
     Update a state given lifted operator effects and
@@ -313,10 +472,15 @@ def _apply_effects(
     assignments : { TypedEntity : TypedEntity }
         Maps variables to objects.
     get_all_transitions : bool
-        If true, this function returns all possible successor states in the case that probabilistic effects exist in the domain.
+        If true, this function returns all possible successor states in the
+        case that probabilistic effects exist in the domain.
+    type_to_parent_types : dict, optional
+        Type hierarchy used to ground ForAll effects over subtypes. When
+        omitted, only objects whose `var_type` exactly matches the bound
+        variable's type are enumerated.
     """
     new_literals = set(state.literals)
-    determinized_lifted_effects: List[Literal] = []
+    determinized_lifted_effects: List[Any] = []
     # Handle probabilistic effects.
 
     # Each element of this list contain
@@ -351,6 +515,10 @@ def _apply_effects(
 
             if get_all_transitions:
                 probabilistic_lifted_effects.append(cur_probabilistic_lifted_effects)
+        elif isinstance(lifted_effect, (ForAll, When, LiteralConjunction)):
+            # Conditional (when) and universal (forall) effects are flattened
+            # inside _compute_new_state_from_lifted_effects using the state.
+            determinized_lifted_effects.append(lifted_effect)
         else:
             assert isinstance(lifted_effect, Literal)
             determinized_lifted_effects.append(lifted_effect)
@@ -358,7 +526,12 @@ def _apply_effects(
     states: List[State] = []
     if not get_all_transitions:
         new_literals = _compute_new_state_from_lifted_effects(
-            determinized_lifted_effects, assignments, new_literals
+            determinized_lifted_effects,
+            assignments,
+            new_literals,
+            state_literals=state.literals,
+            objects=state.objects,
+            type_to_parent_types=type_to_parent_types,
         )
 
         return state.with_literals(new_literals)
@@ -378,7 +551,12 @@ def _apply_effects(
             prob_efs_combination
         )
         new_prob_literals = _compute_new_state_from_lifted_effects(
-            new_determinized_lifted_effects, assignments, new_prob_literals
+            new_determinized_lifted_effects,
+            assignments,
+            new_prob_literals,
+            state_literals=state.literals,
+            objects=state.objects,
+            type_to_parent_types=type_to_parent_types,
         )
 
         new_state = state.with_literals(new_prob_literals)

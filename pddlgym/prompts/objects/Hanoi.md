@@ -1,6 +1,13 @@
 peg1
 peg2
 peg3
+peg4
+peg5
+peg6
+peg7
+peg8
+peg9
+peg10
 d1
 d2
 d3
@@ -11,3 +18,13 @@ d7
 d8
 d9
 d10
+d11
+d12
+d13
+d14
+d15
+d16
+d17
+d18
+d19
+d20

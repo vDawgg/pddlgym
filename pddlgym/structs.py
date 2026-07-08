@@ -561,6 +561,53 @@ class ProbabilisticEffect:
         return self.literals[np.argmax(self.probabilities)]
 
 
+class When:
+    """Represents a conditional effect: apply `result` only if `condition` holds.
+
+    Both `condition` and `result` are parsed literals (Literal, LiteralConjunction,
+    ForAll, ...). `condition` is interpreted as a precondition (uses Not for
+    negation), while `result` is interpreted as an effect (uses Anti for
+    negation).
+    """
+
+    condition: Any
+    result: Any
+
+    def __init__(self, condition: Any, result: Any) -> None:
+        self.condition = condition
+        self.result = result
+
+    def __str__(self) -> str:
+        return "WHEN ({}) : {}".format(self.condition, self.result)
+
+    def __repr__(self) -> str:
+        return str(self)
+
+    def __hash__(self) -> int:
+        return hash(str(self))
+
+    def __eq__(self, other: Any) -> bool:
+        return str(self) == str(other)
+
+    @property
+    def positive(self) -> When:
+        return When(self.condition, self.result)
+
+    def pddl_str(self) -> str:
+        cond_str = (
+            self.condition.pddl_str()
+            if hasattr(self.condition, "pddl_str")
+            else str(self.condition)
+        )
+        if isinstance(self.result, LiteralConjunction):
+            result_str = " ".join(lit.pddl_str() for lit in self.result.literals)
+        elif hasattr(self.result, "pddl_str"):
+            result_str = self.result.pddl_str()
+        else:
+            result_str = str(self.result)
+        return "(when {} {})".format(cond_str, result_str)
+
+
 ### States ###
 
 

@@ -1,0 +1,5 @@
+(setup-machine product)
+(make-product product)
+(start-order order)
+(ship-order order)
+(open-new-stack)

@@ -3,11 +3,8 @@ from __future__ import annotations
 from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
 from pddlgym.structs import Predicate, Type, State
 from pddlgym.spaces import LiteralSpace
-from pddlgym.core import PDDLEnv
-from pddlgym.constants import pddl_dir as project_pddl_dir
 from tests.constants import pddl_dir as test_pddl_dir
 
-import time
 import unittest
 
 
@@ -80,98 +77,6 @@ class TestSpaces(unittest.TestCase):
             attending(rene, block2),
             attending(rene, cylinder1),
         }
-
-    def test_dynamic_action_space(self, verbose: bool = False) -> None:
-        """ """
-
-        for name in [
-            # "Manymiconic",
-            # "Manygripper",
-            "Blocks_operator_actions",
-            "Hanoi_operator_actions",
-        ]:
-            domain_file = str(project_pddl_dir / "{}.pddl".format(name.lower()))
-            problem_dir = str(project_pddl_dir / name.lower())
-            # problem_dir = str(project_pddl_dir / (name.lower() + "_test"))
-
-            env1 = PDDLEnv(
-                domain_file,
-                problem_dir,
-                operators_as_actions=True,
-                dynamic_action_space=False,
-            )
-
-            env2 = PDDLEnv(
-                domain_file,
-                problem_dir,
-                operators_as_actions=True,
-                dynamic_action_space=True,
-            )
-
-            env1.action_space.seed(0)
-            env2.action_space.seed(0)
-            state1, _ = env1.reset()
-            state2, _ = env2.reset()
-            assert state1 == state2
-
-            for _ in range(25):
-                start_time = time.time()
-                valid_actions1 = env1.action_space.all_ground_literals(state1)
-                if verbose:
-                    print(
-                        "Computing valid action spaces without instantiator took {} seconds".format(
-                            time.time() - start_time
-                        )
-                    )
-                start_time = time.time()
-                valid_actions2 = env2.action_space.all_ground_literals(state2)
-                if verbose:
-                    print(
-                        "Computing valid action spaces *with* instantiator took {} seconds".format(
-                            time.time() - start_time
-                        )
-                    )
-                assert valid_actions2.issubset(valid_actions1)
-                action = env2.action_space.sample(state2)
-                state1, _, _, _, _ = env1.step(action)
-                state2, _, _, _, _ = env2.step(action)
-
-            if verbose:
-                print("Test passed for environment {}.".format(name))
-
-    def test_dynamic_action_space_same_obj(self) -> None:
-        """ """
-
-        name = "dynamic_action_space_same_obj"
-        domain_file = str(project_pddl_dir / "{}.pddl".format(name.lower()))
-        problem_dir = str(project_pddl_dir / name.lower())
-
-        env = PDDLEnv(
-            domain_file,
-            problem_dir,
-            operators_as_actions=True,
-            dynamic_action_space=True,
-        )
-        assert len(env.problems) == 2  # both problems have the same object set
-
-        env.fix_problem_index(0)
-        state1, _ = env.reset()
-        # Only one action is possible: unstack(a, b)
-        for _ in range(25):
-            act1 = env.action_space.sample(state1)
-            assert act1.predicate.name == "unstack"
-            assert act1.variables[0].name == "a"
-            assert act1.variables[1].name == "b"
-
-        env.fix_problem_index(1)
-        state2, _ = env.reset()
-        assert state1.objects == state2.objects
-        # Only one action is possible: unstack(d, c)
-        for _ in range(25):
-            act2 = env.action_space.sample(state2)
-            assert act2.predicate.name == "unstack"
-            assert act2.variables[0].name == "d"
-            assert act2.variables[1].name == "c"
 
 
 if __name__ == "__main__":

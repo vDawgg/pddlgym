@@ -4,18 +4,18 @@ A robot is tasked with baking a recipe with the available ingredients. Note that
 
 The actions available to the robot are:
 - putegginpan
-    - Puts a egg in a pan
+    - Puts a egg in a pan.
 - putflourinpan
-    - Puts flour in a pan
+    - Puts flour in a pan.
 - mix
-    - Mixes together an egg and flour in a pan
+    - Mixes together an egg and flour in a pan.
 - putpaninoven
-    - Puts a pan in an oven
+    - Puts a pan in an oven so a souffle/cake can be baked.
 - removepanfromoven
-    - Removes a pan from an oven
+    - Removes a pan from an oven.
 - bakecake
-    - Bakes a cake
+    - Bakes a cake. To bake a cake, the ingredients need to be mixed in the pan already.
 - bakesouffle
-    - Bakes a souffle
+    - Bakes a souffle. To bake a souffle, the pan needs to contain an egg.
 - cleanpan
-    - Cleans a pan
+    - Cleans a pan.

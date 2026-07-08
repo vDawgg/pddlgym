@@ -13,6 +13,7 @@ from pddlgym.structs import (
     ForAll,
     Exists,
     ProbabilisticEffect,
+    When,
     TypedEntity,
     ground_literal,
     DerivedPredicate,
@@ -140,6 +141,7 @@ class PDDLParser:
         ForAll,
         Exists,
         ProbabilisticEffect,
+        When,
     ]:
         """Parse the given string (representing either preconditions or effects)
         into a literal. Check against params to make sure typing is correct.
@@ -181,22 +183,35 @@ class PDDLParser:
             new_binding, clause = self._find_all_balanced_expressions(
                 string[7:-1].strip()
             )
-            new_name, new_type_name = new_binding.strip()[1:-1].split("-", 1)
-            new_name = new_name.strip()
-            new_type_name = new_type_name.strip()
-            assert new_name not in params, "ForAll variable {} already exists".format(
-                new_name
-            )
-            new_entity_type = self.types[new_type_name]
-            new_entity = TypedEntity(new_name, new_entity_type)
-            if isinstance(params, list):
-                new_params = params + [new_entity]
+            binding_str = new_binding.strip()[1:-1].strip()
+            if self.uses_typing and " - " in binding_str:
+                new_vars = list(
+                    self.parse_objects(
+                        binding_str, self.types, uses_typing=self.uses_typing
+                    )
+                )
             else:
+                new_vars = [
+                    TypedEntity(
+                        token.strip(), self.types.get("default", Type("default"))
+                    )
+                    for token in binding_str.split()
+                ]
+            if isinstance(params, list):
+                params_names = {p.name for p in params}
+                new_params = list(params) + list(new_vars)
+            else:
+                params_names = set(params.keys())
                 new_params = params.copy()
-                new_params[new_name] = self.types[new_type_name]
+                for v in new_vars:
+                    new_params[v.name] = v.var_type
+            for v in new_vars:
+                assert v.name not in params_names, (
+                    "ForAll variable {} already exists".format(v.name)
+                )
             result = ForAll(
                 self._parse_into_literal(clause, new_params, is_effect=is_effect),
-                new_entity,
+                list(new_vars),
             )
             return result
         if string.startswith("(exists") and string[7] in (" ", "\n", "("):
@@ -246,6 +261,15 @@ class PDDLParser:
                 inner = self._parse_into_literal(clause, params, is_effect=is_effect)
                 assert isinstance(inner, Literal)
                 return Not(inner)
+        if string.startswith("(when") and string[5] in (" ", "\n", "("):
+            assert is_effect, "Conditional effects (when) are only allowed in effects"
+            clauses = self._find_all_balanced_expressions(string[5:-1].strip())
+            assert len(clauses) == 2, (
+                "Conditional effect (when) must have exactly 2 sub-expressions"
+            )
+            condition = self._parse_into_literal(clauses[0], params, is_effect=False)
+            result = self._parse_into_literal(clauses[1], params, is_effect=True)
+            return When(condition, result)
         parts = string[1:-1].split()
         pred, args = parts[0], parts[1:]
         typed_args: List[TypedEntity] = []
@@ -655,7 +679,7 @@ class PDDLDomainParser(PDDLParser, PDDLDomain):
                         "Mixing of typed and untyped args not allowed"
                     )
                     assert self.uses_typing
-                    arg_type = self.types[arg.strip().split("-", 1)[1].strip()]
+                    arg_type = self.types[arg.strip().split(" - ", 1)[1].strip()]
                     arg_types.append(arg_type)
                 else:
                     assert not self.uses_typing
@@ -702,8 +726,8 @@ class PDDLDomainParser(PDDLParser, PDDLDomain):
             if self.uses_typing:
                 params = [
                     (
-                        param.strip().split("-", 1)[0].strip(),
-                        param.strip().split("-", 1)[1].strip(),
+                        param.strip().split(" - ", 1)[0].strip(),
+                        param.strip().split(" - ", 1)[1].strip(),
                     )
                     for param in params[1:]
                 ]
@@ -816,7 +840,7 @@ class PDDLProblemParser(PDDLParser):
         assert self.objects is not None
         params = {obj.name: obj.var_type for obj in self.objects}
         goal_lit = self._parse_into_literal(goal, params)
-        assert not isinstance(goal_lit, ProbabilisticEffect)
+        assert not isinstance(goal_lit, (ProbabilisticEffect, When))
         self.goal = goal_lit
 
     @staticmethod

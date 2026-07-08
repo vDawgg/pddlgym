@@ -11,24 +11,35 @@
 	(useable ?s - spanner)
 	(link ?l1 - location ?l2 - location)
 	(tightened ?n - nut)
-	(loose ?n - nut))
+	(loose ?n - nut)
+	(walk ?end - location)
+	(pickup_spanner ?spanner - spanner)
+	(tighten_nut ?nut - nut))
+
+; (:actions walk pickup_spanner tighten_nut)
 
 (:action walk
         :parameters (?start - location ?end - location ?m - man)
-        :precondition (and (at ?m ?start)
+        :precondition (and
+			   (walk ?end)
+			   (at ?m ?start)
                            (link ?start ?end))
         :effect (and (not (at ?m ?start)) (at ?m ?end)))
 
 (:action pickup_spanner
         :parameters (?l - location ?s - spanner ?m - man)
-        :precondition (and (at ?m ?l)
+        :precondition (and
+			   (pickup_spanner ?s)
+			   (at ?m ?l)
                            (at ?s ?l))
         :effect (and (not (at ?s ?l))
                      (carrying ?m ?s)))
 
 (:action tighten_nut
         :parameters (?l - location ?s - spanner ?m - man ?n - nut)
-        :precondition (and (at ?m ?l)
+        :precondition (and
+			   (tighten_nut ?n)
+			   (at ?m ?l)
 		      	   (at ?n ?l)
 			   (carrying ?m ?s)
 			   (useable ?s)

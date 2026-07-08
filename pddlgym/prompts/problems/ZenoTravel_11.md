@@ -1,0 +1,3 @@
+## Problem description
+
+There are three planes (plane1, plane2, plane3), eight passengers (person1, person2, person3, person4, person5, person6, person7, person8), six cities (city0, city1, city2, city3, city4, city5) and 7 possible fuel levels (fl0 - fl6). Plane1 starts out in city2 with fuel level fl3, plane2 starts out in city3 with fuel level fl6 and plane3 starts out in city5 with fuel level fl2. Passenger person1 is in city4, person2 is in city4, person3 is in city0, person4 is in city4, person5 is in city1, person6 is in city2, person7 is in city5 and person8 is in city5. The goal is that person1 is in city2, person2 is in city1, person3 is in city1, person4 is in city4, person5 is in city4, person6 is in city1, person7 is in city3 and person8 is in city4.

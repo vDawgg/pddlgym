@@ -1,0 +1,3 @@
+## Problem description
+
+There are four robots (driver1 - driver4), four trucks (truck1 - truck4), eight packages (package1 - package8) and twelve locations (s0 - s11). The driver driver1 starts out at location s8, driver2 at s5, driver3 at s5 and driver4 at s10. The truck truck1 starts out at location s3, truck2 at s9, truck3 at s3 and truck4 at s6. The package package1 starts out at location s3, package2 at s2, package3 at s8, package4 at s11, package5 at s1, package6 at s8, package7 at s9 and package8 at s10. The goal is for driver3 to be at s8, truck3 at s8, package1 at s2, package2 at s5, package3 at s1, package4 at s7, package5 at s0, package6 at s11, package7 at s2 and package8 at s0.

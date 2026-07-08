@@ -1,3 +1,3 @@
-(walk start end)
-(pickup_spanner location spanner robot)
-(tighten_nut location spanner robot nut)
+(walk end)
+(pickup_spanner spanner)
+(tighten_nut nut)

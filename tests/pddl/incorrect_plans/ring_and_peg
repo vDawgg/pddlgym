@@ -1,0 +1,6 @@
+(move start_position cyan_peg)
+(move cyan_peg teal_peg)
+(pick cyan_ring teal_peg)
+(move teal_peg cyan_peg)
+(place cyan_ring cyan_peg)
+; cost = 9 (unit cost)

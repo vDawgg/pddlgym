@@ -1,4 +1,4 @@
-(pick-up block robot)
-(put-down block robot)
-(stack upper-block lower-block robot)
-(unstack upper-block lower-block robot)
+(pick-up block)
+(put-down block)
+(stack upper-block lower-block)
+(unstack upper-block)

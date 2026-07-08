@@ -1,0 +1,38 @@
+(define (problem RING_AND_PEG_26)
+    (:domain RING_AND_PEG)
+    (:objects
+        brown_ring gray_ring
+        brown_peg gray_peg olive_peg maroon_peg navy_peg lime_peg start_position
+    )
+    (:init
+        (ring brown_ring)
+        (ring gray_ring)
+        (peg brown_peg)
+        (peg gray_peg)
+        (peg olive_peg)
+        (peg maroon_peg)
+        (peg navy_peg)
+        (peg lime_peg)
+        (peg start_position)
+        (onpeg brown_ring gray_peg)
+        (onpeg gray_ring brown_peg)
+        (pegempty olive_peg)
+        (pegempty maroon_peg)
+        (pegempty navy_peg)
+        (pegempty lime_peg)
+        (at start_position)
+        (handempty)
+
+    ; action literals
+    (move brown_peg)
+    (move gray_peg)
+    (move lime_peg)
+    (move maroon_peg)
+    (move navy_peg)
+    (move olive_peg)
+    (move start_position)
+    (pick)
+    (place)
+    )
+    (:goal         (and (onpeg brown_ring brown_peg) (onpeg gray_ring gray_peg)))
+)
