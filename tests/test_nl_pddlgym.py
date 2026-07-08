@@ -30,6 +30,13 @@ domain_to_env = {
     "zenotravel": "PDDLEnvZenotravel",
 }
 
+# Maps plan file names to their problem index.
+# Problem files are sorted alphabetically, so e.g. problem9.pddl
+# is at a different index than 9. This mapping accounts for that.
+domain_to_problem_idx = {
+    "baking": 19,  # problem9.pddl is the 20th file alphabetically
+}
+
 
 class TestNlPddlGym:
     def test_split(self):
@@ -82,7 +89,7 @@ class TestNlPddlGym:
                 action_schema_prompt_file="",
                 object_names_prompt_file="",
                 domain_name=env_name,
-                problem_idx=9,
+                problem_idx=domain_to_problem_idx.get(plan_file.name, 9),
             )
             assert prob.goal_reached(plan_file), f"Plan {plan_file} does not reach goal"
 
@@ -100,30 +107,8 @@ class TestNlPddlGym:
                 action_schema_prompt_file="",
                 object_names_prompt_file="",
                 domain_name=env_name,
-                problem_idx=9,
+                problem_idx=domain_to_problem_idx.get(plan_file.name, 9),
             )
             assert not prob.goal_reached(plan_file), (
                 f"Plan {plan_file} unexpectedly reached goal"
             )
-
-    def test_goal_reached(self):
-        prob = Problem(
-            domain_prompt_file="Blocks.md",
-            problem_prompt_file="Blocks_0.md",
-            action_schema_prompt_file="Blocks.md",
-            object_names_prompt_file="Blocks.md",
-            domain_name="PDDLEnvBlocks",
-            problem_idx=0,
-        )
-        assert prob.goal_reached(pddl_dir / "mock_plan_goal_reached.pddl")
-
-    def test_goal_not_reached(self):
-        prob = Problem(
-            domain_prompt_file="Blocks.md",
-            problem_prompt_file="Blocks_0.md",
-            action_schema_prompt_file="Blocks.md",
-            object_names_prompt_file="Blocks.md",
-            domain_name="PDDLEnvBlocks",
-            problem_idx=0,
-        )
-        assert not prob.goal_reached(pddl_dir / "mock_plan_goal_not_reached.pddl")

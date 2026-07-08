@@ -1,7 +1,7 @@
 from pathlib import Path
 
 project_root = (Path(__file__) / ".." / "..").resolve()
-src_dir = project_root / "pddlgym"
+src_dir = project_root / "nl_pddlgym"
 pddl_dir = src_dir / "pddl"
 prompts_dir = src_dir / "prompts"
 pddlgym_domain_prompts_dir = prompts_dir / "domains"

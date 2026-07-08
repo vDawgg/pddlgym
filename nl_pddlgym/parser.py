@@ -15,7 +15,6 @@ from nl_pddlgym.structs import (
     ProbabilisticEffect,
     When,
     TypedEntity,
-    ground_literal,
     DerivedPredicate,
     NoChange,
 )
@@ -942,45 +941,21 @@ class PDDLProblemParser(PDDLParser):
 
 def parse_plan_step(
     plan_step: str,
-    operators: List[Operator],
     action_predicates: set[Predicate] | list[Predicate],
     objects: List[TypedEntity],
-    operators_as_actions: bool = False,
 ) -> Literal:
     plan_step_split = plan_step.split()
+    action_name = plan_step_split[0].lower()
+    param_count = len(plan_step_split) - 1
 
-    if operators_as_actions:
-        action_predicate = [
-            a for a in action_predicates if a.name.lower() == plan_step_split[0].lower()
-        ][0]
-        object_names = plan_step_split[1:]
-        args = []
-        for name in object_names:
-            matches = [o for o in objects if o.name == name]
-            assert len(matches) == 1
-            args.append(matches[0])
-        return action_predicate(*args)
-
-    operator = None
-    for op in operators:
-        if op.name.lower() == plan_step_split[0]:
-            operator = op
-            break
-    assert operator is not None, "Unknown operator '{}'".format(plan_step_split[0])
-
-    assert len(plan_step_split) == len(operator.params) + 1
-    object_names = plan_step_split[1:]
-    args = []
-    for name in object_names:
-        matches = [o for o in objects if o.name == name]
-        assert len(matches) == 1
-        args.append(matches[0])
-    assignments = dict(zip(operator.params, args))
-
-    assert isinstance(operator.preconds, LiteralConjunction)
-    for cond in operator.preconds.literals:
-        if cond.predicate in action_predicates:
-            ground_action = ground_literal(cond, assignments)
-            return ground_action
+    for ap in action_predicates:
+        if ap.name.lower() == action_name and param_count == ap.arity:
+            object_names = plan_step_split[1:]
+            args = []
+            for name in object_names:
+                matches = [o for o in objects if o.name == name]
+                assert len(matches) == 1
+                args.append(matches[0])
+            return ap(*args)
 
     raise Exception("Unrecognized plan step: `{}`".format(str(plan_step)))

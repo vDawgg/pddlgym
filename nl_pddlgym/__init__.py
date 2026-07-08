@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-# TODO: Figure out why these import are even here
 from nl_pddlgym import core  # noqa: F401
 from nl_pddlgym.core import PDDLEnv
 from nl_pddlgym import structs  # noqa: F401
@@ -40,7 +39,7 @@ def register_pddl_env(name: str, is_test_env: bool, other_args: dict) -> None:
 
     register(
         id="PDDLEnv{}-v0".format(gym_name),
-        entry_point="pddlgym.core:PDDLEnv",
+        entry_point="nl_pddlgym.core:PDDLEnv",
         kwargs=dict(
             {"domain_file": domain_file, "problem_dir": problem_dir, **other_args}
         ),
@@ -96,64 +95,64 @@ for env_name, kwargs in _env_specs:
 for level in range(1, 3):
     register(
         id=f"SearchAndRescueLevel{level}-v0",
-        entry_point="pddlgym.custom.searchandrescue:SearchAndRescueEnv",
+        entry_point="nl_pddlgym.custom.searchandrescue:SearchAndRescueEnv",
         kwargs={"level": level, "test": False, "render_version": "slow"},
     )
     register(
         id=f"SearchAndRescueLevel{level}Test-v0",
-        entry_point="pddlgym.custom.searchandrescue:SearchAndRescueEnv",
+        entry_point="nl_pddlgym.custom.searchandrescue:SearchAndRescueEnv",
         kwargs={"level": level, "test": True, "render_version": "slow"},
     )
     register(
         id=f"PDDLSearchAndRescueLevel{level}-v0",
-        entry_point="pddlgym.custom.searchandrescue:PDDLSearchAndRescueEnv",
+        entry_point="nl_pddlgym.custom.searchandrescue:PDDLSearchAndRescueEnv",
         kwargs={"level": level, "test": False, "render_version": "slow"},
     )
     register(
         id=f"PDDLSearchAndRescueLevel{level}Test-v0",
-        entry_point="pddlgym.custom.searchandrescue:PDDLSearchAndRescueEnv",
+        entry_point="nl_pddlgym.custom.searchandrescue:PDDLSearchAndRescueEnv",
         kwargs={"level": level, "test": True, "render_version": "slow"},
     )
 
 register(
     id="SmallPOSARRadius1-v0",
-    entry_point="pddlgym.custom.searchandrescue:SmallPOSARRadius1Env",
+    entry_point="nl_pddlgym.custom.searchandrescue:SmallPOSARRadius1Env",
 )
 
 register(
     id="SmallPOSARRadius0-v0",
-    entry_point="pddlgym.custom.searchandrescue:SmallPOSARRadius0Env",
+    entry_point="nl_pddlgym.custom.searchandrescue:SmallPOSARRadius0Env",
 )
 
 register(
     id="POSARRadius1-v0",
-    entry_point="pddlgym.custom.searchandrescue:POSARRadius1Env",
+    entry_point="nl_pddlgym.custom.searchandrescue:POSARRadius1Env",
 )
 
 register(
     id="POSARRadius1Xray-v0",
-    entry_point="pddlgym.custom.searchandrescue:POSARRadius1XrayEnv",
+    entry_point="nl_pddlgym.custom.searchandrescue:POSARRadius1XrayEnv",
 )
 
 register(
     id="POSARRadius0-v0",
-    entry_point="pddlgym.custom.searchandrescue:POSARRadius0Env",
+    entry_point="nl_pddlgym.custom.searchandrescue:POSARRadius0Env",
 )
 
 register(
     id="POSARRadius0Xray-v0",
-    entry_point="pddlgym.custom.searchandrescue:POSARRadius0XrayEnv",
+    entry_point="nl_pddlgym.custom.searchandrescue:POSARRadius0XrayEnv",
 )
 
 
 register(
     id="SmallMyopicPOSAR-v0",
-    entry_point="pddlgym.custom.searchandrescue:SmallMyopicPOSAREnv",
+    entry_point="nl_pddlgym.custom.searchandrescue:SmallMyopicPOSAREnv",
 )
 
 register(
     id="TinyMyopicPOSAR-v0",
-    entry_point="pddlgym.custom.searchandrescue:TinyMyopicPOSAREnv",
+    entry_point="nl_pddlgym.custom.searchandrescue:TinyMyopicPOSAREnv",
 )
 
 
