@@ -1,7 +1,10 @@
 [project]
-name = "pddlgym"
-version = "0.0.7"
-description = "Add your description here"
+name = "nl-pddlgym"
+version = "0.0.1"
+description = "NL to PDDL dataset package with corresponding gym environments based on pddlgym"
+license-files = [
+    "LICENSE*",
+]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -21,4 +24,16 @@ dev = [
     "ty>=0.0.55",
     "pre-commit>=4.4.0",
     "ruff>=0.15.20",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.28,<0.12"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "nl_pddlgym"
+module-root = ""
+source-exclude = [
+    "nl_pddlgym/demo*.py",
+    "nl_pddlgym/procedural_generation/**",
 ]

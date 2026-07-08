@@ -1,12 +1,12 @@
-from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
-import pddlgym
+from nl_pddlgym.parser import PDDLDomainParser, PDDLProblemParser
+import nl_pddlgym
 import os
 import numpy as np
 
 np.random.seed(0)
 
 
-PDDLDIR = os.path.join(os.path.dirname(pddlgym.__file__), "pddl")
+PDDLDIR = os.path.join(os.path.dirname(nl_pddlgym.__file__), "pddl")
 
 IDX, G, W, P, X, H = range(6)
 

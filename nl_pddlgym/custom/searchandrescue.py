@@ -2,16 +2,16 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Tuple
 
-from pddlgym.core import PDDLEnv
-from pddlgym.rendering import (
+from nl_pddlgym.core import PDDLEnv
+from nl_pddlgym.rendering import (
     sar_render,
     slow_sar_render,
     posar_render,
     myopic_posar_render,
 )
-from pddlgym.structs import Type, Predicate, Not, State, LiteralConjunction
+from nl_pddlgym.structs import Type, Predicate, Not, State, LiteralConjunction
 import gymnasium as gym
-import pddlgym
+import nl_pddlgym
 import os
 import numpy as np
 
@@ -173,7 +173,7 @@ def get_sar_successor_state(state, action):
 class PDDLSearchAndRescueEnv(PDDLEnv):
     def __init__(self, level=1, test=False, render_version="fast"):
         dir_path = os.path.join(
-            os.path.dirname(os.path.realpath(pddlgym.__file__)), "pddl"
+            os.path.dirname(os.path.realpath(nl_pddlgym.__file__)), "pddl"
         )
         domain_file = os.path.join(dir_path, "searchandrescue.pddl")
         problem_dir = os.path.join(dir_path, f"searchandrescue_level{level}")
@@ -890,7 +890,7 @@ if __name__ == "__main__":
     np.random.seed(0)
     for env_name in ["PDDLSearchAndRescueLevel7"]:  # , "MyopicPOSAR"]:
         imgs: list = []
-        env = pddlgym.make(f"{env_name}-v0")
+        env = nl_pddlgym.make(f"{env_name}-v0")
         assert isinstance(env, PDDLEnv)
         assert isinstance(env, PDDLSearchAndRescueEnv)
         env.fix_problem_index(1)

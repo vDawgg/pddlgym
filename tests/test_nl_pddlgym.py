@@ -1,4 +1,4 @@
-from pddlgym.nl_pddlgym import NlPddlGymDs, Problem
+from nl_pddlgym.nl_pddlgym import NlPddlGymDs, Problem
 
 from tests.constants import pddl_dir
 

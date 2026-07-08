@@ -9,9 +9,9 @@ import matplotlib
 
 matplotlib.use("agg")  # For rendering
 
-from pddlgym.utils import run_demo
-from pddlgym.core import PDDLEnv
-import pddlgym
+from nl_pddlgym.utils import run_demo
+from nl_pddlgym.core import PDDLEnv
+import nl_pddlgym
 import copy
 
 try:
@@ -63,7 +63,7 @@ def create_replanning_policy(env, planner):
 def demo_planning(
     env_name, render=True, probabilistic=False, problem_index=0, verbose=True
 ):
-    env = pddlgym.make("PDDLEnv{}-v0".format(env_name.capitalize()))
+    env = nl_pddlgym.make("PDDLEnv{}-v0".format(env_name.capitalize()))
     assert isinstance(env, PDDLEnv)
     env.fix_problem_index(problem_index)
     planner = FD(alias_flag="--alias lama-first")

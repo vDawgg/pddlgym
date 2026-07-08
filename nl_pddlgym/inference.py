@@ -5,8 +5,8 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Any, Callable, Generator, Iterable, Iterator, cast
 
-from pddlgym.prolog_interface import PrologInterface
-from pddlgym.structs import (
+from nl_pddlgym.prolog_interface import PrologInterface
+from nl_pddlgym.structs import (
     Literal,
     LiteralConjunction,
     Predicate,
@@ -15,7 +15,7 @@ from pddlgym.structs import (
     TypedEntity,
     ground_literal,
 )
-from pddlgym.utils import get_object_combinations
+from nl_pddlgym.utils import get_object_combinations
 import functools
 
 

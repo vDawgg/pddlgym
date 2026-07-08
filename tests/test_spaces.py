@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
-from pddlgym.structs import Predicate, Type, State
-from pddlgym.spaces import LiteralSpace
+from nl_pddlgym.parser import PDDLDomainParser, PDDLProblemParser
+from nl_pddlgym.structs import Predicate, Type, State
+from nl_pddlgym.spaces import LiteralSpace
 from tests.constants import pddl_dir as test_pddl_dir
 
 import unittest

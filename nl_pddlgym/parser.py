@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from pddlgym.structs import (
+from nl_pddlgym.structs import (
     Type,
     Predicate,
     Literal,

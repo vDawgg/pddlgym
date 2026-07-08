@@ -7,13 +7,13 @@ import matplotlib
 matplotlib.use("agg")  # For rendering
 
 from typing import cast
-from pddlgym.utils import run_demo
-from pddlgym.core import PDDLEnv
-import pddlgym
+from nl_pddlgym.utils import run_demo
+from nl_pddlgym.core import PDDLEnv
+import nl_pddlgym
 
 
 def demo_random(env_name, render=True, problem_index=0, verbose=True):
-    env = cast(PDDLEnv, pddlgym.make("PDDLEnv{}-v0".format(env_name.capitalize())))
+    env = cast(PDDLEnv, nl_pddlgym.make("PDDLEnv{}-v0".format(env_name.capitalize())))
     env.fix_problem_index(problem_index)
 
     def policy(s):

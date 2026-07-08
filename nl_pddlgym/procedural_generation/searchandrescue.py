@@ -1,14 +1,14 @@
-from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
-from pddlgym.structs import LiteralConjunction
+from nl_pddlgym.parser import PDDLDomainParser, PDDLProblemParser
+from nl_pddlgym.structs import LiteralConjunction
 
-import pddlgym
+import nl_pddlgym
 import os
 import numpy as np
 
 np.random.seed(0)
 
 
-PDDLDIR = os.path.join(os.path.dirname(pddlgym.__file__), "pddl")
+PDDLDIR = os.path.join(os.path.dirname(nl_pddlgym.__file__), "pddl")
 DOMAIN_NAME = "searchandrescue"
 
 
@@ -231,7 +231,7 @@ def sample_problem(
 
 def problem_is_valid(domain, problem_filepath):
     # Verify that plan can be found
-    from pddlgym.planning import run_ff, PlanningException  # ty: ignore
+    from nl_pddlgym.planning import run_ff, PlanningException  # ty: ignore
 
     try:
         plan = run_ff(domain.domain_fname, problem_filepath)

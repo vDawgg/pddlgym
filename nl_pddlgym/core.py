@@ -18,9 +18,9 @@ Usage example:
 
 from __future__ import annotations
 
-from pddlgym.parser import PDDLDomainParser, PDDLProblemParser, Operator
-from pddlgym.inference import find_satisfying_assignments, check_goal
-from pddlgym.structs import (
+from nl_pddlgym.parser import PDDLDomainParser, PDDLProblemParser, Operator
+from nl_pddlgym.inference import find_satisfying_assignments, check_goal
+from nl_pddlgym.structs import (
     ground_literal,
     Literal,
     State,
@@ -35,7 +35,7 @@ from pddlgym.structs import (
     DerivedPredicate,
     Type,
 )
-from pddlgym.spaces import LiteralSpace, LiteralSetSpace, LiteralActionSpace
+from nl_pddlgym.spaces import LiteralSpace, LiteralSetSpace, LiteralActionSpace
 
 import glob
 import os

@@ -1,5 +1,5 @@
-from pddlgym.inference import find_satisfying_assignments
-from pddlgym.structs import Predicate, Type, Not
+from nl_pddlgym.inference import find_satisfying_assignments
+from nl_pddlgym.structs import Predicate, Type, Not
 
 import unittest
 

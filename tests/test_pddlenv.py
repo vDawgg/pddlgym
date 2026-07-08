@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from pddlgym.core import PDDLEnv, InvalidAction
-from pddlgym.structs import (
+from nl_pddlgym.core import PDDLEnv, InvalidAction
+from nl_pddlgym.structs import (
     Predicate,
     DerivedPredicate,
     Type,

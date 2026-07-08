@@ -1,6 +1,6 @@
-from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
-from pddlgym.structs import LiteralConjunction
-import pddlgym
+from nl_pddlgym.parser import PDDLDomainParser, PDDLProblemParser
+from nl_pddlgym.structs import LiteralConjunction
+import nl_pddlgym
 import os
 import random
 import numpy as np
@@ -8,7 +8,7 @@ import numpy as np
 np.random.seed(0)
 
 
-PDDLDIR = os.path.join(os.path.dirname(pddlgym.__file__), "pddl")
+PDDLDIR = os.path.join(os.path.dirname(nl_pddlgym.__file__), "pddl")
 
 
 def sample_feet(domain):

@@ -1,4 +1,4 @@
-from pddlgym.demo import run_all
+from nl_pddlgym.demo import run_all
 
 
 import unittest

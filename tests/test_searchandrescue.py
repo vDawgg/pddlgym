@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-import pddlgym
+import nl_pddlgym
 import numpy as np
 from typing import cast
-from pddlgym.custom.searchandrescue import SearchAndRescueEnv
+from nl_pddlgym.custom.searchandrescue import SearchAndRescueEnv
 
 import unittest
 
@@ -13,7 +13,7 @@ class TestSearchAndRescue(unittest.TestCase):
         """Test state encoding and decoding"""
         for level in range(1, 7):
             env = cast(
-                SearchAndRescueEnv, pddlgym.make(f"SearchAndRescueLevel{level}-v0")
+                SearchAndRescueEnv, nl_pddlgym.make(f"SearchAndRescueLevel{level}-v0")
             )
             if level == 1:
                 assert len(env.problems) == 20
@@ -57,7 +57,7 @@ class TestSearchAndRescue(unittest.TestCase):
         rng = np.random.RandomState(0)
         for level in [1, 2]:
             env = cast(
-                SearchAndRescueEnv, pddlgym.make(f"SearchAndRescueLevel{level}-v0")
+                SearchAndRescueEnv, nl_pddlgym.make(f"SearchAndRescueLevel{level}-v0")
             )
             assert len(env.problems) >= num_problems_to_test
             for idx in range(num_problems_to_test):

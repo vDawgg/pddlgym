@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from pddlgym.parser import PDDLDomainParser, PDDLProblemParser
-from pddlgym.structs import Predicate, Type, Anti, LiteralConjunction
+from nl_pddlgym.parser import PDDLDomainParser, PDDLProblemParser
+from nl_pddlgym.structs import Predicate, Type, Anti, LiteralConjunction
 from tests.constants import pddl_dir
 
 import unittest

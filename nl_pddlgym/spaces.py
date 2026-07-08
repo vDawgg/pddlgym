@@ -7,13 +7,13 @@ groundings, may change with each new PDDL problem.
 
 from __future__ import annotations
 
-from pddlgym.structs import LiteralConjunction, Literal, ground_literal, State
-from pddlgym.structs import Predicate, TypedEntity, Type
-from pddlgym.parser import PDDLProblemParser
-from pddlgym.parser import PDDLDomain, Operator
-from pddlgym.downward_translate.instantiate import explore as downward_explore
-from pddlgym.downward_translate.pddl_parser import open as downward_open
-from pddlgym.utils import nostdout
+from nl_pddlgym.structs import LiteralConjunction, Literal, ground_literal, State
+from nl_pddlgym.structs import Predicate, TypedEntity, Type
+from nl_pddlgym.parser import PDDLProblemParser
+from nl_pddlgym.parser import PDDLDomain, Operator
+from nl_pddlgym.downward_translate.instantiate import explore as downward_explore
+from nl_pddlgym.downward_translate.pddl_parser import open as downward_open
+from nl_pddlgym.utils import nostdout
 from gymnasium.spaces import Space
 from collections import defaultdict
 

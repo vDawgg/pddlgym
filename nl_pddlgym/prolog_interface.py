@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pddlgym.structs import (
+from nl_pddlgym.structs import (
     Predicate,
     Literal,
     LiteralConjunction,
@@ -8,7 +8,7 @@ from pddlgym.structs import (
     ForAll,
     Exists,
 )
-from pddlgym.utils import get_object_combinations
+from nl_pddlgym.utils import get_object_combinations
 import random
 from collections import defaultdict
 import subprocess

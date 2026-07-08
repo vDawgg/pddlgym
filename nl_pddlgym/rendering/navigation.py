@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from .utils import get_asset_path, render_from_layout
-import pddlgym
+import nl_pddlgym
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -86,7 +86,7 @@ def build_layout(obs, domain):
             prob_effect = [
                 lit
                 for lit in operator.effects.literals
-                if isinstance(lit, pddlgym.structs.ProbabilisticEffect)
+                if isinstance(lit, nl_pddlgym.structs.ProbabilisticEffect)
             ][0]
             return prob_effect.probabilities[0]
 
