@@ -17,7 +17,7 @@
 	       (machine-available)
 	       (machine-configured ?p - product)
 	       (stacks-avail ?s - count)
-	       (next-count ?s ?ns - count)
+	       (next-count ?s - count ?ns - count)
 	       (setup-machine ?product - product)
 	       (make-product ?product - product)
 	       (start-order ?order - order)
@@ -48,7 +48,7 @@
 		 (made ?p)))
 
   (:action start-order
-    :parameters (?o - order ?avail ?new-avail - count)
+    :parameters (?o - order ?avail - count ?new-avail - count)
     :precondition (and
 		       (start-order ?o)
     		       (waiting ?o)
@@ -61,7 +61,7 @@
     )
 
   (:action ship-order
-    :parameters (?o - order ?avail ?new-avail - count)
+    :parameters (?o - order ?avail - count ?new-avail - count)
     :precondition (and
 		       (ship-order ?o)
     		       (started ?o)
@@ -76,7 +76,7 @@
     )
 
   (:action open-new-stack
-    :parameters (?open ?new-open - count)
+    :parameters (?open - count ?new-open - count)
     :precondition (and (open-new-stack) (stacks-avail ?open)
 		       (next-count ?open ?new-open))
     :effect (and (not (stacks-avail ?open))

@@ -26,7 +26,7 @@
 	     (calibration_target ?i - camera ?o - objective)
 	     (on_board ?i - camera ?r - rover)
 	     (channel_free ?l - lander)
-	     (navigate ?rover -rover ?to - waypoint)
+	     (navigate ?rover - rover ?to - waypoint)
 	     (sample_soil ?rover - rover)
 	     (sample_rock ?rover - rover)
 	     (drop ?rover - rover)

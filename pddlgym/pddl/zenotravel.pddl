@@ -33,7 +33,7 @@
 (:action refuel
  :parameters ( ?a ?c ?l ?l1)
  :precondition
-	(and (refuel ?a ?c) (aircraft ?a) (city ?c) (flevel ?l) (flevel ?l1)  (fuel-level ?a ?l) (next ?l ?l1) (at ?a ?c))
+	(and (refuel ?a) (aircraft ?a) (city ?c) (flevel ?l) (flevel ?l1)  (fuel-level ?a ?l) (next ?l ?l1) (at ?a ?c))
  :effect
 	(and (fuel-level ?a ?l1) (not (fuel-level ?a ?l))))
 

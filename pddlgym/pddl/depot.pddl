@@ -11,7 +11,7 @@
              (lifting ?x - hoist ?y - crate)
              (available ?x - hoist)
              (clear ?x - surface)
-	     (drive ?x - truck ?y - location)
+	     (drive ?x - truck ?y - place)
 	     (lift ?x - hoist ?y - crate)
 	     (drop ?x - hoist ?y - crate)
 	     (load ?x - hoist ?y - crate ?z - truck)
