@@ -8,9 +8,9 @@
         (wantsPaper ?loc - loc)
         (unpacked ?paper - paper)
         (carrying ?paper - paper)
-	(pick-up ?paper)
-	(move ?to)
-	(deliver ?paper)
+	    (pick-up ?paper - paper)
+	    (move ?to - loc)
+	    (deliver ?paper - paper)
     )
 
     ; (:actions pick-up move deliver)

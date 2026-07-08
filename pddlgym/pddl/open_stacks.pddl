@@ -18,10 +18,10 @@
 	       (machine-configured ?p - product)
 	       (stacks-avail ?s - count)
 	       (next-count ?s ?ns - count)
-	       (setup-machine ?product)
-	       (make-product ?product)
-	       (start-order ?order)
-	       (ship-order ?order)
+	       (setup-machine ?product - product)
+	       (make-product ?product - product)
+	       (start-order ?order - order)
+	       (ship-order ?order - order)
 	       (open-new-stack))
 
   ; (:actions setup-machine make-product start-order ship-order open-new-stack)
@@ -77,7 +77,7 @@
 
   (:action open-new-stack
     :parameters (?open ?new-open - count)
-    :precondition (and (stacks-avail ?open)
+    :precondition (and (open-new-stack) (stacks-avail ?open)
 		       (next-count ?open ?new-open))
     :effect (and (not (stacks-avail ?open))
 		 (stacks-avail ?new-open))

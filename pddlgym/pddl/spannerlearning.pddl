@@ -12,9 +12,9 @@
 	(link ?l1 - location ?l2 - location)
 	(tightened ?n - nut)
 	(loose ?n - nut)
-	(walk ?end)
-	(pickup_spanner ?spanner)
-	(tighten_nut ?nut))
+	(walk ?end - location)
+	(pickup_spanner ?spanner - spanner)
+	(tighten_nut ?nut - nut))
 
 ; (:actions walk pickup_spanner tighten_nut)
 

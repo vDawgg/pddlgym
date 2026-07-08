@@ -13,7 +13,7 @@
 ; (:actions move take-out put-in)
 
 (:action move
-  :parameters (?m ?l - location)
+  :parameters (?m - location ?l - location)
   :precondition (and
 		(move ?l)
   		(is-at ?m))

@@ -15,7 +15,7 @@
 	     (lift ?x - hoist ?y - crate)
 	     (drop ?x - hoist ?y - crate)
 	     (load ?x - hoist ?y - crate ?z - truck)
-	     (unload ?x - hoist ?y crate ?z - truck))
+	     (unload ?x - hoist ?y - crate ?z - truck))
 
 ; (:actions lift drop load unload)
 
