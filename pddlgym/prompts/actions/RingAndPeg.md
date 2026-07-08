@@ -1,3 +1,3 @@
-(move from to)
-(pick ring peg)
-(place ring peg)
+(move to)
+(pick)
+(place)

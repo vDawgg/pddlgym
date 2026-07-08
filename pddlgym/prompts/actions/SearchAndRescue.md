@@ -1,3 +1,3 @@
-(move-robot robot from to direction)
-(pickup-person robot person location)
-(dropoff-person robot person location)
+(move-robot direction)
+(pickup-person person)
+(dropoff-person)

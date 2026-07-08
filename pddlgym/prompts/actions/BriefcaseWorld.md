@@ -1,3 +1,3 @@
-(move location-start location-end)
+(move location-end)
 (take-out item)
-(put-in item location)
+(put-in item)

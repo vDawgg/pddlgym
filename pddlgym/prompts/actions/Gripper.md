@@ -1,3 +1,3 @@
-(move from to)
-(pick obj room gripper)
-(drop obj room gripper)
+(move to)
+(pick obj gripper)
+(drop obj gripper)

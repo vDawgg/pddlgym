@@ -7,14 +7,14 @@ class TestNlPddlGym:
     def test_split(self):
         ds = NlPddlGymDs(split=(80, 20))
         print(ds.train, ds.val, ds.test)
-        assert len(ds.train) == 283
+        assert len(ds.train) == 585
         assert len(ds.val) == 0
-        assert len(ds.test) == 73
+        assert len(ds.test) == 148
         ds = NlPddlGymDs(split=(70, 15, 15))
         print(ds.train, ds.val, ds.test)
-        assert len(ds.train) == 247
-        assert len(ds.val) == 59
-        assert len(ds.test) == 50
+        assert len(ds.train) == 512
+        assert len(ds.val) == 116
+        assert len(ds.test) == 105
 
     def test_shuffle(self):
         ds_1 = NlPddlGymDs(shuffle_ds=False)
@@ -33,6 +33,7 @@ class TestNlPddlGym:
     def test_all_envs_load(self):
         ds = NlPddlGymDs()
         for prob in ds.train + ds.val + ds.test:
+            print(prob.domain_prompt_file)
             prob.goal_reached(pddl_dir / "mock_plan.pddl")
 
     def test_dspy_ds(self):

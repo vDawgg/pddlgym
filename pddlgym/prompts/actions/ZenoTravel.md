@@ -1,4 +1,4 @@
-(board passenger plane city)
-(debark passenger plane city)
-(fly plane city old-fuel-level new-fuel-level)
-(refuel plane city old-fuel-level new-fuel-level)
+(board passenger plane)
+(debark passenger plane)
+(fly plane city)
+(refuel plane)

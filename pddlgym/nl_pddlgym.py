@@ -163,21 +163,8 @@ class NlPddlGymDs:
                 domain_name="PDDLEnvBaking",
                 problem_idx=i,
             )
-            for i in range(4)
+            for i in range(20)
         ]
-        baking.extend(
-            [
-                Problem(
-                    domain_prompt_file="Baking.md",
-                    problem_prompt_file=f"BakingTest_{i}.md",
-                    action_schema_prompt_file="Baking.md",
-                    object_names_prompt_file="Baking.md",
-                    domain_name="PDDLEnvBakingTest",
-                    problem_idx=i,
-                )
-                for i in range(4)
-            ]
-        )
         # blocks
         blocks = [
             Problem(
@@ -193,16 +180,28 @@ class NlPddlGymDs:
         blocks.extend(
             [
                 Problem(
-                    domain_prompt_file="BlocksMedium.md",
+                    domain_prompt_file="Blocks.md",
                     problem_prompt_file=f"BlocksMedium_{i}.md",
-                    action_schema_prompt_file="BlocksMedium.md",
-                    object_names_prompt_file="BlocksMedium.md",
+                    action_schema_prompt_file="Blocks.md",
+                    object_names_prompt_file="Blocks.md",
                     domain_name="PDDLEnvBlocks_medium",
                     problem_idx=i,
                 )
                 for i in range(40)
             ]
         )
+        # briefcaseworld
+        briefcaseworld = [
+            Problem(
+                domain_prompt_file="BriefcaseWorld.md",
+                problem_prompt_file=f"BriefcaseWorld_{i}.md",
+                action_schema_prompt_file="BriefcaseWorld.md",
+                object_names_prompt_file="BriefcaseWorld.md",
+                domain_name="PDDLEnvBriefcaseworld",
+                problem_idx=i,
+            )
+            for i in range(30)
+        ]
         # depot
         depot = [
             Problem(
@@ -226,6 +225,18 @@ class NlPddlGymDs:
             )
             for i in range(12)
         )
+        # driverlog
+        driverlog = [
+            Problem(
+                domain_prompt_file="DriverLog.md",
+                problem_prompt_file=f"DriverLog_{i}.md",
+                action_schema_prompt_file="DriverLog.md",
+                object_names_prompt_file="DriverLog.md",
+                domain_name="PDDLEnvDriverlog",
+                problem_idx=i,
+            )
+            for i in range(20)
+        ]
         # elevator
         elevator = [
             Problem(
@@ -236,21 +247,8 @@ class NlPddlGymDs:
                 domain_name="PDDLEnvElevator",
                 problem_idx=i,
             )
-            for i in range(5)
+            for i in range(20)
         ]
-        elevator.extend(
-            [
-                Problem(
-                    domain_prompt_file="Elevator.md",
-                    problem_prompt_file=f"ElevatorTest_{i}.md",
-                    action_schema_prompt_file="Elevator.md",
-                    object_names_prompt_file="Elevator.md",
-                    domain_name="PDDLEnvElevatorTest",
-                    problem_idx=i,
-                )
-                for i in range(5)
-            ]
-        )
         # ferry
         ferry = [
             Problem(
@@ -261,21 +259,8 @@ class NlPddlGymDs:
                 domain_name="PDDLEnvFerry",
                 problem_idx=i,
             )
-            for i in range(4)
+            for i in range(20)
         ]
-        ferry.extend(
-            [
-                Problem(
-                    domain_prompt_file="Ferry.md",
-                    problem_prompt_file=f"FerryTest_{i}.md",
-                    action_schema_prompt_file="Ferry.md",
-                    object_names_prompt_file="Ferry.md",
-                    domain_name="PDDLEnvFerryTest",
-                    problem_idx=i,
-                )
-                for i in range(4)
-            ]
-        )
         # gripper
         gripper = [
             Problem(
@@ -311,21 +296,8 @@ class NlPddlGymDs:
                 domain_name="PDDLEnvHanoi",
                 problem_idx=i,
             )
-            for i in range(4)
+            for i in range(20)
         ]
-        hanoi.extend(
-            [
-                Problem(
-                    domain_prompt_file="Hanoi.md",
-                    problem_prompt_file=f"HanoiTest_{i}.md",
-                    action_schema_prompt_file="Hanoi.md",
-                    object_names_prompt_file="Hanoi.md",
-                    domain_name="PDDLEnvHanoiTest",
-                    problem_idx=i,
-                )
-                for i in range(6)
-            ]
-        )
         # minecraft
         minecraft = [
             Problem(
@@ -349,7 +321,7 @@ class NlPddlGymDs:
             )
             for i in range(30)
         )
-        # minecraft
+        # movie
         movie = [
             Problem(
                 domain_prompt_file="Movie.md",
@@ -359,19 +331,32 @@ class NlPddlGymDs:
                 domain_name="PDDLEnvMovie",
                 problem_idx=i,
             )
-            for i in range(2)
+            for i in range(10)
         ]
-        movie.extend(
+        # needle sorting
+        needle_sorting = [
             Problem(
-                domain_prompt_file="Movie.md",
-                problem_prompt_file=f"MovieTest_{i}.md",
-                action_schema_prompt_file="Movie.md",
-                object_names_prompt_file="Movie.md",
-                domain_name="PDDLEnvMovieTest",
+                domain_prompt_file="NeedleSorting.md",
+                problem_prompt_file=f"NeedleSorting_{i}.md",
+                action_schema_prompt_file="NeedleSorting.md",
+                object_names_prompt_file="NeedleSorting.md",
+                domain_name="PDDLEnvNeedle_sorting",
                 problem_idx=i,
             )
-            for i in range(1)
-        )
+            for i in range(20)
+        ]
+        # needle transfer
+        needle_transfer = [
+            Problem(
+                domain_prompt_file="NeedleTransfer.md",
+                problem_prompt_file=f"NeedleTransfer_{i}.md",
+                action_schema_prompt_file="NeedleTransfer.md",
+                object_names_prompt_file="NeedleTransfer.md",
+                domain_name="PDDLEnvNeedle_transfer",
+                problem_idx=i,
+            )
+            for i in range(20)
+        ]
         # newspapers
         newspapers = [
             Problem(
@@ -384,6 +369,18 @@ class NlPddlGymDs:
             )
             for i in range(40)
         ]
+        # open stacks
+        open_stacks = [
+            Problem(
+                domain_prompt_file="OpenStacks.md",
+                problem_prompt_file=f"OpenStacks_{i}.md",
+                action_schema_prompt_file="OpenStacks.md",
+                object_names_prompt_file="OpenStacks.md",
+                domain_name="PDDLEnvOpen_stacks",
+                problem_idx=i,
+            )
+            for i in range(30)
+        ]
         # rearrangement
         rearrangement = [
             Problem(
@@ -395,6 +392,54 @@ class NlPddlGymDs:
                 problem_idx=i,
             )
             for i in range(20)
+        ]
+        # ring and peg
+        ring_and_peg = [
+            Problem(
+                domain_prompt_file="RingAndPeg.md",
+                problem_prompt_file=f"RingAndPeg_{i}.md",
+                action_schema_prompt_file="RingAndPeg.md",
+                object_names_prompt_file="RingAndPeg.md",
+                domain_name="PDDLEnvRing_and_peg",
+                problem_idx=i,
+            )
+            for i in range(30)
+        ]
+        # rovers
+        rovers = [
+            Problem(
+                domain_prompt_file="Rovers.md",
+                problem_prompt_file=f"Rovers_{i}.md",
+                action_schema_prompt_file="Rovers.md",
+                object_names_prompt_file="Rovers.md",
+                domain_name="PDDLEnvRovers",
+                problem_idx=i,
+            )
+            for i in range(40)
+        ]
+        # satellite
+        satellite = [
+            Problem(
+                domain_prompt_file="Satellite.md",
+                problem_prompt_file=f"Satellite_{i}.md",
+                action_schema_prompt_file="Satellite.md",
+                object_names_prompt_file="Satellite.md",
+                domain_name="PDDLEnvSatellite",
+                problem_idx=i,
+            )
+            for i in range(36)
+        ]
+        # schedule
+        schedule = [
+            Problem(
+                domain_prompt_file="Schedule.md",
+                problem_prompt_file=f"Schedule_{i}.md",
+                action_schema_prompt_file="Schedule.md",
+                object_names_prompt_file="Schedule.md",
+                domain_name="PDDLEnvSchedule",
+                problem_idx=i,
+            )
+            for i in range(50)
         ]
         # search and rescue
         search_and_rescue = [
@@ -433,21 +478,56 @@ class NlPddlGymDs:
             )
             for i in range(10)
         ]
+        # tpp
+        tpp = [
+            Problem(
+                domain_prompt_file="Tpp.md",
+                problem_prompt_file=f"Tpp_{i}.md",
+                action_schema_prompt_file="Tpp.md",
+                object_names_prompt_file="Tpp.md",
+                domain_name="PDDLEnvTpp",
+                problem_idx=i,
+            )
+            for i in range(30)
+        ]
+        # zeno travel
+        zeno_travel = [
+            Problem(
+                domain_prompt_file="ZenoTravel.md",
+                problem_prompt_file=f"ZenoTravel_{i}.md",
+                action_schema_prompt_file="ZenoTravel.md",
+                object_names_prompt_file="ZenoTravel.md",
+                domain_name="PDDLEnvZenotravel",
+                problem_idx=i,
+            )
+            for i in range(20)
+        ]
 
         all_problems = [
             baking,
             blocks,
+            briefcaseworld,
             depot,
+            driverlog,
             elevator,
             ferry,
             gripper,
             hanoi,
             minecraft,
             movie,
+            needle_sorting,
+            needle_transfer,
             newspapers,
+            open_stacks,
             rearrangement,
+            ring_and_peg,
+            rovers,
+            satellite,
+            schedule,
             search_and_rescue,
             spanner_learning,
+            tpp,
+            zeno_travel,
         ]
         if shuffle_ds:
             [shuffle(probs) for probs in all_problems]
