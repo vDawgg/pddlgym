@@ -122,7 +122,7 @@ class Problem:
                 )
                 for plan_step in plan
             ]
-        except AssertionError:
+        except Exception:
             return False
         terminated = False
         while not terminated:
@@ -130,7 +130,10 @@ class Problem:
                 action = plan.pop(0)
             except IndexError:
                 return False
-            state, _, terminated, _, _ = env.step(action)
+            try:
+                state, _, terminated, _, _ = env.step(action)
+            except Exception:
+                return False
         return True
 
 

@@ -1,0 +1,3 @@
+(walk shed location1 bob)
+(pickup_spanner location1 spanner3 bob)
+; cost = 4 (unit cost)

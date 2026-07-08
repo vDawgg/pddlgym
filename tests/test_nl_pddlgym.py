@@ -3,6 +3,34 @@ from pddlgym.nl_pddlgym import NlPddlGymDs, Problem
 from tests.constants import pddl_dir
 
 
+domain_to_env = {
+    "baking": "PDDLEnvBaking",
+    "blocks": "PDDLEnvBlocks_medium",
+    "briefcaseworld": "PDDLEnvBriefcaseworld",
+    "depot": "PDDLEnvDepot",
+    "driverlog": "PDDLEnvDriverlog",
+    "elevator": "PDDLEnvElevator",
+    "ferry": "PDDLEnvFerry",
+    "gripper": "PDDLEnvGripper",
+    "hanoi": "PDDLEnvHanoi",
+    "minecraft": "PDDLEnvMinecraft",
+    "movie": "PDDLEnvMovie",
+    "needle_sorting": "PDDLEnvNeedle_sorting",
+    "needle_transfer": "PDDLEnvNeedle_transfer",
+    "newspapers": "PDDLEnvNewspapers",
+    "open_stacks": "PDDLEnvOpen_stacks",
+    "rearrangement": "PDDLEnvRearrangement",
+    "ring_and_peg": "PDDLEnvRing_and_peg",
+    "rovers": "PDDLEnvRovers",
+    "satellite": "PDDLEnvSatellite",
+    "schedule": "PDDLEnvSchedule",
+    "search_and_rescue": "PDDLSearchAndRescueLevel1",
+    "spannerlearning": "PDDLEnvSpannerlearning",
+    "tpp": "PDDLEnvTpp",
+    "zenotravel": "PDDLEnvZenotravel",
+}
+
+
 class TestNlPddlGym:
     def test_split(self):
         ds = NlPddlGymDs(split=(80, 20))
@@ -39,6 +67,44 @@ class TestNlPddlGym:
     def test_dspy_ds(self):
         ds = NlPddlGymDs()
         ds.make_dspy_ds()
+
+    def test_correct_plans_goal_reached(self):
+        correct_plans_dir = pddl_dir / "correct_plans"
+        if not correct_plans_dir.exists():
+            return
+        for plan_file in correct_plans_dir.iterdir():
+            if not plan_file.is_file():
+                continue
+            env_name = domain_to_env[plan_file.name]
+            prob = Problem(
+                domain_prompt_file="",
+                problem_prompt_file="",
+                action_schema_prompt_file="",
+                object_names_prompt_file="",
+                domain_name=env_name,
+                problem_idx=9,
+            )
+            assert prob.goal_reached(plan_file), f"Plan {plan_file} does not reach goal"
+
+    def test_incorrect_plans_goal_not_reached(self):
+        incorrect_plans_dir = pddl_dir / "incorrect_plans"
+        if not incorrect_plans_dir.exists():
+            return
+        for plan_file in incorrect_plans_dir.iterdir():
+            if not plan_file.is_file():
+                continue
+            env_name = domain_to_env[plan_file.name]
+            prob = Problem(
+                domain_prompt_file="",
+                problem_prompt_file="",
+                action_schema_prompt_file="",
+                object_names_prompt_file="",
+                domain_name=env_name,
+                problem_idx=9,
+            )
+            assert not prob.goal_reached(plan_file), (
+                f"Plan {plan_file} unexpectedly reached goal"
+            )
 
     def test_goal_reached(self):
         prob = Problem(
