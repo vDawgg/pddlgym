@@ -54,13 +54,19 @@ class TestNlPddlGym:
     def test_shuffle(self):
         ds_1 = NlPddlGymDs(shuffle_ds=False)
         ds_2 = NlPddlGymDs(shuffle_ds=False)
-        assert all(
+        assert not all(
             x.problem_prompt_file == y.problem_prompt_file
             for x, y in zip(ds_1.train, ds_2.train)
         )
         ds_1 = NlPddlGymDs(shuffle_ds=True)
         ds_2 = NlPddlGymDs(shuffle_ds=True)
-        assert not all(
+        assert all(
+            x.problem_prompt_file == y.problem_prompt_file
+            for x, y in zip(ds_1.train, ds_2.train)
+        )
+        ds_1 = NlPddlGymDs(shuffle_ds=42)
+        ds_2 = NlPddlGymDs(shuffle_ds=42)
+        assert all(
             x.problem_prompt_file == y.problem_prompt_file
             for x, y in zip(ds_1.train, ds_2.train)
         )

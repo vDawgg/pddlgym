@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from random import shuffle
+import random
 
 import dspy
 
@@ -143,10 +143,10 @@ class Problem:
 
 
 class NlPddlGymDs:
-    def __init__(self, split: tuple = (80, 20), shuffle_ds: bool = True):
+    def __init__(self, split: tuple = (80, 20), shuffle_ds: bool | int = True):
         """
         Wrapper for the NL-pddlgym dataset.
-        Shuffles the data by default while making sure the distribution of problems
+        Always shuffles the data while making sure the distribution of problems
         is respected across the different splits.
 
         Parameters
@@ -154,8 +154,10 @@ class NlPddlGymDs:
         split : tuple
             The splits that the ds should be divided into. The ds can either be split
             into 2 (train, test) or 3 (train, val, test) parts.
-        shuffle : bool
-            Shuffles the dataset.
+        shuffle_ds : bool | int
+            Controls whether the shuffle is repeatable. If True, shuffles
+            deterministically with a default seed. If an int, uses that as the
+            seed. If False, shuffles non-deterministically.
         """
         assert len(split) == 2 or len(split) == 3, (
             "Splits can only contain 2 or 3 ratios."
@@ -537,8 +539,11 @@ class NlPddlGymDs:
             tpp,
             zeno_travel,
         ]
-        if shuffle_ds:
-            [shuffle(probs) for probs in all_problems]
+        if isinstance(shuffle_ds, bool):
+            rng = random.Random(0) if shuffle_ds else random.Random()
+        else:
+            rng = random.Random(shuffle_ds)
+        [rng.shuffle(probs) for probs in all_problems]
 
         train_split = split[0] / 100
         train_splits = [int(len(prob) * train_split) for prob in all_problems]
@@ -565,10 +570,9 @@ class NlPddlGymDs:
             for prob in probs[split:]
         ]
 
-        if shuffle_ds:
-            shuffle(self.val)
-            shuffle(self.train)
-            shuffle(self.test)
+        rng.shuffle(self.val)
+        rng.shuffle(self.train)
+        rng.shuffle(self.test)
 
     def make_dspy_ds(
         self,
