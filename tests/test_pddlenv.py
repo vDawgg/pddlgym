@@ -606,6 +606,112 @@ class TestPDDLEnv(unittest.TestCase):
             }
         )
 
+    def test_conditional_effects(self) -> None:
+        # Domain exercises:
+        #   * `when` (conditional effect) on a single operator-parameter
+        #     variable, exercised both when the condition holds and when it
+        #     does not;
+        #   * `forall (...) (when (...) ...)` (universal conditional effect)
+        #     for both single- and multi-variable forall bindings.
+        domain_file = str(pddl_dir / "test_conditional_domain.pddl")
+        problem_dir = str(pddl_dir / "test_conditional_domain")
+
+        env = PDDLEnv(
+            domain_file,
+            problem_dir,
+            raise_error_on_invalid_action=True,
+        )
+        obs, _ = env.reset()
+
+        block = Type("block")
+        is_blue = Predicate("is-blue", 1, [block])
+        is_red = Predicate("is-red", 1, [block])
+        is_marked = Predicate("is-marked", 1, [block])
+        flag = Predicate("flag", 0, [])
+        act_cond = Predicate("act-conditional", 1, [block])
+        act_universal = Predicate("act-universal", 0, [])
+        b1, b2, b3 = block("b1"), block("b2"), block("b3")
+
+        # init: (is-blue b1) (is-red b2) (is-blue b3) (flag).  The
+        # action-predicate literals are filtered out of the observation, so
+        # obs.literals contains only the four state fluents above.
+        assert obs.literals == frozenset(
+            {is_blue(b1), is_red(b2), is_blue(b3), flag()}
+        ), obs.literals
+
+        # Conditional effect: when (is-blue ?x) -> flip blue -> red.
+        # Take act_cond on b2 (red, not blue). The `when` condition is False,
+        # so `is-marked b2` is added (unconditional part), but no red/blue
+        # flip happens.
+        obs, _, _, _, _ = env.step(act_cond(b2))
+        assert obs.literals == frozenset(
+            {is_blue(b1), is_red(b2), is_blue(b3), flag(), is_marked(b2)}
+        ), obs.literals
+
+        # Conditional effect on b1 (blue). The `when` condition holds, so
+        # b1 is flipped to red. `is-marked b1` is also added.
+        obs, _, _, _, _ = env.step(act_cond(b1))
+        assert obs.literals == frozenset(
+            {
+                is_red(b1),
+                is_red(b2),
+                is_blue(b3),
+                flag(),
+                is_marked(b1),
+                is_marked(b2),
+            }
+        ), obs.literals
+
+        # Universal conditional effect: forall (?b - block) when (is-blue ?b)
+        # (flip).  `flag` is also removed by the unconditional tail of the effect.
+        env.reset()
+        obs, _, _, _, _ = env.step(act_universal())
+        assert obs.literals == frozenset(
+            {
+                is_red(b1),
+                is_red(b2),
+                is_red(b3),
+            }
+        ), obs.literals
+
+    def test_conditional_effects_multi_var_forall(self) -> None:
+        # Exercises the multi-variable forall binding at runtime:
+        #   (forall (?b1 - block ?b2 - block) (when (is-blue ?b1) (flip b1)))
+        domain_file = str(pddl_dir / "test_conditional_domain.pddl")
+        problem_dir = str(pddl_dir / "test_conditional_domain")
+
+        env = PDDLEnv(
+            domain_file,
+            problem_dir,
+            raise_error_on_invalid_action=True,
+        )
+        obs, _ = env.reset()
+
+        block = Type("block")
+        is_blue = Predicate("is-blue", 1, [block])
+        is_red = Predicate("is-red", 1, [block])
+        act_multi = Predicate("act-multi-var", 0, [])
+        b1, b2, b3 = block("b1"), block("b2"), block("b3")
+        flag = Predicate("flag", 0, [])
+
+        assert obs.literals == frozenset(
+            {is_blue(b1), is_red(b2), is_blue(b3), flag()}
+        ), obs.literals
+
+        # Initial state: b1 & b3 blue, b2 red, flag set.
+        # The multi_var action converts all blue blocks to red (the second
+        # forall variable is unused in the body, so it only multiplies the
+        # iteration count), and removes flag.
+        obs, _, _, _, _ = env.step(act_multi())
+        assert is_red(b1) in obs.literals, "b1 should be red after multi_var"
+        assert is_blue(b1) not in obs.literals, "b1 should not be blue"
+        assert is_red(b3) in obs.literals, "b3 should be red"
+        assert is_blue(b3) not in obs.literals, "b3 should not be blue"
+        # b2 started red and stays red
+        assert is_red(b2) in obs.literals
+        # flag is getting unset
+        assert flag() not in obs.literals
+
 
 if __name__ == "__main__":
     unittest.main()
