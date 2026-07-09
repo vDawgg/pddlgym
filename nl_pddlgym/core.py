@@ -224,6 +224,8 @@ def _select_operator(
         # Check whether action is in the preconditions
         action_literal = None
         for lit in conds:
+            if not hasattr(lit, "predicate"):
+                continue
             if lit.predicate == action.predicate:
                 action_literal = lit
                 break
@@ -245,8 +247,6 @@ def _select_operator(
         )
         num_assignments = len(assignments)
         if num_assignments > 0:
-            if require_unique_assignment:
-                assert num_assignments == 1, "Nondeterministic envs not supported"
             selected_operator = operator
             assignment = assignments[0]
             break

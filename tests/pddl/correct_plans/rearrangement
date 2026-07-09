@@ -1,0 +1,8 @@
+(moveto loc-1-2)
+(pick pawn-3)
+(moveto loc-1-1)
+(place pawn-3)
+(moveto loc-2-0)
+(pick monkey-1)
+(moveto loc-1-1)
+; cost = 7 (unit cost)

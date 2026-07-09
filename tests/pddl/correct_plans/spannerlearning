@@ -1,0 +1,5 @@
+(walk location1)
+(pickup_spanner spanner3)
+(walk gate)
+(tighten_nut nut1)
+; cost = 4 (unit cost)

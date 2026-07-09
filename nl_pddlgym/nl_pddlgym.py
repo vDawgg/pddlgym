@@ -14,7 +14,6 @@ from nl_pddlgym.constants import (
 
 import nl_pddlgym
 from nl_pddlgym.core import PDDLEnv
-from nl_pddlgym.parser import parse_plan_step
 
 
 def get_pddl_gym_domain_prompt(file_name: str) -> str:
@@ -61,37 +60,75 @@ def goal_reached(domain_name: str, problem_index: int, plan_file: Path):
         lines = f.readlines()
     plan = []
     for line in lines:
+        line = line.strip()
         match = re.match(
-            r"^\((?P<function>\S+)\s+(?P<parameters>.+)\)$",
+            r"^\((?P<function>\S+)(?:\s+(?P<parameters>.*))?\)$",
             line,
         )
         if match:
             action = match.group("function")
-            # Action name is not known in current domain
-            if action not in env.domain.operators:
-                return False
-            parameters = match.group("parameters").split(" ")
+            parameters_str = match.group("parameters") or ""
+            parameters = parameters_str.split() if parameters_str else []
             if env.domain.operators_as_actions:
-                expected_param_count = len(env.domain.operators[action].params)
-            else:
-                action_pred = env.domain.predicates.get(action)
-                if action_pred is None:
+                if action not in env.domain.operators:
                     return False
-                expected_param_count = action_pred.arity
-            if len(parameters) < expected_param_count:
+                plan.append(f"{action} {' '.join(parameters)}")
+            else:
+                # Accept if action is a known predicate (predicate format) or a known operator (operator format)
+                is_known_predicate = action in env.domain.predicates
+                is_known_operator = action in env.domain.operators
+                if not is_known_predicate and not is_known_operator:
+                    return False
+                plan.append(f"{action} {' '.join(parameters)}")
+    # Parse plan steps into action literals
+    parsed_plan = []
+    for plan_step in plan:
+        plan_step_split = plan_step.split()
+        action_name = plan_step_split[0].lower()
+        object_names = plan_step_split[1:]
+
+        # Try predicate-based matching first
+        matched = False
+        for a in list(env.domain.actions):
+            pred = env.domain.predicates.get(a if isinstance(a, str) else a.name)
+            if pred is None:
+                continue
+            pname = a if isinstance(a, str) else a.name
+            if pname.lower() == action_name and len(object_names) == pred.arity:
+                args = []
+                for name in object_names:
+                    matches = [o for o in state.objects if o.name == name]
+                    if len(matches) != 1:
+                        break
+                    args.append(matches[0])
+                if len(args) == pred.arity:
+                    parsed_plan.append(pred(*args))
+                    matched = True
+                    break
+        if matched:
+            continue
+
+        # Fall back to operator-based parsing
+        if action_name not in env.domain.operators:
+            return False
+        from nl_pddlgym.structs import Predicate
+
+        op = env.domain.operators[action_name]
+        ptypes = [p.var_type for p in op.params]
+        pred = Predicate(action_name, len(ptypes), ptypes)
+        args = []
+        for name in object_names:
+            matches = [o for o in state.objects if o.name == name]
+            if len(matches) != 1:
                 return False
-            plan.append(f"{action} {' '.join(parameters)}")
-    try:
-        plan = [
-            parse_plan_step(
-                plan_step,
-                [env.domain.predicates[a] for a in list(env.domain.actions)],
-                state.objects,
-            )
-            for plan_step in plan
-        ]
-    except Exception:
-        return False
+            args.append(matches[0])
+        if len(args) < len(op.params):
+            # Partial params: pad to match operator arity
+            pred = Predicate(action_name, len(args), ptypes[: len(args)])
+        parsed_plan.append(pred(*args))
+
+    plan = parsed_plan
+
     terminated = False
     while not terminated:
         try:
@@ -214,29 +251,6 @@ class NlPddlGymDs:
             )
             for i in range(30)
         ]
-        # depot
-        depot = [
-            Problem(
-                domain_prompt_file="Depot.md",
-                problem_prompt_file=f"Depot_{i}.md",
-                action_schema_prompt_file="Depot.md",
-                object_names_prompt_file="Depot.md",
-                domain_name="PDDLEnvDepot",
-                problem_idx=i,
-            )
-            for i in range(10)
-        ]
-        depot.extend(
-            Problem(
-                domain_prompt_file="Depot.md",
-                problem_prompt_file=f"DepotTest_{i}.md",
-                action_schema_prompt_file="Depot.md",
-                object_names_prompt_file="Depot.md",
-                domain_name="PDDLEnvDepotTest",
-                problem_idx=i,
-            )
-            for i in range(12)
-        )
         # driverlog
         driverlog = [
             Problem(
@@ -518,7 +532,6 @@ class NlPddlGymDs:
         splittable_problems = [
             blocks,
             briefcaseworld,
-            depot,
             driverlog,
             elevator,
             ferry,

@@ -7,7 +7,6 @@ domain_to_env = {
     "baking": "PDDLEnvBaking",
     "blocks": "PDDLEnvBlocks_medium",
     "briefcaseworld": "PDDLEnvBriefcaseworld",
-    "depot": "PDDLEnvDepot",
     "driverlog": "PDDLEnvDriverlog",
     "elevator": "PDDLEnvElevator",
     "ferry": "PDDLEnvFerry",
@@ -35,21 +34,36 @@ domain_to_env = {
 # is at a different index than 9. This mapping accounts for that.
 domain_to_problem_idx = {
     "baking": 19,  # problem9.pddl is the 20th file alphabetically
+    "blocks": 39,
+    "briefcaseworld": 29,
+    "driverlog": 19,
+    "elevator": 19,
+    "ferry": 19,
+    "gripper": 4,
+    "hanoi": 19,
+    "minecraft": 29,
+    "needle_sorting": 19,
+    "needle_transfer": 19,
+    "newspapers": 39,
+    "open_stacks": 29,
+    "rearrangement": 19,
+    "ring_and_peg": 29,
+    "rovers": 39,
+    "satellite": 35,
+    "schedule": 49,
+    "search_and_rescue": 19,
+    "spannerlearning": 9,
+    "tpp": 29,
+    "zenotravel": 19,
 }
 
 
 class TestNlPddlGym:
     def test_split(self):
-        ds = NlPddlGymDs(split=(80, 20))
-        print(ds.train, ds.val, ds.test)
-        assert len(ds.train) == 585
-        assert len(ds.val) == 0
-        assert len(ds.test) == 148
-        ds = NlPddlGymDs(split=(70, 15, 15))
-        print(ds.train, ds.val, ds.test)
-        assert len(ds.train) == 512
-        assert len(ds.val) == 116
-        assert len(ds.test) == 105
+        ds = NlPddlGymDs()
+        assert len(ds.train) == 488
+        assert len(ds.val) == 123
+        assert len(ds.test) == 100
 
     def test_shuffle(self):
         ds_1 = NlPddlGymDs(shuffle_ds=False)

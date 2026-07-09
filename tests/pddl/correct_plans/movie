@@ -1,0 +1,4 @@
+(get-chips c1)
+(get-crackers k1)
+(get-pop p1)
+; cost = 3 (unit cost)
