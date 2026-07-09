@@ -149,19 +149,21 @@ class NlPddlGymDs:
         Always shuffles the data while making sure the distribution of problems
         is respected across the different splits.
 
+        The domains baking, open_stacks, rearrangement, and ring_and_peg are
+        held out entirely for testing and never appear in the training or
+        validation sets.
+
         Parameters
         ----------
         split : tuple
-            The splits that the ds should be divided into. The ds can either be split
-            into 2 (train, test) or 3 (train, val, test) parts.
+            Train/val split ratios for the remaining domains. Must be a 2-tuple
+            (train_percent, val_percent) summing to 100.
         shuffle_ds : bool | int
             Controls whether the shuffle is repeatable. If True, shuffles
             deterministically with a default seed. If an int, uses that as the
             seed. If False, shuffles non-deterministically.
         """
-        assert len(split) == 2 or len(split) == 3, (
-            "Splits can only contain 2 or 3 ratios."
-        )
+        assert len(split) == 2, "Split must contain exactly 2 ratios (train, val)."
         assert sum(split) == 100, "Splits must sum to 100"
         # baking
         baking = [
@@ -513,8 +515,7 @@ class NlPddlGymDs:
             for i in range(20)
         ]
 
-        all_problems = [
-            baking,
+        splittable_problems = [
             blocks,
             briefcaseworld,
             depot,
@@ -528,9 +529,6 @@ class NlPddlGymDs:
             needle_sorting,
             needle_transfer,
             newspapers,
-            open_stacks,
-            rearrangement,
-            ring_and_peg,
             rovers,
             satellite,
             schedule,
@@ -539,39 +537,35 @@ class NlPddlGymDs:
             tpp,
             zeno_travel,
         ]
+        test_only_problems = [
+            baking,
+            open_stacks,
+            rearrangement,
+            ring_and_peg,
+        ]
         if isinstance(shuffle_ds, bool):
             rng = random.Random(0) if shuffle_ds else random.Random()
         else:
             rng = random.Random(shuffle_ds)
-        [rng.shuffle(probs) for probs in all_problems]
+        [rng.shuffle(probs) for probs in splittable_problems]
 
-        train_split = split[0] / 100
-        train_splits = [int(len(prob) * train_split) for prob in all_problems]
-        test_split = split[2] / 100 if len(split) == 3 else split[1] / 100
-        test_splits = [
-            int(len(probs) * (train_split + test_split)) for probs in all_problems
-        ]
+        train_ratio = split[0] / 100
+        train_sizes = [int(len(probs) * train_ratio) for probs in splittable_problems]
 
         self.train = [
             prob
-            for split, probs in zip(train_splits, all_problems)
-            for prob in probs[:split]
-        ]
-        self.test = [
-            prob
-            for train_split, val_split, probs in zip(
-                train_splits, test_splits, all_problems
-            )
-            for prob in probs[train_split:val_split]
+            for size, probs in zip(train_sizes, splittable_problems)
+            for prob in probs[:size]
         ]
         self.val = [
             prob
-            for split, probs in zip(test_splits, all_problems)
-            for prob in probs[split:]
+            for size, probs in zip(train_sizes, splittable_problems)
+            for prob in probs[size:]
         ]
+        self.test = [prob for probs in test_only_problems for prob in probs]
 
-        rng.shuffle(self.val)
         rng.shuffle(self.train)
+        rng.shuffle(self.val)
         rng.shuffle(self.test)
 
     def make_dspy_ds(
