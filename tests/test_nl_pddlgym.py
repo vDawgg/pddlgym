@@ -29,34 +29,6 @@ domain_to_env = {
     "zenotravel": "PDDLEnvZenotravel",
 }
 
-# Maps plan file names to their problem index.
-# Problem files are sorted alphabetically, so e.g. problem9.pddl
-# is at a different index than 9. This mapping accounts for that.
-domain_to_problem_idx = {
-    "baking": 19,  # problem9.pddl is the 20th file alphabetically
-    "blocks": 39,
-    "briefcaseworld": 29,
-    "driverlog": 19,
-    "elevator": 19,
-    "ferry": 19,
-    "gripper": 4,
-    "hanoi": 19,
-    "minecraft": 29,
-    "needle_sorting": 19,
-    "needle_transfer": 19,
-    "newspapers": 39,
-    "open_stacks": 29,
-    "rearrangement": 19,
-    "ring_and_peg": 29,
-    "rovers": 39,
-    "satellite": 35,
-    "schedule": 49,
-    "search_and_rescue": 19,
-    "spannerlearning": 9,
-    "tpp": 29,
-    "zenotravel": 19,
-}
-
 
 class TestNlPddlGym:
     def test_split(self):
@@ -97,11 +69,7 @@ class TestNlPddlGym:
 
     def test_correct_plans_goal_reached(self):
         correct_plans_dir = pddl_dir / "correct_plans"
-        if not correct_plans_dir.exists():
-            return
         for plan_file in correct_plans_dir.iterdir():
-            if not plan_file.is_file():
-                continue
             env_name = domain_to_env[plan_file.name]
             prob = Problem(
                 domain_prompt_file="",
@@ -109,7 +77,7 @@ class TestNlPddlGym:
                 action_schema_prompt_file="",
                 object_names_prompt_file="",
                 domain_name=env_name,
-                problem_idx=domain_to_problem_idx.get(plan_file.name, 9),
+                problem_idx=9,
             )
             assert prob.goal_reached(plan_file), f"Plan {plan_file} does not reach goal"
 
@@ -127,7 +95,7 @@ class TestNlPddlGym:
                 action_schema_prompt_file="",
                 object_names_prompt_file="",
                 domain_name=env_name,
-                problem_idx=domain_to_problem_idx.get(plan_file.name, 9),
+                problem_idx=9,
             )
             assert not prob.goal_reached(plan_file), (
                 f"Plan {plan_file} unexpectedly reached goal"

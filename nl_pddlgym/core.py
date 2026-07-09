@@ -763,10 +763,28 @@ class PDDLEnv(gym.Env[State, Literal]):
         The order of PDDL problems is determined by the names
         of their files. See PDDLEnv.load_pddl.
 
+        The given index is treated as a human-readable problem number
+        (e.g., 8 for problem8.pddl) and automatically converted to the
+        correct alphabetical file index.
+
         Parameters
         ----------
         problem_idx : int
         """
+        if self.problems:
+            import os
+
+            sorted_fnames = sorted(
+                os.path.basename(p.problem_fname) for p in self.problems
+            )
+            for candidate in [
+                f"problem{problem_idx}.pddl",
+                f"prob{problem_idx:02d}.pddl",
+                f"pfile{problem_idx}.pddl",
+            ]:
+                if candidate in sorted_fnames:
+                    problem_idx = sorted_fnames.index(candidate)
+                    break
         self._problem_idx = problem_idx
         self._problem_index_fixed = True
 
