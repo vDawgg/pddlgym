@@ -1,4 +1,4 @@
-(board passenger plane)
-(debark passenger plane)
-(fly plane city)
-(refuel plane)
+(board ?passenger ?plane)
+(debark ?passenger ?plane)
+(fly ?plane ?city)
+(refuel ?plane)

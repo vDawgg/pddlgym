@@ -1,3 +1,3 @@
-(move to)
-(pick obj gripper)
-(drop obj gripper)
+(move ?to)
+(pick ?obj ?gripper)
+(drop ?obj ?gripper)

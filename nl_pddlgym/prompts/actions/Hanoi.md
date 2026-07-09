@@ -1,1 +1,1 @@
-(move disc to)
+(move ?disc ?to)

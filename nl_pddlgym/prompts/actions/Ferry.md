@@ -1,3 +1,3 @@
-(board car)
-(sail to)
-(debark car)
+(board ?car)
+(sail ?to)
+(debark ?car)

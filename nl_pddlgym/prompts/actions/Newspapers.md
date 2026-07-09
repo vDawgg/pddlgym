@@ -1,3 +1,3 @@
-(pick-up paper)
-(move to)
-(deliver paper)
+(pick-up ?paper)
+(move ?to)
+(deliver ?paper)

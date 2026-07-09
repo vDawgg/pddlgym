@@ -1,3 +1,3 @@
-(moveto location)
-(pick object)
-(place object)
+(moveto ?location)
+(pick ?object)
+(place ?object)
