@@ -36,6 +36,7 @@ from nl_pddlgym.structs import (
     Type,
 )
 from nl_pddlgym.spaces import LiteralSpace, LiteralSetSpace, LiteralActionSpace
+from nl_pddlgym.prolog_interface import _check_prolog_available
 
 import glob
 import os
@@ -654,6 +655,11 @@ class PDDLEnv(gym.Env[State, Literal]):
         # Determine if the domain is STRIPS
         self._domain_is_strips: bool = _check_domain_for_strips(self.domain)
         self._inference_mode: str = "csp" if self._domain_is_strips else "prolog"
+        # Some domains require prolog. We want to avoid users running
+        # inference on a large chunk of the dataset and only failing
+        # once we hit prolog domains. Due to this, we call this early
+        # as to not fail too late.
+        _check_prolog_available()
 
         # Determine if domain contains derived predicates
         self._contains_derived_predicates: bool = any(

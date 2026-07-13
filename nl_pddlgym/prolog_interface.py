@@ -14,6 +14,17 @@ from collections import defaultdict
 import subprocess
 import sys
 import tempfile
+import shutil
+
+
+def _check_prolog_available() -> None:
+    if shutil.which("swipl") is None:
+        raise RuntimeError(
+            "SWI-Prolog (swipl) is not installed or not on PATH. "
+            "NL-pddlgym requires a prolog install to be able to offer all available environments. "
+            "Install SWI-Prolog (e.g., 'apt install swi-prolog' or "
+            "'brew install swi-prolog') and ensure 'swipl' is on your PATH."
+        )
 
 
 class PrologInterface:
@@ -377,6 +388,7 @@ print_solutions([H|T]) :- write(H), nl, print_solutions(T).
 
     def run(self) -> list:
         """ """
+        _check_prolog_available()
         file = tempfile.NamedTemporaryFile(suffix=".pl")
         tmp_name = file.name
         with open(tmp_name, "w") as f:
