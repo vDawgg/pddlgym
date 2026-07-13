@@ -530,20 +530,20 @@ class NlPddlGymDs:
         ]
 
         splittable_problems = [
+            baking,
             blocks,
             briefcaseworld,
             driverlog,
-            elevator,
             ferry,
             gripper,
-            hanoi,
             minecraft,
             movie,
             needle_sorting,
             needle_transfer,
             newspapers,
+            open_stacks,
+            rearrangement,
             rovers,
-            satellite,
             schedule,
             search_and_rescue,
             spanner_learning,
@@ -551,11 +551,12 @@ class NlPddlGymDs:
             zeno_travel,
         ]
         test_only_problems = [
-            baking,
-            open_stacks,
-            rearrangement,
+            hanoi,
+            satellite,
+            elevator,
             ring_and_peg,
         ]
+
         if isinstance(shuffle_ds, bool):
             rng = random.Random(0) if shuffle_ds else random.Random()
         else:

@@ -33,9 +33,9 @@ domain_to_env = {
 class TestNlPddlGym:
     def test_split(self):
         ds = NlPddlGymDs()
-        assert len(ds.train) == 488
-        assert len(ds.val) == 123
-        assert len(ds.test) == 100
+        assert len(ds.train) == 484
+        assert len(ds.val) == 121
+        assert len(ds.test) == 106
 
     def test_shuffle(self):
         ds_1 = NlPddlGymDs(shuffle_ds=False)
