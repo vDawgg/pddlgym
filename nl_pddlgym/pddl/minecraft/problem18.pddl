@@ -3,6 +3,7 @@
 
     (:objects
 
+	log-0 - moveable
 	grass-0 - moveable
 	grass-1 - moveable
 	grass-2 - moveable
@@ -35,12 +36,14 @@
 	(hypothetical new-0)
 	(hypothetical new-1)
 	(hypothetical new-2)
+	(islog log-0)
 	(isgrass grass-0)
 	(isgrass grass-1)
 	(isgrass grass-2)
 	(isgrass grass-3)
 	(isgrass grass-4)
 	(isgrass grass-5)
+	(at log-0 loc-3-0)
 	(at grass-0 loc-4-0)
 	(at grass-1 loc-3-1)
 	(at grass-2 loc-3-2)
@@ -52,6 +55,17 @@
 
     ; action literals
 
+	(recall log-0)
+	(craftplank log-0 grass-1)
+	(craftplank log-0 grass-2)
+	(craftplank log-0 grass-3)
+	(craftplank log-0 grass-4)
+	(craftplank log-0 grass-5)
+	(craftplank log-0 new-0)
+	(craftplank log-0 new-1)
+	(craftplank log-0 new-2)
+	(equip log-0)
+	(pick log-0)
 	(recall grass-0)
 	(craftplank grass-0 grass-1)
 	(craftplank grass-0 grass-2)
@@ -130,6 +144,7 @@
 	(equip new-0)
 	(pick new-0)
 	(recall new-1)
+	(craftplank new-1 log-0)
 	(craftplank new-1 grass-0)
 	(craftplank new-1 grass-1)
 	(craftplank new-1 grass-2)
@@ -141,6 +156,7 @@
 	(equip new-1)
 	(pick new-1)
 	(recall new-2)
+	(craftplank new-2 log-0)
 	(craftplank new-2 grass-0)
 	(craftplank new-2 grass-1)
 	(craftplank new-2 grass-2)
