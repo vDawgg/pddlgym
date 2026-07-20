@@ -57,9 +57,9 @@ def goal_reached(domain_name: str, problem_index: int, plan_file: Path):
     env.fix_problem_index(problem_index)
     state, _ = env.reset()
     with open(plan_file) as f:
-        lines = f.readlines()
+        content = f.read().lower()
     plan = []
-    for line in lines:
+    for line in content.splitlines():
         line = line.strip()
         match = re.match(
             r"^\((?P<function>\S+)(?:\s+(?P<parameters>.*))?\)$",

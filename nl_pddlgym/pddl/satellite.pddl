@@ -32,7 +32,7 @@
 (:action calibrate
  :parameters ( ?s ?i ?d)
  :precondition
-	(and (calibrate ?i ?d) (satellite ?s) (instrument ?i) (direction ?d)  (on_board ?i ?s) (calibration_target ?i ?d) (pointing ?s ?d) (power_on ?i))
+	(and (calibrate ?i ?d) (satellite ?s) (instrument ?i) (direction ?d)  (on_board ?i ?s) (pointing ?s ?d) (power_on ?i))
  :effect
 	 (calibrated ?i))
 
