@@ -61,8 +61,10 @@ def goal_reached(domain_name: str, problem_index: int, plan_file: Path):
     plan = []
     for line in content.splitlines():
         line = line.strip()
-        match = re.match(
-            r"^\((?P<function>\S+)(?:\s+(?P<parameters>.*))?\)$",
+        if line.startswith(";"):
+            continue
+        match = re.search(
+            r"\((?P<function>\S+)(?:\s+(?P<parameters>.*?))?\)",
             line,
         )
         if match:
