@@ -5,20 +5,17 @@
   )
   (:init
     ;; Problem-relevant predicates
-    (above f0 f1)
     (lift-at f0)
     (origin p0 f1)
     (destin p0 f0)
 
+    (above f0 f1)
+
     ;; Grounded action predicates
-    (up f0)
-    (down f0)
-    (up f1)
-    (down f1)
-    (board f0 p0)
-    (depart f0 p0)
-    (board f1 p0)
-    (depart f1 p0)
+    (up)
+    (down)
+    (board p0)
+    (depart p0)
   )
   (:goal
 	(and
