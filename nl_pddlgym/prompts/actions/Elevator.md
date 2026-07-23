@@ -1,4 +1,4 @@
-(down ?floor)
-(board ?floor ?passenger)
-(up ?floor)
-(depart ?floor ?passenger)
+(down)
+(board ?passenger)
+(up)
+(depart ?passenger)
